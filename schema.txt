@@ -1,0 +1,62 @@
+User:
+-Name (string)
+-Username (string)
+-Email (string)
+-Password (String)
+-Phone Number (String)
+-Street Address (String)
+-Apartment/Unit (String)
+-City (String)
+-State/Provence (String)
+-Country (String)
+-Zip code (Number)
+-Profile Picture (String)
+-Date of Birth (Date)
+-Gender (String)
+-Emergency Contact Name (String)
+-Emergency Contact Phone (String)
+-Experiences (Array of objects)
+  {id:
+  name:
+  date:
+  completed:
+  rating:
+  review:
+  }
+-Cart
+-isAdmin
+
+Experience:
+-Name (string)
+-Total trips available (integer)
+-Max group size (integer)
+-Description (text)
+-Image url (string)
+-Location (venue) (string)
+-Street Address (String)
+-City (String)
+-State/Provence (String)
+-Country (String)
+-Zip code (Number)
+-Additional location information (String)
+-Duration (string)
+-Language (string)
+-Amenities included (string)
+-Base cost per package (50, 100, 500, 1000) (integer)
+-Tags (string)
+
+Celebrity:
+-Name (String)
+-Score (Integer)
+-Description (text)
+-Link (text)
+-ImgUrl (text)
+
+User.hasMany(Experience)
+Experiences.belongsToMany(User)
+
+Celebrity.hasMany(Experience)
+Experience.belongsTo(Celebrity)
+
+
+
