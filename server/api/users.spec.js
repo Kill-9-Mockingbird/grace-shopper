@@ -16,7 +16,19 @@ describe('User routes', () => {
 
     beforeEach(() => {
       return User.create({
-        email: codysEmail
+        firstName: 'Cody',
+        lastName: 'Fullstack',
+        username: 'codyThePug',
+        email: codysEmail,
+        password: '1246',
+        phoneNumber: '8189092819',
+        streetAddress: '453 west 36th street',
+        county: 'New York',
+        state: 'NY',
+        zipCode: 10014,
+        country: 'United States of America',
+        emergencyContactName: 'Joe',
+        emergencyContactPhone: '8189482748'
       })
     })
 
