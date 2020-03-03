@@ -60,30 +60,25 @@ const User = db.define('user', {
   phoneNumber: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: true
   },
   streetAddress: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   secondaryAddress: {
     type: Sequelize.STRING
   },
   county: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   state: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   zipCode: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   country: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
 
   profilePicture: {
@@ -96,11 +91,11 @@ const User = db.define('user', {
   },
   emergencyContactName: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   emergencyContactPhone: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,

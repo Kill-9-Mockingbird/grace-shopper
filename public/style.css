@@ -1,3 +1,6 @@
+* {
+  margin: 0;
+}
 body {
   font-family: sans-serif;
 }
@@ -10,6 +13,24 @@ label {
   display: block;
 }
 
+nav {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.logo {
+  flex-grow: 3;
+  color: white;
+}
+.navbar {
+  align-items: center;
+  background-color: #ff8181;
+  display: flex;
+  height: 80px;
+  padding: 10px 50px;
+  justify-content: space-between;
+  box-shadow: 0px 2px 8px #c7c7c7;
+}
 nav a {
   display: inline-block;
   margin: 1em;
