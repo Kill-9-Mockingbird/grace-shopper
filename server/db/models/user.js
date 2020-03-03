@@ -78,7 +78,7 @@ const User = db.define('user', {
     allowNull: false
   },
   zipCode: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   },
   country: {
