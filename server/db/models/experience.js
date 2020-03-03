@@ -45,7 +45,7 @@ const Experience = db.define('experience', {
   },
 
   duration: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     validate: {
       notEmpty: true
     }
