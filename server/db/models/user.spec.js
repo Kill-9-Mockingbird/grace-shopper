@@ -3,6 +3,7 @@
 const {expect} = require('chai')
 const db = require('../index')
 const User = db.model('user')
+const faker = require('faker')
 
 describe('User model', () => {
   beforeEach(() => {
@@ -16,7 +17,19 @@ describe('User model', () => {
       beforeEach(async () => {
         cody = await User.create({
           email: 'cody@puppybook.com',
-          password: 'bones'
+          password: 'bones',
+          firstName: faker.name.firstName(),
+          lastName: faker.name.lastName(),
+          username: faker.internet.userName(),
+          phoneNumber: faker.phone.phoneNumber(),
+          streetAddress: faker.address.streetAddress(),
+          secondaryAddress: faker.address.secondaryAddress(),
+          county: faker.address.county(),
+          state: faker.address.state(),
+          zipCode: faker.address.zipCode('#####'),
+          country: faker.address.country(),
+          emergencyContactName: faker.name.findName(),
+          emergencyContactPhone: faker.phone.phoneNumber()
         })
       })
 
