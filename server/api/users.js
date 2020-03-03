@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
       attributes: ['id', 'email'],
-      include: Experience
+      include: 'orders'
     })
     res.json(users)
   } catch (err) {
@@ -40,7 +40,7 @@ router.get('/admin', async (req, res, next) => {
         'emergencyContactPhone',
         'isAdmin'
       ],
-      include: Experience
+      include: 'orders'
     })
     res.json(users)
   } catch (err) {
@@ -51,11 +51,7 @@ router.get('/admin', async (req, res, next) => {
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
-      include: [
-        {
-          model: Experience
-        }
-      ]
+      include: 'orders'
     })
     res.json(user)
   } catch (err) {
@@ -109,6 +105,24 @@ router.post('/', async (req, res, next) => {
       res.status(201).send(createUser)
     } else {
       res.status(400).send('Unable to save to database')
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:userId', async (req, res, next) => {
+  try {
+    const id = req.params.userId
+    const numAffectedRows = await User.destroy({
+      where: {
+        id: id
+      }
+    })
+    if (numAffectedRows > 0) {
+      res.sendStatus(204)
+    } else {
+      res.sendStatus(404)
     }
   } catch (err) {
     next(err)
