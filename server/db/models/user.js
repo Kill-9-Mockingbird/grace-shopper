@@ -3,13 +3,42 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  username: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true,
+      notEmpty: true
+    }
   },
   password: {
     type: Sequelize.STRING,
+    validate: {
+      notEmpty: true
+    },
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
@@ -25,7 +54,58 @@ const User = db.define('user', {
     }
   },
   googleId: {
+    type: Sequelize.STRING,
+    defaultValue: null
+  },
+  phoneNumber: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false
+  },
+  streetAddress: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  secondaryAddress: {
     type: Sequelize.STRING
+  },
+  county: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  state: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  zipCode: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  country: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+
+  profilePicture: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  dateOfBirth: {
+    type: Sequelize.DATEONLY,
+    allowNull: true
+  },
+  emergencyContactName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  emergencyContactPhone: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+    allowNull: false
   }
 })
 
