@@ -1,18 +1,28 @@
 'use strict'
 
-const db = require('../server/db')
-const {User} = require('../server/db/models')
+const fs = require("fs");
+const db = require('../server/db');
+const {User, Celebrity, Experience, Order } = require('../server/db/models');
+const celebritiesSeed = JSON.parse(fs.readFileSync(__dirname + "/celebritiesSeed.json", "utf8"));
+const userSeed = require("./userSeed.js");
+const experienceSeed = require("./experienceSeed.js")
+// const orderSeed = require("./orderSeed.js")
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
+  const users = await User.bulkCreate(userSeed);
+  const celebrities = await Celebrity.bulkCreate(celebritiesSeed);
+  const experiences = await Experience.bulkCreate(experiencesSeed);
+  // const orders = await Order.bulkCreate(orderSeed);
+
 
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${celebrities.length} celebrities`)
+  console.log(`seeded ${experiences.length} experiences`)
+  // console.log(`seeded ${orders.length} orders`)
+
   console.log(`seeded successfully`)
 }
 
@@ -42,3 +52,5 @@ if (module === require.main) {
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed
+
+
