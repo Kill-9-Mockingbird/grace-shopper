@@ -4,7 +4,8 @@ const userSeed = []
 
 for (let i = 0; i < 200; i++) {
   userSeed.push({
-    name: faker.name.findName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     username: faker.internet.userName(),
     email: faker.internet.email(),
     password: faker.internet.password(),
@@ -17,10 +18,9 @@ for (let i = 0; i < 200; i++) {
     country: faker.address.country(),
     profilePicture: faker.image.avatar(),
     dateOfBirth: faker.date.between('1945-01-01', '1999-12-31'),
-    emergencyContact: faker.name.findName(),
+    emergencyContactName: faker.name.findName(),
     emergencyContactPhone: faker.phone.phoneNumber(),
-    isAdmin: faker.random.boolean(),
-    cart: 'empty'
+    isAdmin: faker.random.boolean()
   })
 }
 
