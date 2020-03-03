@@ -16,7 +16,7 @@ User.belongsToMany(Experience, {
 })
 
 Celebrity.hasMany(Experience)
-Experience.belongsTo(Celebrity, {as: 'celebrityExperiences'})
+Experience.belongsTo(Celebrity, {as: 'celebrity'})
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
@@ -29,5 +29,3 @@ module.exports = {
   Celebrity,
   Order
 }
-
-
