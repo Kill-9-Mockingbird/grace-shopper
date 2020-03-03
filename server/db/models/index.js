@@ -15,6 +15,11 @@ User.belongsToMany(Experience, {
   through: Order
 })
 
+Experience.belongsToMany(User, {
+  as: 'orders',
+  through: Order
+})
+
 Celebrity.hasMany(Experience)
 Experience.belongsTo(Celebrity, {as: 'celebrity'})
 /**
