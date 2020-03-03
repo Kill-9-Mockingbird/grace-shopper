@@ -8,7 +8,7 @@ const celebritiesSeed = JSON.parse(
   fs.readFileSync(path.join(__dirname, '/celebritiesSeed.json'), 'utf8')
 )
 const userSeed = require('./userSeed.js')
-const experienceSeed = require('./experienceSeed.js')
+const experienceSeed = require('./experiencesSeed.js')
 // const orderSeed = require("./orderSeed.js")
 
 async function seed() {
