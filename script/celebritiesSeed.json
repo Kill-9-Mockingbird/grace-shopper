@@ -1,0 +1,75 @@
+[
+    {
+        "name": "Taylor Swift",
+        "description": "Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter. She is known for narrative songs about her personal life, which have received widespread media coverage. At age 14, Swift became the youngest artist signed by the Sony/ATV Music publishing house and, at age 15, she signed her first record deal. Her 2006 eponymous debut album was the longest-charting album of the 2000s in the US. Its third single, "Our Song", made her the youngest person to single-handedly write and perform a number-one song on the Billboard Hot Country Songs chart. Swift's second album, Fearless, was released in 2008. Buoyed by the pop crossover success of the singles "Love Story" and "You Belong with Me", it became the US's best-selling album of 2009 and was certified diamond in the US. The album won four Grammy Awards, and Swift became the youngest Album of the Year winner.",
+        "link": "https://www.taylorswift.com/",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/191125_Taylor_Swift_at_the_2019_American_Music_Awards.png"
+    },
+    {
+        "name": "Beyonce",
+        "description": "Beyoncé Giselle Knowles-Carter is an American singer, songwriter, record producer, dancer and actress. Born and raised in Houston, Texas, Beyoncé performed in various singing and dancing competitions as a child. She rose to fame in the late 1990s as the lead singer of Destiny's Child, one of the best-selling girl groups of all time. Beyoncé is one of the word's best-selling music artists, having sold over 100 million records worldwide.",
+        "link": "https://www.beyonce.com/",
+        "imageUrl": "https://cdn.britannica.com/51/188751-050-D4E1CFBC/Beyonce-2010.jpg"
+    },
+    {
+        "name": "Ed Sheeran",
+        "description":"Edward Christopher Sheeran, MBE (/ˈʃɪərən/; born 17 February 1991) is an English singer, songwriter, record producer, and actor. In early 2011, Sheeran independently released the extended play, No. 5 Collaborations Project. After signing with Asylum Records, his debut album, + (pronounced "plus"), was released in September 2011 and topped the UK Albums Chart. It contained his first hit single "The A Team". In 2012, Sheeran won the Brit Awards for Best British Male Solo Artist and British Breakthrough Act. Sheeran has sold more than 150 million records worldwide, making him one of the world's best-selling music artists.",
+        "link":"https://www.edsheeran.com/",
+        "imageUrl": "https://assets.capitalfm.com/2018/07/ed-sheeran-press-photo-2018-1519211115-editorial-long-form-0.png"
+    },
+    {
+        "name": "Christiano Ronaldo",
+        "score": 95,
+        "description": "Cristiano Ronaldo dos Santos Aveiro GOIH ComM (European Portuguese: [kɾiʃˈtjɐnu ʁɔˈnaɫdu]; born 5 February 1985) is a Portuguese professional footballer who plays as a forward for Serie A club Juventus and captains the Portugal national team. Often considered the best player in the world and widely regarded as one of the greatest players of all time, Ronaldo has won five Ballons d'Or and four European Golden Shoes, both of which are records for a European player. He has won 29 trophies in his career, including six league titles, five UEFA Champions Leagues, one UEFA European Championship, and one UEFA Nations League. A prolific goalscorer, Ronaldo holds the records for the most goals scored in the UEFA Champions League (128) and the joint-most goals scored in the UEFA European Championship (9). He has scored over 700 senior career goals for club and country.",
+        "link": "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+        "imageUrl":"https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+    },
+    {
+        "name": "Lionel Messi",
+        "description": "Lionel Andrés Messi Cuccittini (Spanish pronunciation: [ljoˈnel anˈdɾez ˈmesi]; born 24 June 1987) is an Argentine professional footballer who plays as a forward and captains both Spanish club Barcelona and the Argentina national team. Often considered the best player in the world and widely regarded as one of the greatest players of all time, Messi has won a record six Ballon d'Or awards, and a record six European Golden Shoes. He has spent his entire professional career with Barcelona, where he has won a club-record 34 trophies, including ten La Liga titles, four UEFA Champions League titles and six Copas del Rey. A prolific goalscorer and a creative playmaker, Messi holds the records for most goals in La Liga (437), a La Liga and European league season (50), most hat-tricks in La Liga (36) and the UEFA Champions League (8), and most assists in La Liga (181) and the Copa América (12). He has scored over 700 senior career goals for club and country.",
+        "link": "https://en.wikipedia.org/wiki/Lionel_Messi",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg"
+    },
+    {
+        "name": "Derek Jeter",
+        "description": "Derek Sanderson Jeter (/ˈdʒiːtər/ JEE-tər; born June 26, 1974) is an American former professional baseball shortstop, businessman, and baseball executive. He has been the chief executive officer (CEO) and part owner of the Miami Marlins of Major League Baseball (MLB) since September 2017. As a player, Jeter spent his entire 20-year career in MLB with the New York Yankees. He was elected to the Baseball Hall of Fame as part of its class of 2020 in his first year of eligibility; he received 99.7% of votes, the second-highest percentage in MLB history and the highest by a position player.",
+        "link": "https://en.wikipedia.org/wiki/Derek_Jeter",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Derek_Jeter_2007_in_Baltimore.jpg"
+    },
+    {
+        "name": "George Clooney",
+        "description": "George Timothy Clooney (born May 6, 1961) is an American actor, director, producer and filmmaker. He is the recipient of three Golden Globe Awards and two Academy Awards, one for acting in Syriana (2006) and the other for co-producing Argo (2012). In 2018, he was the recipient of the AFI Lifetime Achievement Award.",
+        "link": "https://en.wikipedia.org/wiki/George_Clooney",
+        "imageUrl": "https://www.gstatic.com/tv/thumb/persons/23213/23213_v9_bb.jpg"
+    },
+    {
+        "name": "Adele",
+        "description": "Adele Laurie Blue Adkins MBE (/əˈdɛl/; born 5 May 1988) is an English singer-songwriter. After graduating from the BRIT School in 2006, Adele signed a recording contract with XL Recordings. In 2007, she received the Brit Awards Critics' Choice Award and won the BBC Sound of 2008 poll. Her debut album, 19, was released in 2008 to commercial and critical success. It is certified eight times platinum in the UK, and three times platinum in the US. The album contains her first song, "Hometown Glory", written when she was 16, which is based on her home suburb of West Norwood in London. An appearance she made on Saturday Night Live in late 2008 boosted her career in the US. At the 51st Grammy Awards in 2009, Adele received the awards for Best New Artist and Best Female Pop Vocal Performance.",
+        "link": "https://en.wikipedia.org/wiki/Adele",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Adele_2016.jpg/440px-Adele_2016.jpg"
+    },
+    {
+        "name": "Oprah Winfrey",
+        "description": "Oprah Gail Winfrey (born Orpah Gail Winfrey; January 29, 1954) is an American media executive, actress, talk show host, television producer, and philanthropist. She is best known for her talk show, The Oprah Winfrey Show, broadcast from Chicago, which was the highest-rated television program of its kind in history and ran in national syndication for 25 years from 1986 to 2011. Dubbed the "Queen of All Media", she was the richest African American of the 20th century and North America's first black multi-billionaire, and she has been ranked the greatest black philanthropist in American history. By 2007, she was sometimes ranked as the most influential woman in the world.",
+        "link": "http://www.oprah.com/index.html",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Oprah_in_2014.jpg/1024px-Oprah_in_2014.jpg"
+    },
+    {
+        "name": "Ellen DeGeneres",
+        "description": "Ellen Lee DeGeneres (/dəˈdʒɛnərəs/ də-JEN-ər-əs; born January 26, 1958) is an American comedian, television host, actress, writer, and producer. She starred in the sitcom Ellen from 1994 to 1998 and has hosted her syndicated TV talk show, The Ellen DeGeneres Show, since 2003.",
+        "link": "https://en.wikipedia.org/wiki/Ellen_DeGeneres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Ellen_DeGeneres_2011.jpg"
+    },
+    {
+        "name": "Jay-Z",
+        "description": "Shawn Corey Carter (born December 4, 1969), known professionally as Jay-Z (stylized as JAY-Z), is an American rapper, songwriter, producer, entrepreneur, and record executive.",
+        "link":"https://en.wikipedia.org/wiki/Jay-Z",
+        "imageUrl": "https://c8.alamy.com/comp/F4XCPP/new-york-ny-usa-23rd-oct-2015-jay-z-formerly-jay-z-shawn-carter-in-F4XCPP.jpg"
+    },
+    {
+        "name": "Lady Gaga",
+        "description":"Stefani Joanne Angelina Germanotta (/ˈstɛfəni ˌdʒɜːrməˈnɒtə/ STEF-ən-ee JUR-mə-NOT-ə) (born March 28, 1986), known professionally as Lady Gaga, is an American singer, songwriter, and actress. She is known for reinventing herself throughout her career and for her versatility in numerous areas of the entertainment industry. Gaga began performing as a teenager, singing at open mic nights and acting in school plays. She studied at Collaborative Arts Project 21, through New York University's Tisch School of the Arts, before dropping out to pursue a music career. When Def Jam Recordings canceled her contract, she worked as a songwriter for Sony/ATV Music Publishing, where Akon helped her sign a joint deal with Interscope Records and his own label KonLive Distribution in 2007. She rose to prominence the following year with her debut album, the electropop record The Fame, and its chart-topping singles "Just Dance" and "Poker Face". The follow-up EP The Fame Monster (2009), along with the singles "Bad Romance", "Telephone" and "Alejandro", were also successful.",
+        "link":"https://www.ladygaga.com/",
+        "imageUrl":"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/lady-gaga-1582889267.jpg?crop=0.6650390625xw:1xh;center,top&resize=480:*"
+    }
+]
