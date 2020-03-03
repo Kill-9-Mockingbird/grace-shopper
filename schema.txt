@@ -47,7 +47,6 @@ Experience:
 
 Celebrity:
 -Name (String)
--Score (Integer)
 -Description (text)
 -Link (text)
 -ImgUrl (text)
