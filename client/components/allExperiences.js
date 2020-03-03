@@ -13,7 +13,7 @@ export default class AllExperiences extends React.Component {
         {this.props.allExperiences.map(experience => {
           return (
             <div key={experience.id}>
-              <img src={experience.imgUrl} />
+              <img src={experience.imageUrl} />
               <ul>
                 <li>{experience.name}</li>
                 <li>Details: {experience.description}</li>
