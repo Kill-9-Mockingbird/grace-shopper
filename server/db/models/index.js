@@ -15,6 +15,11 @@ User.belongsToMany(Experience, {
   through: Order
 })
 
+Experience.belongsToMany(User, {
+  as: 'orders',
+  through: Order
+})
+
 Celebrity.hasMany(Experience)
 Experience.belongsTo(Celebrity, {as: 'celebrityExperiences'})
 /**
@@ -29,5 +34,3 @@ module.exports = {
   Celebrity,
   Order
 }
-
-
