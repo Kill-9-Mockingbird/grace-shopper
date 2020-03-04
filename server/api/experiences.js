@@ -9,7 +9,11 @@ router.get('/', async (req, res, next) => {
         model: Celebrity
       }
     })
-    res.json(experiences)
+    if (experiences) {
+      res.json(experiences)
+    } else {
+      res.status(404).send('Product not found!')
+    }
   } catch (err) {
     next(err)
   }
@@ -23,7 +27,11 @@ router.get('/:experienceId', async (req, res, next) => {
         model: Celebrity
       }
     })
-    res.json(singleExperience)
+    if (singleExperience) {
+      res.json(singleExperience)
+    } else {
+      res.status(404).send('Product not found!')
+    }
   } catch (error) {
     next(error)
   }
