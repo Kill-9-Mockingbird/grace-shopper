@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const User = require('../db/models/user')
-module.exports = router
+const {isUser} = require('../../utils')
 
 router.post('/login', async (req, res, next) => {
   try {
@@ -38,8 +38,10 @@ router.post('/logout', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/me', (req, res) => {
+router.get('/me', isUser, (req, res) => {
   res.json(req.user)
 })
 
 router.use('/google', require('./google'))
+
+module.exports = router
