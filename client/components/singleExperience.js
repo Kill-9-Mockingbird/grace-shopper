@@ -12,16 +12,16 @@ export default class SingleExperience extends React.Component {
 
   render() {
     const experience = this.props.singleExperience
-    const celebrity = this.props.celebrity
-    console.log('this is celebrity', celebrity)
-    return experience ? (
+    const celebrity = experience.celebrity
+
+    return (
       <div key={experience.id}>
         <img src={experience.imageUrl} />
         <ul>
           <li>{experience.name}</li>
           <li>
-            Host: {celebrity.name}
-            {/* <Link to= {`/celebrity/${celebrity.id}`}> {celebrity.name}</Link> */}
+            Host:
+            <Link to={`/celebrity/${celebrity.id}`}> {celebrity.name}</Link>
           </li>
           <li>Details: {experience.description}</li>
           <li>
@@ -33,18 +33,13 @@ export default class SingleExperience extends React.Component {
           <button type="button">Add To Cart</button>
         </ul>
       </div>
-    ) : (
-      <div>
-        <p className="loading">fetching experience...</p>
-      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    singleExperience: state.experience.singleExperience,
-    celebrity: state.experience.singleExperience.celebrity
+    singleExperience: state.experience.singleExperience
   }
 }
 
