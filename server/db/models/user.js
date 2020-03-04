@@ -60,7 +60,10 @@ const User = db.define('user', {
   phoneNumber: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: true
+    allowNull: true,
+    validate: {
+      notEmpty: false
+    }
   },
   streetAddress: {
     type: Sequelize.STRING
