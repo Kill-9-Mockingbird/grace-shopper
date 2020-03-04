@@ -32,8 +32,11 @@ const Experience = db.define('experience', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
+    defaultValue:
+      'https://www.traveldailymedia.com/assets/2019/09/St-Lucia.jpg',
     validate: {
-      notEmpty: true
+      notEmpty: true,
+      isUrl: true
     }
   },
 
@@ -51,7 +54,7 @@ const Experience = db.define('experience', {
     }
   },
   price: {
-    type: Sequelize.STRING
+    type: Sequelize.INTEGER
   }
 })
 

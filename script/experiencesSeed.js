@@ -11,7 +11,7 @@ const experienceSeed = [
     city: 'Key West',
     state: 'Florida',
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 2
   },
   {
@@ -25,7 +25,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 2
   },
   {
@@ -39,7 +39,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 2
   },
   {
@@ -53,7 +53,7 @@ const experienceSeed = [
     city: 'Tulum',
     state: 'Mexico',
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 1
   },
   {
@@ -67,7 +67,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 1
   },
   {
@@ -81,7 +81,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 1
   },
   {
@@ -95,7 +95,7 @@ const experienceSeed = [
     city: 'Paris',
     state: 'France',
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 3
   },
   {
@@ -109,7 +109,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 3
   },
   {
@@ -123,7 +123,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 3
   },
   {
@@ -137,7 +137,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 4
   },
   {
@@ -151,7 +151,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 4
   },
   {
@@ -165,7 +165,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 4
   },
   {
@@ -178,7 +178,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 5
   },
   {
@@ -192,7 +192,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 5
   },
   {
@@ -206,7 +206,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 5
   },
   {
@@ -220,7 +220,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 6
   },
   {
@@ -234,7 +234,7 @@ const experienceSeed = [
     city: 'The Shire',
     state: 'Middle Earth',
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 10
   },
   {
@@ -247,7 +247,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 6
   },
   {
@@ -261,7 +261,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 9
   },
   {
@@ -275,7 +275,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 7
   },
   {
@@ -289,7 +289,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 8
   },
   {
@@ -303,7 +303,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 11
   },
   {
@@ -317,7 +317,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 12
   },
   {
@@ -331,7 +331,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 10
   },
   {
@@ -344,7 +344,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 10
   },
   {
@@ -358,7 +358,7 @@ const experienceSeed = [
     city: faker.address.city(),
     state: faker.address.state(),
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 9
   },
   {
@@ -372,7 +372,7 @@ const experienceSeed = [
     city: 'Ottowa',
     state: 'Canada',
     duration: faker.random.number(10),
-    price: faker.commerce.price(50, 10000, 2, ''),
+    price: faker.random.number({min: 100, max: 100000}),
     celebrityId: 12
   }
 ]

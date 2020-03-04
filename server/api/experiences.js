@@ -6,8 +6,7 @@ router.get('/', async (req, res, next) => {
   try {
     const experiences = await Experience.findAll({
       include: {
-        model: Celebrity,
-        as: 'celebrity'
+        model: Celebrity
       }
     })
     res.json(experiences)
@@ -21,8 +20,7 @@ router.get('/:experienceId', async (req, res, next) => {
     const experienceId = req.params.experienceId
     const singleExperience = await Experience.findByPk(experienceId, {
       include: {
-        model: Celebrity,
-        as: 'celebrity'
+        model: Celebrity
       }
     })
     res.json(singleExperience)

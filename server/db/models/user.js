@@ -81,9 +81,13 @@ const User = db.define('user', {
     type: Sequelize.STRING
   },
 
-  profilePicture: {
+  profilePictureUrlUrl: {
     type: Sequelize.STRING,
-    allowNull: true
+    defaultValue:
+      'https://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54b7cd91e4b0b6572f771175/5a9924d20d92970572b7c3b6/1519986489468/icon.png?format=1500w',
+    validate: {
+      isUrl: true
+    }
   },
   dateOfBirth: {
     type: Sequelize.DATEONLY,
