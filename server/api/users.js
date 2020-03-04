@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {User, Order, Experience} = require('../db/models')
 module.exports = router
 
+//basic route to return all users
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -17,6 +18,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//admin route that can get all user information
 router.get('/admin', async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -25,6 +27,8 @@ router.get('/admin', async (req, res, next) => {
         'email',
         'firstName',
         'lastName',
+        'password',
+        'salt',
         'username',
         'googleId',
         'phoneNumber',
@@ -48,6 +52,7 @@ router.get('/admin', async (req, res, next) => {
   }
 })
 
+//logged in user to see all info (need to add validation)
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
@@ -58,7 +63,7 @@ router.get('/:userId', async (req, res, next) => {
     next(err)
   }
 })
-
+//create user
 router.post('/', async (req, res, next) => {
   try {
     const {
@@ -79,7 +84,10 @@ router.post('/', async (req, res, next) => {
       emergencyContactName,
       emergencyContactPhone
     } = req.body
-    const newUser = {}
+    const newUser = {
+      name,
+      email
+    }
 
     if (firstName) newUser.firstName = firstName
     if (lastName) newUser.lastName = lastName
