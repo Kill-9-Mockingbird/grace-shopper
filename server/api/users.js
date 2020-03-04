@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User, Order, Experience} = require('../db/models')
+const {isAdmin, isUser} = require('../../utils')
 module.exports = router
 
 //basic route to return all users
@@ -64,59 +65,12 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 //create user
-router.post('/', async (req, res, next) => {
-  try {
-    const {
-      firstName,
-      lastName,
-      username,
-      email,
-      password,
-      phoneNumber,
-      streetAddress,
-      secondaryAddress,
-      county,
-      state,
-      zipCode,
-      country,
-      profilePictureUrl,
-      dateOfBirth,
-      emergencyContactName,
-      emergencyContactPhone
-    } = req.body
-    const newUser = {
-      name,
-      email
-    }
-
-    if (firstName) newUser.firstName = firstName
-    if (lastName) newUser.lastName = lastName
-    if (username) newUser.username = username
-    if (email) newUser.email = email
-    if (password) newUser.password = password
-    if (phoneNumber) newUser.phoneNumber = phoneNumber
-    if (streetAddress) newUser.streetAddress = streetAddress
-    if (secondaryAddress) newUser.secondaryAddress = secondaryAddress
-    if (county) newUser.county = county
-    if (state) newUser.state = state
-    if (zipCode) newUser.zipCode = zipCode
-    if (country) newUser.country = country
-    if (profilePictureUrl) newUser.profilePictureUrl = profilePictureUrl
-    if (dateOfBirth) newUser.dateOfBirth = dateOfBirth
-    if (emergencyContactName)
-      newUser.emergencyContactName = emergencyContactName
-    if (emergencyContactPhone)
-      newUser.emergencyContactPhone = emergencyContactPhone
-
-    const createUser = await User.create(newUser)
-    if (createUser) {
-      res.status(201).send(createUser)
-    } else {
-      res.status(400).send('Unable to save to database')
-    }
-  } catch (err) {
-    next(err)
-  }
+router.post('/', isAdmin, async (req, res, next) => {
+  User.create(req.body)
+    .then(user => {
+      res.status(201).json(user)
+    })
+    .catch(next)
 })
 
 router.delete('/:userId', async (req, res, next) => {
