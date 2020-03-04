@@ -20,7 +20,6 @@ describe('User model', () => {
           password: 'bones',
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
-          username: faker.internet.userName(),
           phoneNumber: faker.phone.phoneNumber(),
           streetAddress: faker.address.streetAddress(),
           secondaryAddress: faker.address.secondaryAddress(),

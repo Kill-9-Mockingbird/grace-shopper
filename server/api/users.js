@@ -30,7 +30,6 @@ router.get('/admin', async (req, res, next) => {
         'lastName',
         'password',
         'salt',
-        'username',
         'googleId',
         'phoneNumber',
         'streetAddress',
@@ -65,6 +64,7 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 //create user
+
 router.post('/', isAdmin, async (req, res, next) => {
   User.create(req.body)
     .then(user => {
