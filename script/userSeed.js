@@ -1,5 +1,5 @@
 const faker = require('faker')
-
+faker.seed(123)
 const userSeed = []
 
 for (let i = 0; i < 50; i++) {

@@ -1,5 +1,5 @@
 const faker = require('faker')
-
+faker.seed(123)
 const experienceSeed = [
   {
     name: 'Kayak the Florida Keys',

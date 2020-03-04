@@ -20,7 +20,7 @@ const Celebrity = db.define('celebrity', {
       notEmpty: true
     }
   },
-  imgUrl: {
+  imageUrl: {
     type: Sequelize.TEXT,
     validate: {
       notEmpty: true
