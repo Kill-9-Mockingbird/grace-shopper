@@ -16,7 +16,7 @@ const User = db.define('user', {
     validate: {
       notEmpty: true
     }
-  },
+  }, // fullName virtual field where you can pull it as though it were a regular field but it is something calculated from the db
   username: {
     type: Sequelize.STRING,
     unique: true,
@@ -62,6 +62,7 @@ const User = db.define('user', {
     unique: true,
     allowNull: true
   },
+  // stripe/paypal may take care of this for you as a 3rd party library so you don't need to store more user info that you want
   streetAddress: {
     type: Sequelize.STRING
   },
@@ -80,8 +81,10 @@ const User = db.define('user', {
   country: {
     type: Sequelize.STRING
   },
-
+  // may be profilePictureUrl
   profilePicture: {
+    // validation on this as an isUrl
+    // default image
     type: Sequelize.STRING,
     allowNull: true
   },

@@ -35,6 +35,7 @@ const Experience = db.define('experience', {
     validate: {
       notEmpty: true
     }
+    // default experience image, isUrl
   },
 
   city: {
@@ -51,6 +52,9 @@ const Experience = db.define('experience', {
     }
   },
   price: {
+    // integer instead of string and double and float and etc
+    // getter in order to convert into dollars instead of pennies
+    // or convert this in the frontend if you would like and divide by 100
     type: Sequelize.STRING
   }
 })

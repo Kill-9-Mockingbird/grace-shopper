@@ -21,6 +21,7 @@ Experience.belongsToMany(User, {
 })
 
 Celebrity.hasMany(Experience)
+// you also don't need this here if you're already using the celebrity model
 Experience.belongsTo(Celebrity, {as: 'celebrity'})
 /**
  * We'll export all of our models here, so that any time a module needs a model,

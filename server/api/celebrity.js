@@ -1,3 +1,5 @@
+// if you have commented out code inside of any files to remove them from master and place them inside of some working branch
+
 // const router = require('express').Router()
 // const {Experience, Celebrity} = require('../db/models')
 // module.exports = router

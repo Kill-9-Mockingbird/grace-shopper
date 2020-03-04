@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
     const experiences = await Experience.findAll({
       include: {
         model: Celebrity,
-        as: 'celebrity'
+        as: 'celebrity' // no longer need this
       }
     })
     res.json(experiences)

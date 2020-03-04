@@ -18,9 +18,10 @@ const Celebrity = db.define('celebrity', {
     type: Sequelize.TEXT,
     validate: {
       notEmpty: true
-    }
+    } // default this as well
   },
   imageUrl: {
+    // same validations as that in experience
     type: Sequelize.TEXT,
     validate: {
       notEmpty: true

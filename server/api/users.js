@@ -3,6 +3,8 @@ const {User, Order, Experience} = require('../db/models')
 module.exports = router
 
 //basic route to return all users
+// protection for routes -> who should be able to access your users?
+// adding in some protective gatekeeping middleware
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -65,6 +67,7 @@ router.get('/:userId', async (req, res, next) => {
 })
 //create user
 router.post('/', async (req, res, next) => {
+  // remove any isAdmin inside of your req.body
   try {
     const {
       firstName,
