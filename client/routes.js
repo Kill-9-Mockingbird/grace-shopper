@@ -29,6 +29,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/experiences" component={ConnectedAllExperiences} />
+        <Route exact path="/" component={ConnectedAllExperiences} />
+
         <Route
           path="/experiences/:experienceId"
           component={ConnectedSingleExperience}
