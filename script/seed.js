@@ -3,13 +3,20 @@
 const fs = require('fs')
 const db = require('../server/db')
 const path = require('path')
-const {User, Celebrity, Experience, Order} = require('../server/db/models')
+const {
+  User,
+  Celebrity,
+  Experience,
+  Order,
+  OrderDetail
+} = require('../server/db/models')
 const celebritiesSeed = JSON.parse(
   fs.readFileSync(path.join(__dirname, '/celebritiesSeed.json'), 'utf8')
 )
 const userSeed = require('./userSeed.js')
 const experienceSeed = require('./experiencesSeed.js')
 const orderSeed = require('./orderSeed.js')
+const orderDetailSeed = require('./orderDetailSeed.js')
 
 async function seed() {
   await db.sync({force: true})
@@ -19,11 +26,13 @@ async function seed() {
   const celebrities = await Celebrity.bulkCreate(celebritiesSeed)
   const experiences = await Experience.bulkCreate(experienceSeed)
   const orders = await Order.bulkCreate(orderSeed)
+  const orderDetails = await OrderDetail.bulkCreate(orderDetailSeed)
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${celebrities.length} celebrities`)
   console.log(`seeded ${experiences.length} experiences`)
   console.log(`seeded ${orders.length} orders`)
+  console.log(`seeded ${orderDetails.length} orderDetails`)
 
   console.log(`seeded successfully`)
 }

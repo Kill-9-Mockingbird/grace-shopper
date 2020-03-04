@@ -38,7 +38,7 @@ router.get('/admin', async (req, res, next) => {
         'state',
         'zipCode',
         'country',
-        'profilePicture',
+        'profilePictureUrl',
         'dateOfBirth',
         'emergencyContactName',
         'emergencyContactPhone',
@@ -79,7 +79,7 @@ router.post('/', async (req, res, next) => {
       state,
       zipCode,
       country,
-      profilePicture,
+      profilePictureUrl,
       dateOfBirth,
       emergencyContactName,
       emergencyContactPhone
@@ -101,7 +101,7 @@ router.post('/', async (req, res, next) => {
     if (state) newUser.state = state
     if (zipCode) newUser.zipCode = zipCode
     if (country) newUser.country = country
-    if (profilePicture) newUser.profilePicture = profilePicture
+    if (profilePictureUrl) newUser.profilePictureUrl = profilePictureUrl
     if (dateOfBirth) newUser.dateOfBirth = dateOfBirth
     if (emergencyContactName)
       newUser.emergencyContactName = emergencyContactName
