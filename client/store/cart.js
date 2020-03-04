@@ -1,9 +1,11 @@
 import axios from 'axios'
 
+//Action Constants
 const GET_ORDERS = 'GET_ORDERS'
 const ADD_ORDER = 'ADD_ORDER'
 const DELETE_ORDER = 'DELETE_ORDER'
 
+//Action Creators
 export const getOrders = userId => {
   return {
     type: GET_ORDERS,
@@ -25,8 +27,25 @@ export const deleteOrder = deleteId => {
   }
 }
 
+//Thunks
+//Thunk for getting all user orders in cart
+export function fetchOrders(userId) {
+  return async function(dispatch) {
+    try {
+      let user = await axios.get(`/api/users/${userId}`)
+      if (user) {
+        dispatch(getOrders(user.data.orders))
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+//initialState
 const initialState = []
 
+//Reducer
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ORDERS:
@@ -41,18 +60,5 @@ export default function(state = initialState, action) {
       })
     default:
       return state
-  }
-}
-
-export function fetchOrders(userId) {
-  return async function(dispatch) {
-    try {
-      let user = await axios.get(`/api/users/${userId}`)
-      if (user) {
-        dispatch(getOrders(user.data.orders))
-      }
-    } catch (err) {
-      console.log(err)
-    }
   }
 }
