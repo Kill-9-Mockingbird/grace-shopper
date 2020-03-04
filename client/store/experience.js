@@ -8,7 +8,9 @@ const SELECT_EXPERIENCE = 'SELECT_EXPERIENCE'
 //Initial State
 const defaultExperience = {
   allExperiences: [],
-  singleExperience: {}
+  singleExperience: {
+    celebrity: []
+  }
 }
 
 //Action Creators
@@ -23,7 +25,7 @@ const selectExperience = experience => ({
 })
 
 //Thunk Creators
-
+//Thunk for getting all experiences
 export const fetchExperience = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/experiences')
@@ -32,10 +34,10 @@ export const fetchExperience = () => async dispatch => {
     console.error(error)
   }
 }
-
-export const fetchSingleExperience = () => async dispatch => {
+//Thunk for getting single experience
+export const fetchSingleExperience = experienceId => async dispatch => {
   try {
-    const {data} = await axios.get('/api/experiences/:experienceId')
+    const {data} = await axios.get(`/api/experiences/${experienceId}`)
     dispatch(selectExperience(data))
   } catch (error) {
     console.error(error)
@@ -48,7 +50,10 @@ export default function(state = defaultExperience, action) {
     case GET_EXPERIENCE:
       return {...state, allExperiences: action.experience}
     case SELECT_EXPERIENCE:
-      return {...state, singleExperience: action.experience}
+      return {
+        ...state,
+        singleExperience: {...action.experience}
+      }
     default:
       return state
   }

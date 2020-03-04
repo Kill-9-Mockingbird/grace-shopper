@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 // import PropTypes from 'prop-types'
 import {fetchExperience} from '../store/experience'
 
@@ -15,13 +16,22 @@ export default class AllExperiences extends React.Component {
             <div key={experience.id}>
               <img src={experience.imageUrl} />
               <ul>
-                <li>{experience.name}</li>
-                <li>Details: {experience.description}</li>
+                <li>
+                  <Link to={`/experiences/${experience.id}`}>
+                    {experience.name}
+                  </Link>
+                </li>
+                <li>
+                  Host:
+                  <Link to={`/celebrity/${experience.celebrity.id}`}>
+                    {' '}
+                    {experience.celebrity.name}
+                  </Link>
+                </li>
                 <li>
                   Location: {experience.city}, {experience.state}
                 </li>
-                <li>Duration: {experience.duration}</li>
-                <li>Group Size: {experience.groupSize}</li>
+                <li>Group Size: {experience.groupSize} pax</li>
                 <li>${experience.price}</li>
                 <button type="button">Add To Cart</button>
               </ul>
@@ -34,7 +44,6 @@ export default class AllExperiences extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     allExperiences: state.experience.allExperiences
   }
