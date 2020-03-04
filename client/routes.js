@@ -7,7 +7,8 @@ import {
   Signup,
   UserHome,
   ConnectedAllExperiences,
-  ConnectedSingleExperience
+  ConnectedSingleExperience,
+  ConnectedCart
 } from './components'
 import {me} from './store'
 
@@ -32,6 +33,7 @@ class Routes extends Component {
           path="/experiences/:experienceId"
           component={ConnectedSingleExperience}
         />
+        <Route exact path="/cart" component={ConnectedCart} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
