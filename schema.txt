@@ -32,7 +32,7 @@ Experience:
 -Max group size (integer)
 -Description (text)
 -Image url (string)
--Location (venue) (string)
+-Location (venue) (string)git 
 -Street Address (String)
 -City (String)
 -State/Provence (String)
