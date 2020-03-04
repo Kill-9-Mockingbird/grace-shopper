@@ -19,14 +19,13 @@ const getExperience = experience => ({
   experience
 })
 
-const selectExperience = (experience, celebrity) => ({
+const selectExperience = experience => ({
   type: SELECT_EXPERIENCE,
-  experience,
-  celebrity
+  experience
 })
 
 //Thunk Creators
-
+//Thunk for getting all experiences
 export const fetchExperience = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/experiences')
@@ -35,11 +34,11 @@ export const fetchExperience = () => async dispatch => {
     console.error(error)
   }
 }
-
+//Thunk for getting single experience
 export const fetchSingleExperience = experienceId => async dispatch => {
   try {
     const {data} = await axios.get(`/api/experiences/${experienceId}`)
-    dispatch(selectExperience(data, data.celebrity))
+    dispatch(selectExperience(data))
   } catch (error) {
     console.error(error)
   }
@@ -53,7 +52,7 @@ export default function(state = defaultExperience, action) {
     case SELECT_EXPERIENCE:
       return {
         ...state,
-        singleExperience: {...action.experience, celebrity: [action.celebrity]}
+        singleExperience: {...action.experience}
       }
     default:
       return state
