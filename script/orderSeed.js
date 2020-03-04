@@ -1,5 +1,5 @@
 const faker = require('faker')
-
+faker.seed(123)
 let orderSeed = [
   {
     userId: 1,
