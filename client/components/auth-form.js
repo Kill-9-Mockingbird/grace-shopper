@@ -26,12 +26,6 @@ const AuthForm = props => {
               </label>
               <input name="lastName" type="text" />
             </div>
-            <div>
-              <label htmlFor="username">
-                <small>Username</small>
-              </label>
-              <input name="username" type="username" />
-            </div>
           </div>
         ) : null}
         <div>
@@ -94,6 +88,7 @@ const mapDispatchSignup = dispatch => {
     }
   }
 }
+
 const mapDispatchLogin = dispatch => {
   return {
     handleSubmit(evt) {
