@@ -29,7 +29,6 @@ router.get('/admin', async (req, res, next) => {
         'lastName',
         'password',
         'salt',
-        'username',
         'googleId',
         'phoneNumber',
         'streetAddress',
@@ -69,7 +68,6 @@ router.post('/', async (req, res, next) => {
     const {
       firstName,
       lastName,
-      username,
       email,
       password,
       phoneNumber,
@@ -91,7 +89,6 @@ router.post('/', async (req, res, next) => {
 
     if (firstName) newUser.firstName = firstName
     if (lastName) newUser.lastName = lastName
-    if (username) newUser.username = username
     if (email) newUser.email = email
     if (password) newUser.password = password
     if (phoneNumber) newUser.phoneNumber = phoneNumber
