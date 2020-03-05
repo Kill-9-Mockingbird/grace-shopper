@@ -5,13 +5,13 @@ import {fetchCart} from '../store/cart'
 class Cart extends Component {
   constructor() {
     super()
-    this.handleDelete = this.handleDelete.bind(this)
+    this.handleRemove = this.handleRemove.bind(this)
   }
   componentDidMount() {
     this.props.fetchCart()
   }
 
-  handleDelete(experienceId, event) {
+  handleRemove(experienceId, event) {
     event.preventDefault()
   }
   render() {
@@ -34,7 +34,7 @@ class Cart extends Component {
               <button
                 type="button"
                 onClick={event => {
-                  this.handleDelete(`{experience.id}`, event)
+                  this.handleRemove(`{experience.id}`, event)
                 }}
               >
                 Remove Item

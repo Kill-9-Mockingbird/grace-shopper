@@ -23,10 +23,23 @@ router.get('/', isUser, async (req, res, next) => {
   }
 })
 
-// router.delete('/:experienceId', isUser, async (req, res, next) => {
-//   try {
-//     const itemToDelete = await OrderDetail.findOne({
-//       where:
-//     })
-//   } catch (error) {}
-// })
+router.delete('/:experienceId', isUser, async (req, res, next) => {
+  try {
+    const experienceId = req.params.experienceId
+    const cart = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        purchased: false
+      },
+      include: [{model: Experience, include: [{model: Celebrity}]}]
+    })
+
+    if (cart) {
+      const experienceToRemove = await cart.experiences.find(experience => {
+        return experience.id === experienceId
+      })
+    }
+  } catch (error) {
+    next(error)
+  }
+})
