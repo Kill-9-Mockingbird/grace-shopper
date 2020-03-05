@@ -10,6 +10,7 @@ import {
   ConnectedSingleExperience,
   ConnectedCart
 } from './components'
+import {ConnectedExpList} from './components/exp-list'
 import {me} from './store'
 
 /**
@@ -27,9 +28,9 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
+        <Route exact path="/" component={ConnectedExpList} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/experiences" component={ConnectedAllExperiences} />
-        <Route exact path="/" component={ConnectedAllExperiences} />
 
         <Route
           path="/experiences/:experienceId"

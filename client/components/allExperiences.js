@@ -10,31 +10,33 @@ export default class AllExperiences extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="expBlock">
         {this.props.allExperiences.map(experience => {
           return (
             <div key={experience.id}>
-              <img src={experience.imageUrl} />
-              <ul>
-                <li>
-                  <Link to={`/experiences/${experience.id}`}>
-                    {experience.name}
-                  </Link>
-                </li>
-                <li>
-                  Host:
-                  <Link to={`/celebrity/${experience.celebrity.id}`}>
-                    {' '}
-                    {experience.celebrity.name}
-                  </Link>
-                </li>
-                <li>
-                  Location: {experience.city}, {experience.state}
-                </li>
-                <li>Group Size: {experience.groupSize} pax</li>
-                <li>${experience.price}</li>
-                <button type="button">Add To Cart</button>
-              </ul>
+              <div className="indExp">
+                <img className="imgMed" src={experience.imageUrl} />
+                <ul>
+                  <li>
+                    <Link to={`/experiences/${experience.id}`}>
+                      {experience.name}
+                    </Link>
+                  </li>
+                  <li>
+                    Host:
+                    <Link to={`/celebrity/${experience.celebrity.id}`}>
+                      {' '}
+                      {experience.celebrity.name}
+                    </Link>
+                  </li>
+                  <li>
+                    Location: {experience.city}, {experience.state}
+                  </li>
+                  <li>Group Size: {experience.groupSize} pax</li>
+                  <li>${experience.price}</li>
+                  <button type="button">Add To Cart</button>
+                </ul>
+              </div>
             </div>
           )
         })}

@@ -1,17 +1,27 @@
 const router = require('express').Router()
-const {User, Order, Experience} = require('../db/models')
+const {User, Order, OrderDetail} = require('../db/models')
 const {isAdmin, isUser} = require('../../utils')
 module.exports = router
 
-//basic route to return all users
-router.get('/', async (req, res, next) => {
+// USER ROUTES
+// route to return users basic info for an app user page
+router.get('/', isUser, async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ['id', 'email'],
-      include: 'orders'
+      attributes: ['firstName', 'profilePictureUrlUrl', 'county', 'state']
+    })
+    res.json(users)
+  } catch (err) {
+    next(err)
+  }
+})
+// ADMIN ROUTES
+// admin route that can get all user information
+router.get('/all', isAdmin, async (req, res, next) => {
+  try {
+    const users = await User.findAll({
+      include: 'orders',
+      OrderDetail
     })
     res.json(users)
   } catch (err) {
@@ -19,41 +29,8 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//admin route that can get all user information
-router.get('/admin', async (req, res, next) => {
-  try {
-    const users = await User.findAll({
-      attributes: [
-        'id',
-        'email',
-        'firstName',
-        'lastName',
-        'password',
-        'salt',
-        'googleId',
-        'phoneNumber',
-        'streetAddress',
-        'secondaryAddress',
-        'county',
-        'state',
-        'zipCode',
-        'country',
-        'profilePictureUrl',
-        'dateOfBirth',
-        'emergencyContactName',
-        'emergencyContactPhone',
-        'isAdmin'
-      ],
-      include: 'orders'
-    })
-    res.json(users)
-  } catch (err) {
-    next(err)
-  }
-})
-
-//logged in user to see all info (need to add validation)
-router.get('/:userId', async (req, res, next) => {
+//receive user information with orders
+router.get('/:userId', isAdmin, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
       include: 'orders'
@@ -63,8 +40,8 @@ router.get('/:userId', async (req, res, next) => {
     next(err)
   }
 })
-//create user
 
+//admin: create user
 router.post('/', isAdmin, async (req, res, next) => {
   User.create(req.body)
     .then(user => {
@@ -73,7 +50,7 @@ router.post('/', isAdmin, async (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/:userId', async (req, res, next) => {
+router.delete('/:userId', isAdmin, async (req, res, next) => {
   try {
     const id = req.params.userId
     const numAffectedRows = await User.destroy({

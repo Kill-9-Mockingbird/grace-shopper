@@ -24,7 +24,8 @@ nav {
 }
 .navbar {
   align-items: center;
-  background-color: #ff8181;
+  background-color: #3a445d;
+  color: white;
   display: flex;
   height: 80px;
   padding: 10px 50px;
@@ -34,9 +35,61 @@ nav {
 nav a {
   display: inline-block;
   margin: 1em;
+  color: white;
 }
 
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.indExp {
+  display: flex;
+  padding: 30px;
+  width: 200px;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.imgThumb {
+  height: 250px;
+  width: 250px;
+}
+
+.expBlock {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.expTitle {
+  display: flex;
+  flex: wrap;
+  flex-direction: row;
+  padding-bottom: 10px;
+  align-content: flex-end;
+  justify-content: space-between;
+}
+
+.celebName {
+  background-color: #d4d2a5;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.imgMed {
+  height: 300px;
+  width: 300px;
+}
+
+.expName {
+  margin-right: 10px;
+}
+
+.logo a {
+  color: white;
 }
