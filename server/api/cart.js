@@ -98,3 +98,20 @@ router.delete('/:experienceId', isUser, async (req, res, next) => {
     next(error)
   }
 })
+
+//route to modify cart quanity
+router.put('/:experienceId/edit', isUser, async (req, res, next) => {
+  try {
+    const itemToUpdate = await OrderDetail.findOne({
+      where: {
+        experienceId: req.params.experienceId
+      }
+    })
+    const updatedItem = await itemToUpdate.update({
+      packageQty: req.body.packageQty
+    })
+    res.json(updatedItem)
+  } catch (error) {
+    next(error)
+  }
+})
