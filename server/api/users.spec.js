@@ -18,7 +18,6 @@ describe('User routes', () => {
       return User.create({
         firstName: 'Cody',
         lastName: 'Fullstack',
-        username: 'codyThePug',
         email: codysEmail,
         password: '1246',
         phoneNumber: '8189092819',

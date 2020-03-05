@@ -6,7 +6,6 @@ for (let i = 0; i < 50; i++) {
   userSeed.push({
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
-    username: faker.internet.userName(),
     email: faker.internet.email(),
     password: faker.internet.password(),
     phoneNumber: faker.phone.phoneNumber(),
