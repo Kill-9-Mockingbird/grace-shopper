@@ -7,7 +7,7 @@ for (let i = 0; i < 50; i++) {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(),
+    password: '123456',
     phoneNumber: faker.phone.phoneNumber(),
     streetAddress: faker.address.streetAddress(),
     secondaryAddress: faker.address.secondaryAddress(),

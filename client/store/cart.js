@@ -1,40 +1,40 @@
 import axios from 'axios'
 
 //Action Constants
-const GET_ORDERS = 'GET_ORDERS'
-const ADD_ORDER = 'ADD_ORDER'
+const GET_CART = 'GET_CART'
+// const ADD_ORDER = 'ADD_ORDER'
 const DELETE_ORDER = 'DELETE_ORDER'
 
 //Action Creators
-export const getOrders = userId => {
+export const getCart = cart => {
   return {
-    type: GET_ORDERS,
-    data: userId
+    type: GET_CART,
+    cart
   }
 }
 
-export const addOrder = newOrder => {
-  return {
-    type: ADD_ORDER,
-    data: newOrder
-  }
-}
+// export const addOrder = newOrder => {
+//   return {
+//     type: ADD_ORDER,
+//     data: newOrder
+//   }
+// }
 
-export const deleteOrder = deleteId => {
+export const deleteOrder = experienceId => {
   return {
     type: DELETE_ORDER,
-    data: deleteId
+    experienceId
   }
 }
 
 //Thunks
 //Thunk for getting all user orders in cart
-export function fetchOrders(userId) {
-  return async function(dispatch) {
+export const fetchCart = () => {
+  return async dispatch => {
     try {
-      let user = await axios.get(`/api/users/${userId}`)
-      if (user) {
-        dispatch(getOrders(user.data.orders))
+      const {data} = await axios.get(`/api/cart`)
+      if (data) {
+        dispatch(getCart(data))
       }
     } catch (err) {
       console.log(err)
@@ -42,22 +42,40 @@ export function fetchOrders(userId) {
   }
 }
 
+//Thunk for removing an order in cart
+
+export const removeOrder = experienceId => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.delete(`/api/cart/${experienceId}`)
+      dispatch(deleteOrder(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 //initialState
-const initialState = []
+const defaultCart = {
+  experiences: []
+}
 
 //Reducer
-export default function(state = initialState, action) {
+export default function(state = defaultCart, action) {
   switch (action.type) {
-    case GET_ORDERS:
-      return action.data
-    case ADD_ORDER:
-      return [...state, action.data]
+    case GET_CART:
+      return {...action.cart}
+    // case ADD_ORDER:
+    //   return [...state, action.data]
     case DELETE_ORDER:
-      return state.filter(item => {
-        if (item.id !== action.date) {
-          return item
-        }
-      })
+      return {
+        ...state,
+        experiences: [
+          ...state.experiences.filter(experience => {
+            return action.experienceId !== experience.id
+          })
+        ]
+      }
     default:
       return state
   }
