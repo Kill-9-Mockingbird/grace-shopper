@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart} from '../store/cart'
+import {fetchCart, removeOrder} from '../store/cart'
 
 class Cart extends Component {
   constructor() {
@@ -13,11 +13,11 @@ class Cart extends Component {
 
   handleRemove(experienceId, event) {
     event.preventDefault()
+    this.props.removeOrder(experienceId)
   }
   render() {
     const experiences = this.props.cart.experiences
-
-    return (
+    return experiences.length !== 0 ? (
       <div>
         {experiences.map(experience => {
           return (
@@ -34,7 +34,7 @@ class Cart extends Component {
               <button
                 type="button"
                 onClick={event => {
-                  this.handleRemove(`{experience.id}`, event)
+                  this.handleRemove(`${experience.id}`, event)
                 }}
               >
                 Remove Item
@@ -44,6 +44,8 @@ class Cart extends Component {
         })}
         <button type="button">Checkout</button>
       </div>
+    ) : (
+      <div>Cart is empty!</div>
     )
   }
 }
@@ -58,6 +60,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCart: () => {
       dispatch(fetchCart())
+    },
+    removeOrder: experienceId => {
+      dispatch(removeOrder(experienceId))
     }
   }
 }

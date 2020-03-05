@@ -20,10 +20,10 @@ export const getCart = cart => {
 //   }
 // }
 
-export const deleteOrder = experienceId => {
+export const deleteOrder = cart => {
   return {
     type: DELETE_ORDER,
-    experienceId
+    cart
   }
 }
 
@@ -68,14 +68,7 @@ export default function(state = defaultCart, action) {
     // case ADD_ORDER:
     //   return [...state, action.data]
     case DELETE_ORDER:
-      return {
-        ...state,
-        experiences: [
-          ...state.experiences.filter(experience => {
-            return action.experienceId !== experience.id
-          })
-        ]
-      }
+      return {...action.cart}
     default:
       return state
   }

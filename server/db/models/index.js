@@ -13,9 +13,9 @@ const OrderDetail = require('./orderDetail')
 
 User.hasMany(Order)
 
-Experience.belongsToMany(Order, {
-  through: OrderDetail
-})
+// Experience.belongsToMany(Order, {
+//   through: OrderDetail
+// })
 
 Order.belongsToMany(Experience, {
   through: OrderDetail
