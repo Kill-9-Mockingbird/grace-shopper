@@ -40,3 +40,50 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.indExp {
+  display: flex;
+  padding: 30px;
+  width: 200px;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.imgThumb {
+  height: 250px;
+  width: 250px;
+}
+
+.expBlock {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.expTitle {
+  display: flex;
+  flex: wrap;
+  flex-direction: row;
+  padding-bottom: 10px;
+  align-content: flex-end;
+  justify-content: space-between;
+}
+
+.celebName {
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.imgMed {
+  height: 300px;
+  width: 300px;
+}
+
+.expName {
+  margin-right: 10px;
+}

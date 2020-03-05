@@ -49,7 +49,7 @@ router.post('/', isAdmin, async (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/:userId', async (req, res, next) => {
+router.delete('/:userId', isAdmin, async (req, res, next) => {
   try {
     const id = req.params.userId
     const numAffectedRows = await User.destroy({
