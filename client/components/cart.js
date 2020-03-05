@@ -15,6 +15,7 @@ class Cart extends Component {
     event.preventDefault()
   }
   render() {
+    console.log(this.props)
     const experiences = this.props.cart.experiences
 
     return (
