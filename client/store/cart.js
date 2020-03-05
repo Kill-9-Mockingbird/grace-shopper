@@ -56,7 +56,8 @@ export const addItemThunk = itemId => {
   return async dispatch => {
     try {
       const {data} = await axios.put(`/api/cart/${itemId}`)
-      dispatch(addItem(data))
+      console.log('add item thunk --', data, itemId)
+      await dispatch(addItem(data))
     } catch (err) {
       console.log(err)
     }
@@ -103,7 +104,11 @@ export default function(state = defaultCart, action) {
     case GET_CART:
       return {...action.cart}
     case ADD_ITEM:
-      return {...state, experiences: [...state.experiences, action.user]}
+      console.log('reducer', state)
+      return {
+        ...state,
+        experiences: [...state.experiences, action.itemId]
+      }
     case DELETE_ORDER:
     return {...action.cart}
     case UPDATE_QUANTITY: 

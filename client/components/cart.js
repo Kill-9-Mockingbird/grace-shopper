@@ -41,7 +41,6 @@ class Cart extends Component {
   }
 
   render() {
-    console.log(this.props)
     const experiences = this.props.cart.experiences
     return experiences.length !== 0 ? (
       <div>
@@ -90,6 +89,16 @@ class Cart extends Component {
       </div>
     ) : (
       <div>Cart is empty!</div>
+    ) : (
+      experiences.map(experience => {
+        return (
+          <CartItems
+            key={experience.id}
+            experience={experience}
+            handleRemove={this.handleRemove}
+          />
+        )
+      })
     )
   }
 }
@@ -97,7 +106,9 @@ class Cart extends Component {
 const mapStateToProps = state => {
   console.log('this is state', state)
   return {
-    cart: state.cart
+    cart: {
+      experiences: state.cart.experiences
+    }
   }
 }
 

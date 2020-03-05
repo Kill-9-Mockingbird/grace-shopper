@@ -14,9 +14,9 @@ router.get('/', isUser, async (req, res, next) => {
       include: [{model: Experience, include: [{model: Celebrity}]}]
     })
     if (!created) {
-      res.json(cart)
+      return res.json(cart)
     } else {
-      res.status(201).send(cart)
+      return res.status(201).send(cart)
     }
   } catch (err) {
     next(err)
@@ -49,9 +49,11 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
         include: [{model: Experience, include: [{model: Celebrity}]}]
       })
       if (cart) {
-        const updatedCart = cart.addExperience(experience)
-        res.send(updatedCart)
+        const updatedCart = await cart.addExperience(experience)
+        return res.send(updatedCart)
       }
+    } else {
+      return res.sendStatus(404)
     }
   } catch (err) {
     next(err)
