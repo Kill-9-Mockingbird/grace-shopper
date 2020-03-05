@@ -4,6 +4,7 @@ import axios from 'axios'
 const GET_CART = 'GET_CART'
 const ADD_ITEM = 'ADD_ITEM'
 const DELETE_ORDER = 'DELETE_ORDER'
+const UPDATE_QUANTITY = 'UPDATE_QUANITTY'
 
 //Action Creators
 export const getCart = cart => {
@@ -23,6 +24,13 @@ export const addItem = itemId => {
 export const deleteOrder = cart => {
   return {
     type: DELETE_ORDER,
+    cart
+  }
+}
+
+export const updateQuantity = cart => {
+  return {
+    type: UPDATE_QUANTITY,
     cart
   }
 }
@@ -48,7 +56,8 @@ export const addItemThunk = itemId => {
   return async dispatch => {
     try {
       const {data} = await axios.put(`/api/cart/${itemId}`)
-      dispatch(addItem(data))
+      console.log('add item thunk --', data, itemId)
+      await dispatch(addItem(data))
     } catch (err) {
       console.log(err)
     }
@@ -68,6 +77,22 @@ export const removeOrder = experienceId => {
   }
 }
 
+//Thunk for updating quanity in cart
+
+export const updateOrderQuantity = updates => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.put(
+        `/api/cart/${updates.experienceId}/edit`,
+        updates
+      )
+      dispatch(updateQuantity(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 //initialState
 const defaultCart = {
   experiences: []
@@ -79,8 +104,14 @@ export default function(state = defaultCart, action) {
     case GET_CART:
       return {...action.cart}
     case ADD_ITEM:
-      return {...state, experiences: [...state.experiences, action.user]}
+      console.log('reducer', state)
+      return {
+        ...state,
+        experiences: [...state.experiences, action.itemId]
+      }
     case DELETE_ORDER:
+    return {...action.cart}
+    case UPDATE_QUANTITY: 
       return {...action.cart}
     default:
       return state

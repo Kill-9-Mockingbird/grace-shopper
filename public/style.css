@@ -93,3 +93,8 @@ form div {
 .logo a {
   color: white;
 }
+
+img {
+  object-fit: cover;
+  max-width: 500px;
+}
