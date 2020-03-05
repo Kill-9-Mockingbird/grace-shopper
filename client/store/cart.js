@@ -2,7 +2,7 @@ import axios from 'axios'
 
 //Action Constants
 const GET_CART = 'GET_CART'
-// const ADD_ORDER = 'ADD_ORDER'
+const ADD_ITEM = 'ADD_ITEM'
 const DELETE_ORDER = 'DELETE_ORDER'
 const UPDATE_QUANTITY = 'UPDATE_QUANITTY'
 
@@ -14,17 +14,17 @@ export const getCart = cart => {
   }
 }
 
-// export const addOrder = newOrder => {
-//   return {
-//     type: ADD_ORDER,
-//     data: newOrder
-//   }
-// }
+export const addItem = itemId => {
+  return {
+    type: ADD_ITEM,
+    itemId
+  }
+}
 
-export const deleteOrder = experienceId => {
+export const deleteOrder = cart => {
   return {
     type: DELETE_ORDER,
-    experienceId
+    cart
   }
 }
 
@@ -36,7 +36,7 @@ export const updateQuantity = cart => {
 }
 
 //Thunks
-//Thunk for getting all user orders in cart
+//Thunk for getting all user items in cart
 export const fetchCart = () => {
   return async dispatch => {
     try {
@@ -44,6 +44,19 @@ export const fetchCart = () => {
       if (data) {
         dispatch(getCart(data))
       }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+//Thunk for adding an item in cart
+
+export const addItemThunk = itemId => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.put(`/api/cart/${itemId}`)
+      dispatch(addItem(data))
     } catch (err) {
       console.log(err)
     }
@@ -89,20 +102,12 @@ export default function(state = defaultCart, action) {
   switch (action.type) {
     case GET_CART:
       return {...action.cart}
-    // case ADD_ORDER:
-    //   return [...state, action.data]
+    case ADD_ITEM:
+      return {...state, experiences: [...state.experiences, action.user]}
     case DELETE_ORDER:
-      return {
-        ...state,
-        experiences: [
-          ...state.experiences.filter(experience => {
-            return action.experienceId !== experience.id
-          })
-        ]
-      }
-    case UPDATE_QUANTITY: {
+    return {...action.cart}
+    case UPDATE_QUANTITY: 
       return {...action.cart}
-    }
     default:
       return state
   }

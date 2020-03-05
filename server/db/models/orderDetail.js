@@ -12,6 +12,7 @@ const OrderDetail = db.define('orderDetail', {
   },
   packageQty: {
     type: Sequelize.INTEGER,
+    defaultValue: 1,
     validate: {
       min: 1
     }

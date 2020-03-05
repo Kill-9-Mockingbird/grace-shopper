@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, updateOrderQuantity} from '../store/cart'
-// import UpdateCartForm from './UpdateCartForm'
+import {fetchCart, updateOrderQuantity, removeOrder} from '../store/cart'
+
 
 class Cart extends Component {
   constructor() {
@@ -20,6 +20,7 @@ class Cart extends Component {
 
   handleRemove(experienceId, event) {
     event.preventDefault()
+    this.props.removeOrder(experienceId)
   }
 
   handleChangeQuantityUpdate(event) {
@@ -40,9 +41,9 @@ class Cart extends Component {
   }
 
   render() {
+    console.log(this.props)
     const experiences = this.props.cart.experiences
-
-    return (
+    return experiences.length !== 0 ? (
       <div>
         {experiences.map(experience => {
           return (
@@ -87,6 +88,8 @@ class Cart extends Component {
         })}
         <button type="button">Checkout</button>
       </div>
+    ) : (
+      <div>Cart is empty!</div>
     )
   }
 }
@@ -104,6 +107,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(fetchCart())
     },
     updateOrderQuantity: updates => dispatch(updateOrderQuantity(updates))
+    removeOrder: experienceId => {
+      dispatch(removeOrder(experienceId))
+    }
   }
 }
 

@@ -3,11 +3,23 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 // import PropTypes from 'prop-types'
 import {fetchSingleExperience} from '../store/experience'
+import {addItemThunk} from '../store/cart'
 
 export default class SingleExperience extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleAdd = this.handleAdd.bind(this)
+  }
+
   componentDidMount() {
     const experienceId = this.props.match.params.experienceId
     this.props.fetchSingleExperience(experienceId)
+  }
+
+  handleAdd(e) {
+    const id = e.target.id
+    this.props.addItemThunk(id)
+    // this.props.history.push('/cart')
   }
 
   render() {
@@ -30,7 +42,9 @@ export default class SingleExperience extends React.Component {
           <li>Duration: {experience.duration}</li>
           <li>Group Size: {experience.groupSize}</li>
           <li>${experience.price}</li>
-          <button type="button">Add To Cart</button>
+          <button type="button" id={experience.id} onClick={this.handleAdd}>
+            Add To Cart
+          </button>
         </ul>
       </div>
     )
@@ -47,6 +61,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchSingleExperience: experienceId => {
       dispatch(fetchSingleExperience(experienceId))
+    },
+    addItemThunk: experience => {
+      dispatch(addItemThunk(experience))
     }
   }
 }
