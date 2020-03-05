@@ -4,6 +4,7 @@ import axios from 'axios'
 const GET_CART = 'GET_CART'
 // const ADD_ORDER = 'ADD_ORDER'
 const DELETE_ORDER = 'DELETE_ORDER'
+const UPDATE_QUANTITY = 'UPDATE_QUANITTY'
 
 //Action Creators
 export const getCart = cart => {
@@ -24,6 +25,13 @@ export const deleteOrder = experienceId => {
   return {
     type: DELETE_ORDER,
     experienceId
+  }
+}
+
+export const updateQuantity = cart => {
+  return {
+    type: UPDATE_QUANTITY,
+    cart
   }
 }
 
@@ -55,6 +63,22 @@ export const removeOrder = experienceId => {
   }
 }
 
+//Thunk for updating quanity in cart
+
+export const updateOrderQuantity = updates => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.put(
+        `/api/cart/${updates.experienceId}/edit`,
+        updates
+      )
+      dispatch(updateQuantity(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 //initialState
 const defaultCart = {
   experiences: []
@@ -76,6 +100,9 @@ export default function(state = defaultCart, action) {
           })
         ]
       }
+    case UPDATE_QUANTITY: {
+      return {...action.cart}
+    }
     default:
       return state
   }
