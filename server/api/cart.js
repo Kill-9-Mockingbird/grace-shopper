@@ -73,9 +73,24 @@ router.delete('/:experienceId', isUser, async (req, res, next) => {
     })
 
     if (cart) {
-      const experienceToRemove = await cart.experiences.find(experience => {
-        return experience.id === experienceId
-      })
+      const experienceToRemove = await Experience.findByPk(experienceId)
+
+      if (experienceToRemove) {
+        await cart.removeExperience(experienceToRemove)
+        const updatedCart = await Order.findOne({
+          where: {
+            userId: req.user.id,
+            purchased: false
+          },
+          include: [{model: Experience, include: [{model: Celebrity}]}]
+        })
+        console.log(updatedCart)
+        if (updatedCart.experiences.length === 0) {
+          res.status(200).json(await updatedCart.destroy())
+        } else {
+          res.json(updatedCart)
+        }
+      }
     }
   } catch (error) {
     next(error)
