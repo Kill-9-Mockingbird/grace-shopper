@@ -15,7 +15,7 @@ for (let i = 0; i < 50; i++) {
     state: faker.address.state(),
     zipCode: faker.address.zipCode('#####'),
     country: faker.address.country(),
-    profilePictureUrlUrl: faker.image.avatar(),
+    profilePictureUrl: faker.image.avatar(),
     dateOfBirth: faker.date.between('1945-01-01', '1999-12-31'),
     emergencyContactName: faker.name.findName(),
     emergencyContactPhone: faker.phone.phoneNumber(),

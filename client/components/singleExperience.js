@@ -53,7 +53,8 @@ export default class SingleExperience extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    singleExperience: state.experience.singleExperience
+    singleExperience: state.experience.singleExperience,
+    cart: state.cart
   }
 }
 

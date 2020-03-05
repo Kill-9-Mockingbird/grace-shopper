@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchCart, removeOrder} from '../store/cart'
+import CartItems from './cartItems'
 
 class Cart extends Component {
   constructor() {
@@ -16,44 +17,28 @@ class Cart extends Component {
     this.props.removeOrder(experienceId)
   }
   render() {
-    console.log(this.props)
     const experiences = this.props.cart.experiences
-    return experiences.length !== 0 ? (
-      <div>
-        {experiences.map(experience => {
-          return (
-            <div key={experience.id}>
-              <p>Name: {experience.name}</p>
-              <img src={experience.imageUrl} />
-              <p>Hosted By: {experience.celebrity.name}</p>
-              <p>Description: {experience.description}</p>
-              <p>
-                Location: {experience.city},{experience.state}
-              </p>
-              <p>Duration: {experience.duration} hour(s)</p>
-              <p>Price: ${experience.price}</p>
-              <button
-                type="button"
-                onClick={event => {
-                  this.handleRemove(`${experience.id}`, event)
-                }}
-              >
-                Remove Item
-              </button>
-            </div>
-          )
-        })}
-        <button type="button">Checkout</button>
-      </div>
-    ) : (
+    return !experiences || experiences.length <= 0 ? (
       <div>Cart is empty!</div>
+    ) : (
+      experiences.map(experience => {
+        return (
+          <CartItems
+            key={experience.id}
+            experience={experience}
+            handleRemove={this.handleRemove}
+          />
+        )
+      })
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    cart: state.cart
+    cart: {
+      experiences: state.cart.experiences
+    }
   }
 }
 
