@@ -106,8 +106,7 @@ export default function(state = defaultCart, action) {
       return {...action.cart}
     case ADD_ITEM:
       return {
-        ...state,
-        experiences: [...state.experiences, action.cart]
+        ...action.cart
       }
     case DELETE_ORDER:
       return {...action.cart}
