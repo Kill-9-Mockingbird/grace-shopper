@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Carousel} from './carousel'
 
 /**
  * COMPONENT
@@ -10,7 +11,8 @@ export const UserHome = props => {
 
   return (
     <div>
-      <h3>Welcome, {firstName}!</h3>
+      <div className="welcome">Welcome, {firstName}!</div>
+      <Carousel />
     </div>
   )
 }
