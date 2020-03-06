@@ -5,9 +5,7 @@ const CartItems = props => {
   // const {isFetching} = props;
 
   console.log(experience.name)
-  return !experience.name ? (
-    'Loading...'
-  ) : (
+  return experience.name ? (
     <div>
       <img className="thumbnail" src={experience.imageUrl} />
       <p>Name: {experience.name}</p>
@@ -48,9 +46,9 @@ const CartItems = props => {
       >
         Remove Item
       </button>
-      <br />
-      <br />
     </div>
+  ) : (
+    <div>Loading...</div>
   )
 }
 
