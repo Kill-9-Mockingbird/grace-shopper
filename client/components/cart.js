@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchCart, updateOrderQuantity, removeOrder} from '../store/cart'
 
-
 class Cart extends Component {
   constructor() {
     super()
@@ -89,17 +88,19 @@ class Cart extends Component {
       </div>
     ) : (
       <div>Cart is empty!</div>
-    ) : (
-      experiences.map(experience => {
-        return (
-          <CartItems
-            key={experience.id}
-            experience={experience}
-            handleRemove={this.handleRemove}
-          />
-        )
-      })
     )
+
+    // : (
+    //   experiences.map(experience => {
+    //     return (
+    //       <CartItems
+    //         key={experience.id}
+    //         experience={experience}
+    //         handleRemove={this.handleRemove}
+    //       />
+    //     )
+    //   })
+    // )
   }
 }
 
@@ -117,7 +118,9 @@ const mapDispatchToProps = dispatch => {
     fetchCart: () => {
       dispatch(fetchCart())
     },
-    updateOrderQuantity: updates => dispatch(updateOrderQuantity(updates))
+    updateOrderQuantity: updates => {
+      dispatch(updateOrderQuantity(updates))
+    },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))
     }

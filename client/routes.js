@@ -12,6 +12,7 @@ import {
 } from './components'
 import {ConnectedExpList} from './components/exp-list'
 import {ConnectedAdminAllUsers} from './components/admin-all-users.js'
+import {Carousel} from './components/carousel'
 import {me} from './store'
 
 /**
@@ -30,9 +31,9 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
-        <Route exact path="/" component={ConnectedExpList} />
+        <Route exact path="/" component={Carousel} />
         <Route path="/signup" component={Signup} />
-        <Route exact path="/experiences" component={ConnectedAllExperiences} />
+        <Route exact path="/experiences" component={ConnectedExpList} />
 
         <Route
           path="/experiences/:experienceId"
