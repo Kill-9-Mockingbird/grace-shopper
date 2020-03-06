@@ -14,19 +14,16 @@ class ExpList extends React.Component {
           {this.props.allExperiences.map(experience => {
             return (
               <div key={experience.id}>
-                <div className="indExp">
-                  <Link
-                    to={`/experiences/${experience.id}`}
-                    className="expTitle"
-                  >
-                    <span className="expName">{experience.name} with</span>
+                <Link to={`/experiences/${experience.id}`} className="expTitle">
+                  <div className="indExp">
+                    <span>{experience.name}</span>
 
                     <span className="celebName">
-                      {experience.celebrity.name}
+                      with {experience.celebrity.name}
                     </span>
-                  </Link>
-                  <img className="imgThumb" src={experience.imageUrl} />
-                </div>
+                    <img className="imgThumb" src={experience.imageUrl} />
+                  </div>
+                </Link>
               </div>
             )
           })}

@@ -16,24 +16,12 @@ router.get('/', isUser, async (req, res, next) => {
     if (!created) {
       return res.json(cart)
     } else {
-      return res.status(201).send(cart)
+      return res.status(201).json(cart)
     }
   } catch (err) {
     next(err)
   }
 })
-
-// // create a new order the first time someone adds something to their cart
-// router.post('/', isUser, async (req, res, next) => {
-//   try {
-//     const cart = await Order.create(req.body)
-//     if (cart) {
-//       res.status(201).json(cart)
-//     }
-//   } catch(err) {
-//     next(err)
-//   }
-// })
 
 // add a item to the cart
 router.put('/:experienceId', isUser, async (req, res, next) => {
@@ -49,8 +37,8 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
         include: [{model: Experience, include: [{model: Celebrity}]}]
       })
       if (cart) {
-        const updatedCart = await cart.addExperience(experience)
-        return res.send(updatedCart)
+        await cart.addExperience(experience)
+        return res.status(200).json(experience)
       }
     } else {
       return res.sendStatus(404)
@@ -86,11 +74,11 @@ router.delete('/:experienceId', isUser, async (req, res, next) => {
           },
           include: [{model: Experience, include: [{model: Celebrity}]}]
         })
-        console.log(updatedCart)
         if (updatedCart.experiences.length === 0) {
-          res.status(200).json(await updatedCart.destroy())
+          await updatedCart.destroy()
+          return res.sendStatus(204)
         } else {
-          res.json(updatedCart)
+          return res.json(updatedCart)
         }
       }
     }
@@ -110,7 +98,7 @@ router.put('/:experienceId/edit', isUser, async (req, res, next) => {
     const updatedItem = await itemToUpdate.update({
       packageQty: req.body.packageQty
     })
-    res.json(updatedItem)
+    return res.status(200).json(updatedItem)
   } catch (error) {
     next(error)
   }

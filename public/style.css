@@ -2,6 +2,8 @@
   margin: 0;
 }
 body {
+  margin: auto;
+  margin-top: 50px;
   font-family: sans-serif;
 }
 
@@ -19,18 +21,22 @@ nav {
   flex-grow: 1;
 }
 .logo {
-  flex-grow: 3;
+  /* flex-grow: 2; */
   color: white;
+  padding-left: 10px;
 }
 .navbar {
   align-items: center;
   background-color: #3a445d;
   color: white;
   display: flex;
-  height: 80px;
-  padding: 10px 50px;
+  height: 20px;
+  padding: 10px 0px;
   justify-content: space-between;
   box-shadow: 0px 2px 8px #c7c7c7;
+  width: 100vw;
+  position: fixed;
+  top: 0;
 }
 nav a {
   display: inline-block;
@@ -45,7 +51,7 @@ form div {
 
 .indExp {
   display: flex;
-  padding: 30px;
+  padding: 20px;
   width: 200px;
   flex-direction: column;
   flex-wrap: wrap;
@@ -60,8 +66,10 @@ form div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 30px;
-  width: 100%;
+  padding: 15px;
+  width: 100vw;
+  max-width: 800px;
+  margin: auto;
   justify-content: space-evenly;
 }
 
@@ -72,6 +80,7 @@ form div {
   padding-bottom: 10px;
   align-content: flex-end;
   justify-content: space-between;
+  font-size: 13px;
 }
 
 .celebName {
@@ -86,10 +95,6 @@ form div {
   width: 300px;
 }
 
-.expName {
-  margin-right: 10px;
-}
-
 .logo a {
   color: white;
 }
@@ -97,4 +102,45 @@ form div {
 img {
   object-fit: cover;
   max-width: 500px;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.layout {
+  display: flex;
+}
+
+.cart {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  align-content: center;
+  width: 800px;
+  text-align: center;
+  padding: 30px 0px;
+  margin: auto;
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 5px #e4e4e4;
+  border-radius: 8px;
+}
+
+.container ul {
+  list-style-type: none;
+  width: 600px;
+  padding: 0;
+  margin: auto;
 }

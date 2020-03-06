@@ -27,7 +27,7 @@ export default class SingleExperience extends React.Component {
     const celebrity = experience.celebrity
 
     return (
-      <div key={experience.id}>
+      <div key={experience.id} className="container">
         <img src={experience.imageUrl} />
         <ul>
           <li>{experience.name}</li>
