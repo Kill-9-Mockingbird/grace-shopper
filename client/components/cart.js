@@ -55,8 +55,6 @@ class Cart extends Component {
           )
         })}
       </div>
-    ) : (
-      <div>Cart is empty!</div>
     )
 
     // : (
