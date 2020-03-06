@@ -47,7 +47,7 @@ export default function(state = initialState, action) {
 export function fetchOrders(userId) {
   return async function(dispatch) {
     try {
-      let user = await axios.get(`/api/users/${userId}`)
+      let user = await axios.get(`/auth/me`)
       if (user) {
         dispatch(getOrders(user.data.orders))
       }

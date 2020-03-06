@@ -55,7 +55,21 @@ class Cart extends Component {
           )
         })}
       </div>
+    ) : (
+      <div>Cart is empty!</div>
     )
+
+    // : (
+    //   experiences.map(experience => {
+    //     return (
+    //       <CartItems
+    //         key={experience.id}
+    //         experience={experience}
+    //         handleRemove={this.handleRemove}
+    //       />
+    //     )
+    //   })
+    // )
   }
 }
 const mapStateToProps = state => {
@@ -70,7 +84,9 @@ const mapDispatchToProps = dispatch => {
     fetchCart: () => {
       dispatch(fetchCart())
     },
-    updateOrderQuantity: updates => dispatch(updateOrderQuantity(updates)),
+    updateOrderQuantity: updates => {
+      dispatch(updateOrderQuantity(updates))
+    },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))
     }

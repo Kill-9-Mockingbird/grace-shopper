@@ -37,6 +37,7 @@ nav {
   width: 100vw;
   position: fixed;
   top: 0;
+  overflow: hidden;
 }
 nav a {
   display: inline-block;
@@ -60,6 +61,8 @@ form div {
 .imgThumb {
   height: 250px;
   width: 250px;
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
 }
 
 .expBlock {
@@ -101,7 +104,77 @@ form div {
 
 img {
   object-fit: cover;
-  max-width: 500px;
+  /* max-width: 500px; */
+}
+
+.welcome {
+  text-align: center;
+  padding: 60px;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.car1img {
+  opacity: 0.5;
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+  object-position: 0 100%;
+
+  height: 500px;
+}
+
+.centered {
+  position: absolute;
+  text-align: center;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #5e5768;
+  background: rgba(212, 210, 165, 0.6);
+  padding: 30px;
+  border-radius: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 600px;
+}
+
+.header2 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.header2 img {
+  flex-basis: 700px;
+  width: 750px;
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
+}
+
+.header2txtbox {
+  display: flex;
+  flex-direction: column;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  align-content: center;
+  text-align: center;
+  color: #5e5768;
+}
+
+.header2head {
+  font-size: 50px;
+  width: 300px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 150px;
+  padding-bottom: 20px;
+}
+
+.header2text {
+  font-size: 16px;
+  width: 300px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .thumbnail {
