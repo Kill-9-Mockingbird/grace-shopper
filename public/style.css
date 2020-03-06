@@ -2,7 +2,9 @@
   margin: 0;
 }
 body {
-  font-family: sans-serif;
+  margin: auto;
+  margin-top: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 a {
@@ -19,19 +21,22 @@ nav {
   flex-grow: 1;
 }
 .logo {
-  flex-grow: 3;
+  /* flex-grow: 2; */
   color: white;
+  padding-left: 10px;
 }
 .navbar {
   align-items: center;
   background-color: #3a445d;
   color: white;
   display: flex;
-  height: 80px;
-  padding: 10px 50px;
+  height: 20px;
+  padding: 10px 0px;
   justify-content: space-between;
   box-shadow: 0px 2px 8px #c7c7c7;
-  overflow: hidden;
+  width: 100vw;
+  position: fixed;
+  top: 0;
 }
 nav a {
   display: inline-block;
@@ -46,7 +51,7 @@ form div {
 
 .indExp {
   display: flex;
-  padding: 30px;
+  padding: 20px;
   width: 200px;
   flex-direction: column;
   flex-wrap: wrap;
@@ -63,8 +68,10 @@ form div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 30px;
-  width: 100%;
+  padding: 15px;
+  width: 100vw;
+  max-width: 800px;
+  margin: auto;
   justify-content: space-evenly;
 }
 
@@ -75,6 +82,7 @@ form div {
   padding-bottom: 10px;
   align-content: flex-end;
   justify-content: space-between;
+  font-size: 13px;
 }
 
 .celebName {
@@ -87,10 +95,6 @@ form div {
 .imgMed {
   height: 300px;
   width: 300px;
-}
-
-.expName {
-  margin-right: 10px;
 }
 
 .logo a {
@@ -170,4 +174,119 @@ img {
   width: 300px;
   padding-left: 100px;
   padding-right: 100px;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.layout {
+  display: flex;
+}
+
+.cart {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  align-content: center;
+  width: 800px;
+  text-align: center;
+  padding: 30px 0px;
+  margin: auto;
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 5px #e4e4e4;
+  border-radius: 8px;
+}
+
+.container ul {
+  list-style-type: none;
+  width: 600px;
+  padding: 0;
+  margin: auto;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  background: #d4d2a5;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+}
+
+.nameField {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+  margin-bottom: -25px;
+}
+
+.authField {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.googleAuth {
+  text-align: center;
+  color: green;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+input[type='password'] {
+  width: 100%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.inputField {
+  margin: auto;
+}
+
+.signOrLog {
+  background-color: #db3139;
+  font-size: 12px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 10px 30px;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+  width: 132px;
+  text-align: center;
+  border: none;
+  margin: auto;
+}
+
+.signOrLog:hover {
+  background-color: rgb(133, 20, 26);
+  transition-duration: 0.3s;
+}
+.signOrLog:focus {
+  outline: 0;
 }
