@@ -40,12 +40,14 @@ class Cart extends Component {
     })
   }
 
-  handleCheckout() {
+  handleCheckout(event) {
     console.log('this is props', this.props)
   }
 
   render() {
     const experiences = this.props.cart.experiences
+    console.log('this is props', this.props)
+
     return !experiences ? (
       <div className="container">Your cart is empty!</div>
     ) : (
@@ -59,6 +61,15 @@ class Cart extends Component {
             />
           )
         })}
+
+        <button
+          type="button"
+          onClick={event => {
+            handleCheckout(`${this.props.cart.id}`, event)
+          }}
+        >
+          Checkout
+        </button>
       </div>
     )
     // : (
