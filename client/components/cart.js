@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchCart, updateOrderQuantity, removeOrder} from '../store/cart'
+import CartItems from './cartItems'
 
 class Cart extends Component {
   constructor() {
     super()
     this.state = {
-      packageQty: ''
+      // packageQty: ''
     }
     this.handleChangeQuantityUpdate = this.handleChangeQuantityUpdate.bind(this)
     this.handleSubmitQuantityUpdate = this.handleSubmitQuantityUpdate.bind(this)
@@ -14,7 +15,6 @@ class Cart extends Component {
   }
   componentDidMount() {
     this.props.fetchCart()
-    this.props.updateOrderQuantity()
   }
 
   handleRemove(experienceId, event) {
@@ -35,59 +35,26 @@ class Cart extends Component {
     const updates = {packageQty: packageQty, experienceId: experienceId}
     this.props.updateOrderQuantity(updates)
     this.setState({
-      packageQty: ''
+      // packageQty: ''
     })
   }
 
   render() {
     const experiences = this.props.cart.experiences
-    return experiences.length !== 0 ? (
-      <div>
-        {experiences.map(experience => {
+    return !experiences ? (
+      <div className="container">Your cart is empty!</div>
+    ) : (
+      <div className="container">
+        {experiences.map(e => {
           return (
-            <div key={experience.id}>
-              <p>Name: {experience.name}</p>
-              <img src={experience.imageUrl} />
-              <p>Hosted By: {experience.celebrity.name}</p>
-              <p>Description: {experience.description}</p>
-              <p>
-                Location: {experience.city},{experience.state}
-              </p>
-              <p>Duration: {experience.duration} hour(s)</p>
-              <p>Price: ${experience.price}</p>
-              <p>Quantity: {experience.orderDetail.packageQty}</p>
-              <form
-                onSubmit={event => {
-                  this.handleSubmitQuantityUpdate(`${experience.id}`, event)
-                }}
-              >
-                <label>
-                  Update Quantity:
-                  <input
-                    type="text"
-                    name="packageQty"
-                    onChange={this.handleChangeQuantityUpdate}
-                    value={this.state.packageQty}
-                  />
-                </label>
-                <button type="submit">Submit New Quantity</button>
-              </form>
-
-              <button
-                type="button"
-                onClick={event => {
-                  this.handleRemove(`${experience.id}`, event)
-                }}
-              >
-                Remove Item
-              </button>
-            </div>
+            <CartItems
+              key={e.id}
+              experience={e}
+              handleRemove={this.handleRemove}
+            />
           )
         })}
-        <button type="button">Checkout</button>
       </div>
-    ) : (
-      <div>Cart is empty!</div>
     )
 
     // : (
@@ -103,13 +70,10 @@ class Cart extends Component {
     // )
   }
 }
-
 const mapStateToProps = state => {
-  console.log('this is state', state)
   return {
-    cart: {
-      experiences: state.cart.experiences
-    }
+    ...state,
+    cart: state.cart
   }
 }
 

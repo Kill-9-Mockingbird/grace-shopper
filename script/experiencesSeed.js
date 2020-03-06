@@ -127,7 +127,7 @@ const experienceSeed = [
     celebrityId: 3
   },
   {
-    name: 'Explore a Hidden Indonesian Waterfall',
+    name: 'Explore an Indonesian Waterfall',
     inventory: faker.random.number(100),
     groupSize: faker.random.number({min: 1, max: 6}),
     description:
@@ -210,7 +210,7 @@ const experienceSeed = [
     celebrityId: 5
   },
   {
-    name: 'Visit a pig sanctuary',
+    name: 'Visit a Pig Sanctuary',
     inventory: faker.random.number(100),
     groupSize: faker.random.number({min: 1, max: 6}),
     description:
