@@ -41,6 +41,7 @@ class Cart extends Component {
   }
 
   handleCheckout(event) {
+    event.preventDefault()
     console.log('this is props', this.props)
   }
 
