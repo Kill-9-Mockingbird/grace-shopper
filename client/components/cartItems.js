@@ -1,7 +1,12 @@
 import React from 'react'
 
 const CartItems = props => {
-  const {experience, handleRemove, handleSubmitQuantityUpdate} = props
+  const {
+    experience,
+    handleRemove,
+    handleCheckout,
+    handleSubmitQuantityUpdate
+  } = props
   // const {isFetching} = props;
 
   console.log(experience.name)
@@ -47,6 +52,14 @@ const CartItems = props => {
         }}
       >
         Remove Item
+      </button>
+      <button
+        type="button"
+        onClick={event => {
+          handleCheckout(event)
+        }}
+      >
+        Checkout
       </button>
       <br />
       <br />

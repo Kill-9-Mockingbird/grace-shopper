@@ -12,6 +12,7 @@ class Cart extends Component {
     this.handleChangeQuantityUpdate = this.handleChangeQuantityUpdate.bind(this)
     this.handleSubmitQuantityUpdate = this.handleSubmitQuantityUpdate.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
+    this.handleCheckout = this.handleCheckout.bind(this)
   }
   componentDidMount() {
     this.props.fetchCart()
@@ -39,6 +40,10 @@ class Cart extends Component {
     })
   }
 
+  handleCheckout() {
+    console.log('this is props', this.props)
+  }
+
   render() {
     const experiences = this.props.cart.experiences
     return !experiences ? (
@@ -55,9 +60,10 @@ class Cart extends Component {
           )
         })}
       </div>
-    ) : (
-      <div>Cart is empty!</div>
     )
+    // : (
+    //   <div>Cart is empty!</div>
+    // )
 
     // : (
     //   experiences.map(experience => {
