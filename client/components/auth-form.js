@@ -11,42 +11,39 @@ const AuthForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
+      <div className="signupHeader">Sign Up</div>
+      <form className="loginForm" onSubmit={handleSubmit} name={name}>
         {name === 'signup' ? (
-          <div>
-            <div>
-              <label htmlFor="firstName">
-                <small>First Name</small>
-              </label>
-              <input name="firstName" type="text" />
+          <div className="nameField">
+            <div className="inputField">
+              <label htmlFor="firstName" />
+              <input placeholder="First Name" name="firstName" type="text" />
             </div>
-            <div>
-              <label htmlFor="lastName">
-                <small>Last Name</small>
-              </label>
-              <input name="lastName" type="text" />
+            <div className="inputField">
+              <label htmlFor="lastName" />
+              <input placeholder="Last Name" name="lastName" type="text" />
             </div>
           </div>
         ) : null}
-        <div>
-          <div>
-            <label htmlFor="email">
-              <small>Email</small>
-            </label>
-            <input name="email" type="text" />
+        <div className="authField">
+          <div className="inputField">
+            <label htmlFor="email" />
+            <input placeholder="Email" name="email" type="text" />
           </div>
-          <div>
-            <label htmlFor="password">
-              <small>Password</small>
-            </label>
-            <input name="password" type="password" />
+          <div className="inputField">
+            <label htmlFor="password" />
+            <input placeholder="Password" name="password" type="password" />
           </div>
           <div />
-          <button type="submit">{displayName}</button>
+          <button className="signOrLog" type="submit">
+            {displayName}
+          </button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <a className="googleAuth" href="/auth/google">
+        {displayName} with Google
+      </a>
     </div>
   )
 }

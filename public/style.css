@@ -4,7 +4,7 @@
 body {
   margin: auto;
   margin-top: 50px;
-  font-family: sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 a {
@@ -221,4 +221,78 @@ img {
   width: 600px;
   padding: 0;
   margin: auto;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  background: #d4d2a5;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+}
+
+.nameField {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+  margin-bottom: -25px;
+}
+
+.authField {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.googleAuth {
+  text-align: center;
+  color: green;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+input[type='password'] {
+  width: 100%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.inputField {
+  margin: auto;
+}
+
+.signOrLog {
+  background-color: #db3139;
+  font-size: 12px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 10px 30px;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+  width: 132px;
+  text-align: center;
+  border: none;
+  margin: auto;
+}
+
+.signOrLog:hover {
+  background-color: rgb(133, 20, 26);
+  transition-duration: 0.3s;
+}
+.signOrLog:focus {
+  outline: 0;
 }
