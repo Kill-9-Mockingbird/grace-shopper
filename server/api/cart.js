@@ -38,7 +38,7 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
       })
       if (cart) {
         await cart.addExperience(experience)
-        return res.status(200).json(experience)
+        return res.status(200).json(cart)
       }
     } else {
       return res.sendStatus(404)

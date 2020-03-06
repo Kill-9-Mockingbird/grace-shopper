@@ -56,6 +56,7 @@ export const fetchCart = () => {
 export const addItemThunk = itemId => {
   return async dispatch => {
     try {
+      await axios.get('/api/cart')
       const {data} = await axios.put(`/api/cart/${itemId}`)
       dispatch(addItem(data))
     } catch (err) {
