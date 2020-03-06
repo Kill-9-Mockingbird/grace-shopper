@@ -31,7 +31,8 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
-        <Route exact path="/" component={Carousel} />
+        {/* <Route exact path="/" component={Carousel} /> */}
+        <Route exact path="/" />
         <Route path="/signup" component={Signup} />
         <Route exact path="/experiences" component={ConnectedExpList} />
 
@@ -43,11 +44,12 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+            <Route path="/home" />
+            {/* <Route path="/home" component={UserHome} /> */}
             {isAdmin && (
               <Switch>
                 {/* Routes placed here are only available if the user is an admin */}
-                <Route path="/home" component={UserHome} />
+                {/* <Route path="/home" component={UserHome} /> */}
                 <Route path="/admin/users" component={ConnectedAdminAllUsers} />
               </Switch>
             )}

@@ -38,7 +38,14 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
       })
       if (cart) {
         await cart.addExperience(experience)
-        return res.status(200).json(cart)
+        const updatedCart = await Order.findOne({
+          where: {
+            userId: req.user.id,
+            purchased: false
+          },
+          include: [{model: Experience, include: [{model: Celebrity}]}]
+        })
+        return res.status(200).json(updatedCart)
       }
     } else {
       return res.sendStatus(404)
