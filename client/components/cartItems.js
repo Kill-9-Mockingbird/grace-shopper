@@ -1,18 +1,45 @@
 import React from 'react'
 
 const CartItems = props => {
-  const {experience, handleRemove} = props
-  return (
-    <div key={experience.id}>
+  const {experience, handleRemove, handleSubmitQuantityUpdate} = props
+  // const {isFetching} = props;
+
+  console.log(experience.name)
+  return !experience.name ? (
+    'Loading...'
+  ) : (
+    <div>
+      <img className="thumbnail" src={experience.imageUrl} />
       <p>Name: {experience.name}</p>
-      <img src={experience.imageUrl} />
       <p>Hosted By: {experience.celebrity.name}</p>
-      <p>Description: {experience.description}</p>
-      <p>
-        Location: {experience.city},{experience.state}
-      </p>
-      <p>Duration: {experience.duration} hour(s)</p>
       <p>Price: ${experience.price}</p>
+      <p>Quantity: {experience.orderDetail.packageQty}</p>
+      {/* <form
+        onSubmit={event => {
+          handleSubmitQuantityUpdate(`${experience.id}`, event)
+        }}
+      > */}
+      {/* <label>
+          Update Quantity:
+          <input type="text" name="packageQty" onChange=
+          {handleChangeQuantityUpdate}
+          value={this.state.packageQty}
+          />
+        </label> */}
+      <select>
+        <option name="packageQty" value="1" defaultValue>
+          1
+        </option>
+        <option name="packageQty" value="2">
+          2
+        </option>
+        <option name="packageQty" value="3">
+          3
+        </option>
+      </select>
+      <button type="submit">Update Cart</button>
+      {/* </form> */}
+
       <button
         type="button"
         onClick={event => {
@@ -21,6 +48,8 @@ const CartItems = props => {
       >
         Remove Item
       </button>
+      <br />
+      <br />
     </div>
   )
 }
