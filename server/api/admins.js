@@ -29,7 +29,7 @@ router.get('/:userId', isAdmin, async (req, res, next) => {
 
 //admin: create user
 router.post('/', isAdmin, async (req, res, next) => {
-  User.create(req.body)
+  await User.create(req.body)
     .then(user => {
       res.status(201).json(user)
     })

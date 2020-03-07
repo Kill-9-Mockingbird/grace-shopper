@@ -1,13 +1,12 @@
 import React from 'react'
 
-import {Navbar, ConnectedCart} from './components'
+import {Navbar} from './components'
 import Routes from './routes'
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <ConnectedCart />
       <Routes />
     </div>
   )

@@ -12,13 +12,13 @@ describe('User routes', () => {
   })
 
   describe('/api/users/', () => {
-    const codysEmail = 'cody@puppybook.com'
+    const firstName = 'Cody'
 
     beforeEach(() => {
       return User.create({
-        firstName: 'Cody',
+        firstName: firstName,
         lastName: 'Fullstack',
-        email: codysEmail,
+        email: 'cody@puppybook.com',
         password: '1246',
         phoneNumber: '8189092819',
         streetAddress: '453 west 36th street',
@@ -27,17 +27,22 @@ describe('User routes', () => {
         zipCode: 10014,
         country: 'United States of America',
         emergencyContactName: 'Joe',
-        emergencyContactPhone: '8189482748'
+        emergencyContactPhone: '8189482748',
+        isAdmin: true
       })
     })
 
     it('GET /api/users', async () => {
-      const res = await request(app)
-        .get('/api/users')
+      const authenticatedUser = request.agent(app)
+      await authenticatedUser
+        .post('/auth/login')
+        .send({email: 'cody@puppybook.com', password: '1246'})
         .expect(200)
 
+      const res = await authenticatedUser.get('/api/users').expect(200)
+
       expect(res.body).to.be.an('array')
-      expect(res.body[0].email).to.be.equal(codysEmail)
+      expect(res.body[0].firstName).to.be.equal(firstName)
     })
   }) // end describe('/api/users')
 }) // end describe('User routes')
