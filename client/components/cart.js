@@ -40,37 +40,41 @@ class Cart extends Component {
     })
   }
 
-  handleCheckout(event) {
+  handleCheckout(cartId, event) {
     event.preventDefault()
+    this.props.checkout(cartId)
     console.log('this is props', this.props)
   }
 
   render() {
     const experiences = this.props.cart.experiences
-    console.log('this is props', this.props)
 
     return !experiences ? (
       <div className="container">Your cart is empty!</div>
     ) : (
-      <div className="container">
-        {experiences.map(e => {
-          return (
-            <CartItems
-              key={e.id}
-              experience={e}
-              handleRemove={this.handleRemove}
-            />
-          )
-        })}
+      <div>
+        <div className="container">
+          {experiences.map(e => {
+            return (
+              <CartItems
+                key={e.id}
+                experience={e}
+                handleRemove={this.handleRemove}
+              />
+            )
+          })}
+        </div>
 
-        <button
-          type="button"
-          onClick={event => {
-            handleCheckout(`${this.props.cart.id}`, event)
-          }}
-        >
-          Checkout
-        </button>
+        <div>
+          <button
+            type="button"
+            onClick={event => {
+              handleCheckout(`${this.props.cart.id}`, event)
+            }}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     )
     // : (
