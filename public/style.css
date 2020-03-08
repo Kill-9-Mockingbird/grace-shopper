@@ -206,6 +206,13 @@ img {
   flex-direction: column;
 }
 
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  margin: auto;
+}
+
 .container {
   align-content: center;
   width: 800px;

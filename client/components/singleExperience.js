@@ -42,6 +42,9 @@ export default class SingleExperience extends React.Component {
           <li>Duration: {experience.duration}</li>
           <li>Group Size: {experience.groupSize}</li>
           <li>${experience.price}</li>
+
+          {/*future implementation? if cart has experience already, then change onClick handler to increment item in cart*/}
+
           <button type="button" id={experience.id} onClick={this.handleAdd}>
             Add To Cart
           </button>
