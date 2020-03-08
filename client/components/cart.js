@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, increaseQty, decreaseQty, removeOrder} from '../store/cart'
+import {
+  fetchCart,
+  increaseQty,
+  decreaseQty,
+  removeOrder,
+  fetchGuestCart
+} from '../store/cart'
 import CartItems from './cartItems'
 
 class Cart extends Component {
@@ -11,7 +17,8 @@ class Cart extends Component {
     this.handleRemove = this.handleRemove.bind(this)
   }
   componentDidMount() {
-    this.props.fetchCart()
+    this.props.isLoggedIn && this.props.fetchCart()
+    !this.props.isLoggedIn && this.props.fetchGuestCart()
   }
 
   handleRemove(experienceId, event) {
@@ -29,6 +36,7 @@ class Cart extends Component {
 
   render() {
     const experiences = this.props.cart.experiences
+
     return !experiences ? (
       <div className="container">Your cart is empty!</div>
     ) : (
@@ -59,6 +67,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCart: () => {
       dispatch(fetchCart())
+    },
+    fetchGuestCart: () => {
+      dispatch(fetchGuestCart())
     },
     increaseQty: id => {
       dispatch(increaseQty(id))
