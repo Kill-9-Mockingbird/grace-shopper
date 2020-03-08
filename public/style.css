@@ -1,3 +1,5 @@
+/*FULL SITE*/
+
 * {
   margin: 0;
 }
@@ -20,11 +22,8 @@ nav {
   justify-content: flex-end;
   flex-grow: 1;
 }
-.logo {
-  /* flex-grow: 2; */
-  color: white;
-  padding-left: 10px;
-}
+
+/*NAVBAR*/
 .navbar {
   align-items: center;
   background-color: #3a445d;
@@ -45,10 +44,22 @@ nav a {
   color: white;
 }
 
+.logo a {
+  color: white;
+}
+
+.logo {
+  /* flex-grow: 2; */
+  color: white;
+  padding-left: 10px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
 }
+
+/*ALL EXPERIENCES PAGE*/
 
 .indExp {
   display: flex;
@@ -61,10 +72,6 @@ form div {
 .imgThumb {
   height: 250px;
   width: 250px;
-  /* box-shadow: 0px 2px 8px #c7c7c7;
-  border-radius: 4px; */
-  /* -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9));
-  filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0.9)); */
 }
 
 .expBlock {
@@ -95,23 +102,16 @@ form div {
   padding: 5px;
 }
 
-.imgMed {
-  height: 300px;
-  width: 300px;
-}
-
-.logo a {
-  color: white;
-}
-
 img {
   object-fit: cover;
-  /* max-width: 500px; */
 }
 
 .container > img {
   max-width: 500px;
 }
+
+/*HOME PAGE*/
+
 .welcome {
   text-align: center;
   padding: 60px;
@@ -182,6 +182,7 @@ img {
   padding-right: 100px;
 }
 
+/*CART COMPONENT*/
 .thumbnail {
   width: 100px;
   height: 100px;
@@ -222,6 +223,8 @@ img {
   padding: 0;
   margin: auto;
 }
+
+/*LOGIN FORM*/
 
 .loginForm {
   display: flex;
@@ -274,7 +277,7 @@ input[type='password'] {
   margin: auto;
 }
 
-.signOrLog {
+button {
   background-color: #db3139;
   font-size: 12px;
   color: white;
@@ -289,10 +292,64 @@ input[type='password'] {
   margin: auto;
 }
 
-.signOrLog:hover {
+button:hover {
   background-color: rgb(133, 20, 26);
   transition-duration: 0.3s;
 }
-.signOrLog:focus {
+button:focus {
   outline: 0;
+}
+
+/*ALL USERS ADMIN*/
+
+.usersBlock {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.addressInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-left: -5px;
+}
+
+.userBlock {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  color: #5e5768;
+  background-color: #fcdebe;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.userProfile {
+  border-radius: 10px;
+  height: 170px;
+}
+
+.infoCategory {
+  padding: 5px;
+}
+
+.userText {
+  padding: 15px;
+}
+
+.infoBody {
+  margin-top: 5px;
+}
+
+.userName {
+  font-weight: bold;
+  background-color: white;
+  width: 200px;
+  padding: 2px;
+  padding-left: 5px;
+}
+
+.editUser {
+  width: 100px;
+  margin: 10px;
 }
