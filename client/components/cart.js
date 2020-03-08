@@ -37,7 +37,7 @@ class Cart extends Component {
   render() {
     const experiences = this.props.cart.experiences
 
-    return !experiences ? (
+    return !experiences || !experiences.length ? (
       <div className="container">Your cart is empty!</div>
     ) : (
       <div className="container">

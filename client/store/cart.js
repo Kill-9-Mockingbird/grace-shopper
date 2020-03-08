@@ -100,18 +100,20 @@ export const addItemThunk = itemId => {
 
 //Thunk for adding an item in guest cart
 export const addItemForGuest = experienceId => {
-  return dispatch => {
+  return () => {
     try {
+      //retrieve guest cart
       let guestCart = JSON.parse(localStorage.getItem('cart'))
+      //if guest cart doesn't exist, we'll create one
       if (!guestCart) {
         guestCart = window.localStorage.setItem('cart', JSON.stringify({}))
+        //set the experienceId as key and set the packageQty as value = 1
+        guestCart[experienceId] = 1
+        //overwrite previous cart by setting 'cart' to the new guest cart that has the experienceId and packageQty key-value pair we just assigned
+        window.localStorage.setItem('cart', JSON.stringify(guestCart))
       } else {
         guestCart[experienceId] = 1
-
         window.localStorage.setItem('cart', JSON.stringify(guestCart))
-
-        const experiences = JSON.parse(localStorage.getItem('cart'))
-        dispatch(getGuestCart(experiences))
       }
     } catch (error) {
       console.log(error)

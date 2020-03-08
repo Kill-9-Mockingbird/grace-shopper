@@ -6,8 +6,8 @@ import {fetchSingleExperience} from '../store/experience'
 import {addItemThunk, addItemForGuest} from '../store/cart'
 
 export default class SingleExperience extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.handleAdd = this.handleAdd.bind(this)
   }
 
