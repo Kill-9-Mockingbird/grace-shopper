@@ -296,3 +296,10 @@ input[type='password'] {
 .signOrLog:focus {
   outline: 0;
 }
+
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  margin: auto;
+}

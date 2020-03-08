@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+
 import {
   fetchCart,
-  updateOrderQuantity,
+  increaseQty,
+  decreaseQty,
   removeOrder,
   checkout
 } from '../store/cart'
@@ -11,11 +13,8 @@ import CartItems from './cartItems'
 class Cart extends Component {
   constructor() {
     super()
-    this.state = {
-      // packageQty: ''
-    }
-    this.handleChangeQuantityUpdate = this.handleChangeQuantityUpdate.bind(this)
-    this.handleSubmitQuantityUpdate = this.handleSubmitQuantityUpdate.bind(this)
+    this.increase = this.increase.bind(this)
+    this.decrease = this.decrease.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
     this.handleCheckout = this.handleCheckout.bind(this)
   }
@@ -28,21 +27,12 @@ class Cart extends Component {
     this.props.removeOrder(experienceId)
   }
 
-  handleChangeQuantityUpdate(event) {
-    event.preventDefault()
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+  increase(id) {
+    this.props.increaseQty(id)
   }
 
-  handleSubmitQuantityUpdate(experienceId, event) {
-    event.preventDefault()
-    const packageQty = event.target.packageQty.value
-    const updates = {packageQty: packageQty, experienceId: experienceId}
-    this.props.updateOrderQuantity(updates)
-    this.setState({
-      // packageQty: ''
-    })
+  decrease(id) {
+    this.props.decreaseQty(id)
   }
 
   handleCheckout(event) {
@@ -65,6 +55,8 @@ class Cart extends Component {
                 key={e.id}
                 experience={e}
                 handleRemove={this.handleRemove}
+                increase={this.increase}
+                decrease={this.decrease}
               />
             )
           })}
@@ -77,21 +69,6 @@ class Cart extends Component {
         </div>
       </div>
     )
-    // : (
-    //   <div>Cart is empty!</div>
-    // )
-
-    // : (
-    //   experiences.map(experience => {
-    //     return (
-    //       <CartItems
-    //         key={experience.id}
-    //         experience={experience}
-    //         handleRemove={this.handleRemove}
-    //       />
-    //     )
-    //   })
-    // )
   }
 }
 const mapStateToProps = state => {
@@ -106,8 +83,11 @@ const mapDispatchToProps = dispatch => {
     fetchCart: () => {
       dispatch(fetchCart())
     },
-    updateOrderQuantity: updates => {
-      dispatch(updateOrderQuantity(updates))
+    increaseQty: id => {
+      dispatch(increaseQty(id))
+    },
+    decreaseQty: id => {
+      dispatch(decreaseQty(id))
     },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))

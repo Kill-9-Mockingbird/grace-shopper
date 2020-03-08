@@ -55,8 +55,6 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
   }
 })
 
-// edit quantity of item in order
-
 //delete an item from the cart
 router.delete('/:experienceId', isUser, async (req, res, next) => {
   try {
@@ -94,20 +92,59 @@ router.delete('/:experienceId', isUser, async (req, res, next) => {
   }
 })
 
-//route to modify cart quanity
-router.put('/:experienceId/edit', isUser, async (req, res, next) => {
+// route -- increase qty
+router.put('/:experienceid/increase', async (req, res, next) => {
   try {
-    const itemToUpdate = await OrderDetail.findOne({
+    const experienceToUpdate = await OrderDetail.findOne({
       where: {
-        experienceId: req.params.experienceId
+        experienceId: req.params.experienceid
       }
     })
-    const updatedItem = await itemToUpdate.update({
-      packageQty: req.body.packageQty
+
+    if (experienceToUpdate) {
+      experienceToUpdate.packageQty++
+      await experienceToUpdate.save()
+
+      const updatedCart = await Order.findOne({
+        where: {
+          userId: req.user.id,
+          purchased: false
+        },
+        include: [{model: Experience, include: [{model: Celebrity}]}]
+      })
+      return res.status(200).json(updatedCart)
+    } else {
+      return res.sendStatus(404)
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+// route -- decrease qty
+router.put('/:experienceid/decrease', async (req, res, next) => {
+  try {
+    const experienceToUpdate = await OrderDetail.findOne({
+      where: {
+        experienceId: req.params.experienceid
+      }
     })
-    return res.status(200).json(updatedItem)
-  } catch (error) {
-    next(error)
+    if (experienceToUpdate) {
+      experienceToUpdate.packageQty--
+      await experienceToUpdate.save()
+    }
+    const updatedCart = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        purchased: false
+      },
+      include: [{model: Experience, include: [{model: Celebrity}]}]
+    })
+
+    console.log(updatedCart)
+    return res.status(200).json(updatedCart)
+  } catch (err) {
+    next(err)
   }
 })
 
