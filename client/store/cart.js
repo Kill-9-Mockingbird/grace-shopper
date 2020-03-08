@@ -5,6 +5,7 @@ const GET_CART = 'GET_CART'
 const ADD_ITEM = 'ADD_ITEM'
 const DELETE_ORDER = 'DELETE_ORDER'
 const UPDATE_QUANTITY = 'UPDATE_QUANITTY'
+const CHECKOUT_ORDER = 'CHECKOUT_ORDER'
 
 //Action Creators
 export const getCart = cart => {
@@ -32,6 +33,13 @@ export const deleteOrder = cart => {
 export const updateQuantity = cart => {
   return {
     type: UPDATE_QUANTITY,
+    cart
+  }
+}
+
+export const checkOut = cart => {
+  return {
+    type: CHECKOUT_CART,
     cart
   }
 }
@@ -88,6 +96,19 @@ export const updateOrderQuantity = updates => {
         updates
       )
       dispatch(updateQuantity(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+//Thunk for checking out
+
+export const checkoutOrder = orderId => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.pus('/api/cart/checkout', orderId)
+      dispatch(checkOut(data))
     } catch (error) {
       console.log(error)
     }

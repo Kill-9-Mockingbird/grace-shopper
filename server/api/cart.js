@@ -110,3 +110,21 @@ router.put('/:experienceId/edit', isUser, async (req, res, next) => {
     next(error)
   }
 })
+
+//route to checkout cart
+router.put('/checkout', isUser, async (req, res, next) => {
+  try {
+    const orderToCheckout = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        purchased: false
+      }
+    })
+    const updateOrder = await orderToCheckout.update({
+      purchased: true
+    })
+    return res.status(200).json(updateOrder)
+  } catch (error) {
+    next(error)
+  }
+})

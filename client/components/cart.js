@@ -1,6 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, updateOrderQuantity, removeOrder} from '../store/cart'
+import {
+  fetchCart,
+  updateOrderQuantity,
+  removeOrder,
+  checkout
+} from '../store/cart'
 import CartItems from './cartItems'
 
 class Cart extends Component {
@@ -40,9 +45,9 @@ class Cart extends Component {
     })
   }
 
-  handleCheckout(cartId, event) {
+  handleCheckout(event) {
     event.preventDefault()
-    this.props.checkout(cartId)
+    this.props.checkout(event)
     console.log('this is props', this.props)
   }
 
@@ -66,12 +71,7 @@ class Cart extends Component {
         </div>
 
         <div>
-          <button
-            type="button"
-            onClick={event => {
-              handleCheckout(`${this.props.cart.id}`, event)
-            }}
-          >
+          <button type="submit" onClick={this.handleCheckout()}>
             Checkout
           </button>
         </div>
