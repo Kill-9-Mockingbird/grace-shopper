@@ -1,42 +1,38 @@
 import React from 'react'
 
 const CartItems = props => {
-  const {experience, handleRemove, handleSubmitQuantityUpdate} = props
-  // const {isFetching} = props;
+  const {experience, handleRemove, increase, decrease} = props
 
-  console.log(experience.name)
   return experience.name ? (
     <div>
       <img className="thumbnail" src={experience.imageUrl} />
       <p>Name: {experience.name}</p>
       <p>Hosted By: {experience.celebrity.name}</p>
       <p>Price: ${experience.price}</p>
-      <p>Quantity: {experience.orderDetail.packageQty}</p>
-      {/* <form
-        onSubmit={event => {
-          handleSubmitQuantityUpdate(`${experience.id}`, event)
-        }}
-      > */}
-      {/* <label>
-          Update Quantity:
-          <input type="text" name="packageQty" onChange=
-          {handleChangeQuantityUpdate}
-          value={this.state.packageQty}
+      <div className="quantity">
+        {/* if qty is 1, clicking - will remove item from the cart
+        otherwise, it will just decrement*/}
+        {experience.orderDetail.packageQty <= 1 ? (
+          <i
+            className="fas fa-minus"
+            onClick={() => handleRemove(`${experience.id}`, event)}
           />
-        </label> */}
-      <select>
-        <option name="packageQty" value="1" defaultValue>
-          1
-        </option>
-        <option name="packageQty" value="2">
-          2
-        </option>
-        <option name="packageQty" value="3">
-          3
-        </option>
-      </select>
-      <button type="submit">Update Cart</button>
-      {/* </form> */}
+        ) : (
+          <i
+            className="fas fa-minus"
+            onClick={() => {
+              decrease(experience.id)
+            }}
+          />
+        )}
+        Quantity: {experience.orderDetail.packageQty}
+        <i
+          className="fas fa-plus"
+          onClick={() => {
+            increase(experience.id)
+          }}
+        />
+      </div>
 
       <button
         type="button"
@@ -44,7 +40,7 @@ const CartItems = props => {
           handleRemove(`${experience.id}`, event)
         }}
       >
-        Remove Item
+        Delete Item
       </button>
     </div>
   ) : (

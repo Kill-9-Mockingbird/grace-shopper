@@ -4,7 +4,7 @@ import axios from 'axios'
 const GET_CART = 'GET_CART'
 const ADD_ITEM = 'ADD_ITEM'
 const DELETE_ORDER = 'DELETE_ORDER'
-const UPDATE_QUANTITY = 'UPDATE_QUANITTY'
+const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 
 //Action Creators
 export const getCart = cart => {
@@ -15,7 +15,6 @@ export const getCart = cart => {
 }
 
 export const addItem = cart => {
-  // console.log('action creater', cart)
   return {
     type: ADD_ITEM,
     cart
@@ -37,6 +36,7 @@ export const updateQuantity = cart => {
 }
 
 //Thunks
+
 //Thunk for getting all user items in cart
 export const fetchCart = () => {
   return async dispatch => {
@@ -52,7 +52,6 @@ export const fetchCart = () => {
 }
 
 //Thunk for adding an item in cart
-
 export const addItemThunk = itemId => {
   return async dispatch => {
     try {
@@ -66,7 +65,6 @@ export const addItemThunk = itemId => {
 }
 
 //Thunk for removing an order in cart
-
 export const removeOrder = experienceId => {
   return async dispatch => {
     try {
@@ -78,20 +76,16 @@ export const removeOrder = experienceId => {
   }
 }
 
-//Thunk for updating quanity in cart
+// thunk -- increase qty
+export const increaseQty = itemId => async dispatch => {
+  const {data} = await axios.put(`/api/cart/${itemId}/increase`)
+  dispatch(updateQuantity(data))
+}
 
-export const updateOrderQuantity = updates => {
-  return async dispatch => {
-    try {
-      const {data} = await axios.put(
-        `/api/cart/${updates.experienceId}/edit`,
-        updates
-      )
-      dispatch(updateQuantity(data))
-    } catch (error) {
-      console.log(error)
-    }
-  }
+// thunk -- decrease qty
+export const decreaseQty = itemId => async dispatch => {
+  const {data} = await axios.put(`/api/cart/${itemId}/decrease`)
+  dispatch(updateQuantity(data))
 }
 
 //initialState
@@ -111,7 +105,7 @@ export default function(state = defaultCart, action) {
     case DELETE_ORDER:
       return {...action.cart}
     case UPDATE_QUANTITY:
-      return {...state, ...action.cart}
+      return {...action.cart}
     default:
       return state
   }
