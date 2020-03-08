@@ -23,6 +23,24 @@ router.get('/', isUser, async (req, res, next) => {
   }
 })
 
+//route to checkout cart
+router.put('/checkout', isUser, async (req, res, next) => {
+  try {
+    const orderToCheckout = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        purchased: false
+      }
+    })
+    const updateOrder = await orderToCheckout.update({
+      purchased: true
+    })
+    res.send(updateOrder)
+  } catch (error) {
+    next(error)
+  }
+})
+
 // add a item to the cart
 router.put('/:experienceId', isUser, async (req, res, next) => {
   try {
@@ -145,23 +163,5 @@ router.put('/:experienceid/decrease', async (req, res, next) => {
     return res.status(200).json(updatedCart)
   } catch (err) {
     next(err)
-  }
-})
-
-//route to checkout cart
-router.put('/checkout', isUser, async (req, res, next) => {
-  try {
-    const orderToCheckout = await Order.findOne({
-      where: {
-        userId: req.user.id,
-        purchased: false
-      }
-    })
-    const updateOrder = await orderToCheckout.update({
-      purchased: true
-    })
-    return res.status(200).json(updateOrder)
-  } catch (error) {
-    next(error)
   }
 })

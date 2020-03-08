@@ -6,7 +6,7 @@ import {
   increaseQty,
   decreaseQty,
   removeOrder,
-  checkout
+  checkoutOrder
 } from '../store/cart'
 import CartItems from './cartItems'
 
@@ -35,10 +35,8 @@ class Cart extends Component {
     this.props.decreaseQty(id)
   }
 
-  handleCheckout(event) {
-    event.preventDefault()
-    this.props.checkout(event)
-    console.log('this is props', this.props)
+  handleCheckout() {
+    this.props.checkoutOrder()
   }
 
   render() {
@@ -63,7 +61,7 @@ class Cart extends Component {
         </div>
 
         <div>
-          <button type="submit" onClick={this.handleCheckout()}>
+          <button type="button" onClick={this.handleCheckout}>
             Checkout
           </button>
         </div>
@@ -91,6 +89,9 @@ const mapDispatchToProps = dispatch => {
     },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))
+    },
+    checkoutOrder: id => {
+      dispatch(checkoutOrder(id))
     }
   }
 }

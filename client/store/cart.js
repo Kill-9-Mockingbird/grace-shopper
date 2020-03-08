@@ -36,9 +36,9 @@ export const updateQuantity = cart => {
   }
 }
 
-export const checkOut = cart => {
+export const getCheckout = cart => {
   return {
-    type: CHECKOUT_CART,
+    type: CHECKOUT_ORDER,
     cart
   }
 }
@@ -98,11 +98,12 @@ export const decreaseQty = itemId => async dispatch => {
 
 //Thunk for checking out
 
-export const checkoutOrder = orderId => {
+export const checkoutOrder = () => {
   return async dispatch => {
     try {
-      const {data} = await axios.pus('/api/cart/checkout', orderId)
-      dispatch(checkOut(data))
+      console.log('making async request for checkout')
+      const {data} = await axios.put('/api/cart/checkout')
+      dispatch(getCheckout(data))
     } catch (error) {
       console.log(error)
     }
@@ -127,6 +128,8 @@ export default function(state = defaultCart, action) {
       return {...action.cart}
     case UPDATE_QUANTITY:
       return {...action.cart}
+    case CHECKOUT_ORDER:
+      return defaultCart
     default:
       return state
   }
