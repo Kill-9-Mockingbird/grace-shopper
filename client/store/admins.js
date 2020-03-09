@@ -34,7 +34,8 @@ export const adminGetUserThunk = id => async dispatch => {
 
 export const adminEditUsersThunk = userObj => async dispatch => {
   try {
-    const user = await axios.put(`/api/admin/users/${userObj.id}`)
+    console.log(userObj.id)
+    const user = await axios.put(`/api/admin/users/${userObj.id}`, userObj)
     dispatch(adminEditUser(user))
   } catch (err) {
     console.log(err)

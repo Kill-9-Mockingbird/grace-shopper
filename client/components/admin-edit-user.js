@@ -38,7 +38,6 @@ export class EditUser extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
     let user = this.state
-    console.log(user)
     this.props.adminEditUsersThunk(this.state)
     return <Popup text="Update Successful" />
   }
