@@ -21,7 +21,6 @@ class Cart extends Component {
     this.handleCheckout = this.handleCheckout.bind(this)
   }
   componentDidMount() {
-    console.log('isloggedin:', this.props)
     this.props.isLoggedIn && this.props.fetchCart()
     !this.props.isLoggedIn && this.props.fetchGuestCart()
   }
