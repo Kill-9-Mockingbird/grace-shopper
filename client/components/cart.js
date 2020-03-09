@@ -5,6 +5,7 @@ import {
   increaseQty,
   decreaseQty,
   removeOrder,
+  removeGuestOrder,
   fetchGuestCart
 } from '../store/cart'
 import CartItems from './cartItems'
@@ -23,7 +24,8 @@ class Cart extends Component {
 
   handleRemove(experienceId, event) {
     event.preventDefault()
-    this.props.removeOrder(experienceId)
+    this.props.isLoggedIn && this.props.removeOrder(experienceId)
+    !this.props.isLoggedIn && this.props.removeGuestOrder(experienceId)
   }
 
   increase(id) {
@@ -79,6 +81,9 @@ const mapDispatchToProps = dispatch => {
     },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))
+    },
+    removeGuestOrder: experienceId => {
+      dispatch(removeGuestOrder(experienceId))
     }
   }
 }

@@ -21,7 +21,6 @@ export default class SingleExperience extends React.Component {
     const id = e.target.id
     this.props.isLoggedIn && this.props.addItemThunk(id)
     !this.props.isLoggedIn && this.props.addItemForGuest(id)
-    // this.props.history.push('/cart')
   }
 
   render() {

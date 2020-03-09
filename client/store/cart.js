@@ -4,7 +4,9 @@ import axios from 'axios'
 const GET_CART = 'GET_CART'
 const GET_GUESTCART = 'GET_GUESTCART'
 const ADD_ITEM = 'ADD_ITEM'
+const ADD_ITEM_GUEST = 'ADD_ITEM_GUEST'
 const DELETE_ORDER = 'DELETE_ORDER'
+const DELETE_GUEST_ORDER = 'DELETE_GUEST_ORDER'
 const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 
 //Action Creators
@@ -29,9 +31,22 @@ export const addItem = cart => {
   }
 }
 
+export const addItemGuest = cart => {
+  return {
+    type: ADD_ITEM_GUEST,
+    cart
+  }
+}
+
 export const deleteOrder = cart => {
   return {
     type: DELETE_ORDER,
+    cart
+  }
+}
+export const deleteGuestOrder = cart => {
+  return {
+    type: DELETE_GUEST_ORDER,
     cart
   }
 }
@@ -71,7 +86,7 @@ export const fetchGuestCart = () => {
       for (let key in guestCart) {
         //if key exists in guestCart, we would want to fetch that particular experience with the key (experienceId)
         if (guestCart.hasOwnProperty(key) && guestCart[key]) {
-          let {data} = await axios.get(`api/experiences/${key}`)
+          let {data} = await axios.get(`/api/experiences/${key}`)
           data.orderDetail = {
             packageQty: guestCart[key]
           }
@@ -100,21 +115,58 @@ export const addItemThunk = itemId => {
 
 //Thunk for adding an item in guest cart
 export const addItemForGuest = experienceId => {
-  return () => {
+  return async dispatch => {
     try {
       //retrieve guest cart
       let guestCart = JSON.parse(localStorage.getItem('cart'))
       //if guest cart doesn't exist, we'll create one
       if (!guestCart) {
         guestCart = window.localStorage.setItem('cart', JSON.stringify({}))
+        guestCart[experienceId] = 1
+        window.localStorage.setItem('cart', JSON.stringify(guestCart))
+      } else {
         //set the experienceId as key and set the packageQty as value = 1
         guestCart[experienceId] = 1
         //overwrite previous cart by setting 'cart' to the new guest cart that has the experienceId and packageQty key-value pair we just assigned
         window.localStorage.setItem('cart', JSON.stringify(guestCart))
-      } else {
-        guestCart[experienceId] = 1
-        window.localStorage.setItem('cart', JSON.stringify(guestCart))
       }
+      let experiences = []
+      for (let key in guestCart) {
+        if (guestCart.hasOwnProperty(key) && guestCart[key]) {
+          let {data} = await axios.get(`/api/experiences/${key}`)
+          data.orderDetail = {
+            packageQty: guestCart[key]
+          }
+
+          experiences.push(data)
+        }
+      }
+      dispatch(addItemGuest(experiences))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+//Thunk for removing a guest order from guest cart
+export const removeGuestOrder = experienceId => {
+  return async dispatch => {
+    try {
+      const guestCart = JSON.parse(localStorage.getItem('cart'))
+      delete guestCart[experienceId]
+      window.localStorage.setItem('cart', JSON.stringify(guestCart))
+      let experiences = []
+      for (let key in guestCart) {
+        if (guestCart.hasOwnProperty(key) && guestCart[key]) {
+          let {data} = await axios.get(`/api/experiences/${key}`)
+          data.orderDetail = {
+            packageQty: guestCart[key]
+          }
+          experiences.push(data)
+        }
+      }
+
+      dispatch(deleteGuestOrder(experiences))
     } catch (error) {
       console.log(error)
     }
@@ -161,8 +213,12 @@ export default function(state = defaultCart, action) {
       return {
         ...action.cart
       }
+    case ADD_ITEM_GUEST:
+      return {...state, experiences: [...action.cart]}
     case DELETE_ORDER:
       return {...action.cart}
+    case DELETE_GUEST_ORDER:
+      return {...state, experiences: [...action.cart]}
     case UPDATE_QUANTITY:
       return {...action.cart}
     default:
