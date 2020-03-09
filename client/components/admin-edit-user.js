@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {adminEditUsersThunk, adminGetUserThunk} from '../store/admins'
-import {Popup} from './admin-popup-edit-success'
 
 export class EditUser extends Component {
   constructor(props) {
@@ -27,24 +26,21 @@ export class EditUser extends Component {
   }
 
   handleChange(e) {
-    console.log(this.state)
     this.setState({
       ...this.state,
-
       [e.target.id]: e.target.value
     })
   }
 
   handleSubmit(evt) {
     evt.preventDefault()
-    let user = this.state
     this.props.adminEditUsersThunk(this.state)
-    return <Popup text="Update Successful" />
+    alert('Update Successful')
+    this.props.history.push('/admin/users')
   }
 
   render() {
     const user = this.props.user.data
-    console.log(this.state)
     return user ? (
       <div>
         <h2>Edit User:</h2>
@@ -213,12 +209,6 @@ export class EditUser extends Component {
           >
             Submit Changes
           </button>
-          {this.state.showPopup ? (
-            <Popup
-              text="Click &quot;Close Button&quot; to hide popup"
-              closePopup={this.togglePopup.bind(this)}
-            />
-          ) : null}
         </form>
       </div>
     ) : (
