@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import axios from 'axios'
 
 //Action Constants
@@ -210,9 +211,8 @@ export const decreaseQty = itemId => async dispatch => {
 export const checkoutOrder = () => {
   return async dispatch => {
     try {
-      console.log('making async request for checkout')
-      const {data} = await axios.put('/api/cart/checkout')
-      dispatch(getCheckout(data))
+      await axios.put('/api/cart/checkout')
+      dispatch(getCheckout())
     } catch (error) {
       console.log(error)
     }
