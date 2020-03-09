@@ -77,6 +77,8 @@ const mapStateToProps = state => {
   return {
     ...state,
     cart: state.cart
+    // can become an array of objects where you can map the appropriate product you're looking for since it will be fetched from routes, and add your quantity to that if you want to
+    // [{id: 1, quantity: 1, name: 'kayaking with beyonce'}, ...]
   }
 }
 

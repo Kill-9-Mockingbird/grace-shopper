@@ -82,6 +82,7 @@ export const fetchCart = () => {
     }
   }
 }
+// tell me more about what's going on here
 
 //Thunk for getting guest cart
 export const fetchGuestCart = () => {
@@ -196,8 +197,12 @@ export const removeOrder = experienceId => {
 
 // thunk -- increase qty
 export const increaseQty = itemId => async dispatch => {
-  const {data} = await axios.put(`/api/cart/${itemId}/increase`)
-  dispatch(updateQuantity(data))
+  try {
+    const {data} = await axios.put(`/api/cart/${itemId}/increase`)
+    dispatch(updateQuantity(data))
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 // thunk -- decrease qty
@@ -220,6 +225,8 @@ export const checkoutOrder = () => {
 }
 
 //initialState
+// { 1: 1, 2: 1, 3: 5}
+// place your all products fetch into your root component so that it loads no matter what page you're on
 const defaultCart = {
   experiences: []
 }

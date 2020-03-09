@@ -2,9 +2,13 @@ const router = require('express').Router()
 const {User, Order, OrderDetail} = require('../db/models')
 const {isAdmin} = require('../../utils')
 
+// SARAH: Would recommend putting this into the users route with the isAdmin function incorporated
+
 // ADMIN ROUTES
 // admin route that can get all user information
 router.get('/users', isAdmin, async (req, res, next) => {
+  // query parameters
+  // ?user=admin
   try {
     const users = await User.findAll({
       include: [{model: Order}]
@@ -28,7 +32,7 @@ router.post('/users', isAdmin, async (req, res, next) => {
 router.get('/users/:userId', isAdmin, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
-      include: 'orders'
+      include: 'orders' // stay consistent as you're coding
     })
     res.json(user)
   } catch (err) {

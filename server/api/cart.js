@@ -22,8 +22,15 @@ router.get('/', isUser, async (req, res, next) => {
     next(err)
   }
 })
-
+// talk about restfulness of checkout
 //route to checkout cart
+// /api/cart/checkout
+// making another put request to my cart
+// one put route, where we can establish some extra middleware functions that will do a couple of things
+// we can have a function specifically to increment/decrement
+// we can have a function to checkout
+// a function to add/remove
+// incrementOrDecrement, addRemove, checkout
 router.put('/checkout', isUser, async (req, res, next) => {
   try {
     const orderToCheckout = await Order.findOne({
@@ -41,6 +48,7 @@ router.put('/checkout', isUser, async (req, res, next) => {
   }
 })
 
+// SARAH: feels like cart/:cartId
 // add a item to the cart
 router.put('/:experienceId', isUser, async (req, res, next) => {
   try {
@@ -76,6 +84,7 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
 //delete an item from the cart
 router.delete('/:experienceId', isUser, async (req, res, next) => {
   try {
+    // if this is all here, maybe you want to put all of this into a separate function
     const experienceId = req.params.experienceId
     const cart = await Order.findOne({
       where: {
@@ -113,6 +122,7 @@ router.delete('/:experienceId', isUser, async (req, res, next) => {
 // route -- increase qty
 router.put('/:experienceid/increase', async (req, res, next) => {
   try {
+    // does this work every time? what if you had an experienceId that doesn't relate to the right order?
     const experienceToUpdate = await OrderDetail.findOne({
       where: {
         experienceId: req.params.experienceid
@@ -159,7 +169,7 @@ router.put('/:experienceid/decrease', async (req, res, next) => {
       include: [{model: Experience, include: [{model: Celebrity}]}]
     })
 
-    console.log(updatedCart)
+    console.log(updatedCart) // remove console logs
     return res.status(200).json(updatedCart)
   } catch (err) {
     next(err)
