@@ -36,9 +36,22 @@ class Routes extends Component {
 
         <Route
           path="/experiences/:experienceId"
-          component={ConnectedSingleExperience}
+          component={props => (
+            <ConnectedSingleExperience
+              {...props}
+              // isLoggedIn={this.props.isLoggedIn}
+            />
+          )}
         />
-        <Route exact path="/cart" component={ConnectedCart} />
+        {/* <Route
+          path="/experiences/:experienceId"
+          component={ConnectedSingleExperience}
+        /> */}
+        <Route
+          exact
+          path="/cart"
+          component={() => <ConnectedCart isLoggedIn={this.props.isLoggedIn} />}
+        />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
