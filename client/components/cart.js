@@ -13,8 +13,8 @@ import {
 import CartItems from './cartItems'
 
 class Cart extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.increase = this.increase.bind(this)
     this.decrease = this.decrease.bind(this)
     this.handleRemove = this.handleRemove.bind(this)

@@ -39,20 +39,13 @@ class Routes extends Component {
         <Route
           path="/experiences/:experienceId"
           component={props => (
-            <ConnectedSingleExperience
-              {...props}
-              // isLoggedIn={this.props.isLoggedIn}
-            />
+            <ConnectedSingleExperience {...props} isLoggedIn={isLoggedIn} />
           )}
         />
-        {/* <Route
-          path="/experiences/:experienceId"
-          component={ConnectedSingleExperience}
-        /> */}
         <Route
           exact
           path="/cart"
-          component={() => <ConnectedCart isLoggedIn={this.props.isLoggedIn} />}
+          component={() => <ConnectedCart isLoggedIn={isLoggedIn} />}
         />
         {isLoggedIn && (
           <Switch>
