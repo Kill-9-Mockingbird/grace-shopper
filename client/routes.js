@@ -12,6 +12,8 @@ import {
 } from './components'
 import {ConnectedExpList} from './components/exp-list'
 import {ConnectedAdminAllUsers} from './components/admin-all-users.js'
+import {ConnectedEditUser} from './components/admin-edit-user.js'
+import {adminHome} from './components/admin-home'
 import {Carousel} from './components/carousel'
 import {me} from './store'
 
@@ -47,7 +49,16 @@ class Routes extends Component {
               <Switch>
                 {/* Routes placed here are only available if the user is an admin */}
                 {/* <Route path="/home" component={UserHome} /> */}
-                <Route path="/admin/users" component={ConnectedAdminAllUsers} />
+                <Route exact path="/admin" component={adminHome} />
+                <Route
+                  exact
+                  path="/admin/users"
+                  component={ConnectedAdminAllUsers}
+                />
+                <Route
+                  path="/admin/user/:userId"
+                  component={ConnectedEditUser}
+                />
               </Switch>
             )}
           </Switch>

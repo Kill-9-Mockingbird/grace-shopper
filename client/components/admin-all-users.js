@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {adminGetUsersThunk} from '../store/admins'
-import {ConnectedEditUsers} from './admin-edit-user'
+import {ConnectedEditUser} from './admin-edit-user'
 
 export class AdmAllUsers extends Component {
   constructor(props) {
@@ -11,12 +11,12 @@ export class AdmAllUsers extends Component {
   }
 
   handleEdit(e) {
-    let user = e.target.user
-    return <ConnectedEditUsers user={user} />
+    let user = e.target.id
+    this.props.history.push(`/admin/user/${user}`)
   }
 
   handleDelete(e) {
-    let userId = e.target.userId
+    let userId = e.target.id
   }
 
   componentDidMount() {
@@ -60,14 +60,14 @@ export class AdmAllUsers extends Component {
                     </small>
                   </div>
                   <button
-                    user={user}
+                    id={user.id}
                     onClick={this.handleEdit}
                     className="editUser"
                   >
                     Edit User
                   </button>
                   <button
-                    userId={user.id}
+                    id={user.id}
                     onClick={this.handleDelete}
                     className="editUser"
                   >
@@ -87,7 +87,7 @@ export class AdmAllUsers extends Component {
 
 const mapStateToProps = state => {
   return {
-    allUsers: state.admins.allUsers
+    allUsers: state.admin.allUsers
   }
 }
 
