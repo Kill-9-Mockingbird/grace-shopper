@@ -15,6 +15,7 @@ import {ConnectedAdminAllUsers} from './components/admin-all-users.js'
 import {ConnectedEditUser} from './components/admin-edit-user.js'
 import {adminHome} from './components/admin-home'
 import {Carousel} from './components/carousel'
+import {CheckoutComponent} from './components/checkoutPage'
 import {me} from './store'
 
 /**
@@ -35,6 +36,7 @@ class Routes extends Component {
         <Route exact path="/" component={Carousel} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/experiences" component={ConnectedExpList} />
+        <Route path="/checkout" component={CheckoutComponent} />
 
         <Route
           path="/experiences/:experienceId"
@@ -47,6 +49,7 @@ class Routes extends Component {
           path="/cart"
           component={() => <ConnectedCart isLoggedIn={isLoggedIn} />}
         />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

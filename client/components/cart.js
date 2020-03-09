@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import CheckoutComponent from './checkoutPage'
+import {Link, Redirect} from 'react-router-dom'
 
 import {
   fetchCart,
@@ -64,11 +66,11 @@ class Cart extends Component {
           })}
         </div>
 
-        <div>
-          <button type="button" onClick={this.handleCheckout}>
-            Checkout
+        <Link to="/checkout">
+          <button type="button" onClick={() => console.log('hey')}>
+            Proceed to Checkout
           </button>
-        </div>
+        </Link>
       </div>
     )
   }
