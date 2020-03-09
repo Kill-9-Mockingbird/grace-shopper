@@ -37,7 +37,7 @@ describe('Admin routes', () => {
         .send({email: 'cody@puppybook.com', password: '1246'})
         .expect(200)
 
-      const res = await authenticatedUser.get('/api/admin/1').expect(401)
+      const res = await authenticatedUser.get('/api/admin/1').expect(404)
       expect(res.body).to.be.an('object')
       expect(Object.keys(res.body).length).to.be.equal(0)
     })
@@ -61,7 +61,7 @@ describe('Admin routes', () => {
         .send({email: 'cody@puppybook.com', password: '1246'})
         .expect(200)
 
-      const res = await authenticatedUser.post('/api/admin').expect(401)
+      const res = await authenticatedUser.post('/api/admin').expect(404)
       expect(res.body).to.be.an('object')
       expect(Object.keys(res.body).length).to.be.equal(0)
     })
@@ -73,7 +73,7 @@ describe('Admin routes', () => {
         .send({email: 'cody@puppybook.com', password: '1246'})
         .expect(200)
 
-      const res = await authenticatedUser.delete('/api/admin/1').expect(401)
+      const res = await authenticatedUser.delete('/api/admin/1').expect(404)
       expect(res.body).to.be.an('object')
       expect(Object.keys(res.body).length).to.be.equal(0)
     })

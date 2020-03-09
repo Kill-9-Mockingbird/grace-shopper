@@ -17,6 +17,10 @@ Order.belongsToMany(Experience, {
   through: OrderDetail
 })
 
+// Order.belongsToMany(User, {
+//   through: OrderDetail
+// })
+
 Celebrity.hasMany(Experience)
 Experience.belongsTo(Celebrity)
 /**

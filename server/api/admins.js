@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Order, OrderDetail} = require('../db/models')
 const {isAdmin} = require('../../utils')
 
 // ADMIN ROUTES
@@ -7,7 +7,7 @@ const {isAdmin} = require('../../utils')
 router.get('/users', isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
-      include: 'orders'
+      include: [{model: Order}]
     })
     res.json(users)
   } catch (err) {
@@ -15,8 +15,17 @@ router.get('/users', isAdmin, async (req, res, next) => {
   }
 })
 
+//admin: create user
+router.post('/users', isAdmin, async (req, res, next) => {
+  await User.create(req.body)
+    .then(user => {
+      res.status(201).json(user)
+    })
+    .catch(next)
+})
+
 //receive user information with orders
-router.get('/:userId', isAdmin, async (req, res, next) => {
+router.get('/users/:userId', isAdmin, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
       include: 'orders'
@@ -27,16 +36,21 @@ router.get('/:userId', isAdmin, async (req, res, next) => {
   }
 })
 
-//admin: create user
-router.post('/', isAdmin, async (req, res, next) => {
-  await User.create(req.body)
-    .then(user => {
-      res.status(201).json(user)
-    })
-    .catch(next)
+router.put('/users/:userId', isAdmin, async (req, res, next) => {
+  try {
+    const id = req.params.userId
+    const user = await User.findByPk(id)
+    if (user) {
+      res.json(await user.update(req.body))
+    } else {
+      res.status(404).send('User Not Found!')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.delete('/:userId', isAdmin, async (req, res, next) => {
+router.delete('/users/:userId', isAdmin, async (req, res, next) => {
   try {
     const id = req.params.userId
     const numAffectedRows = await User.destroy({
