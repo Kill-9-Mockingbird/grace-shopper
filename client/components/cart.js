@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+
 import {
   fetchCart,
   increaseQty,
   decreaseQty,
   removeOrder,
+  checkoutOrder,
   removeGuestOrder,
   fetchGuestCart
 } from '../store/cart'
@@ -16,6 +18,7 @@ class Cart extends Component {
     this.increase = this.increase.bind(this)
     this.decrease = this.decrease.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
+    this.handleCheckout = this.handleCheckout.bind(this)
   }
   componentDidMount() {
     this.props.isLoggedIn && this.props.fetchCart()
@@ -36,24 +39,36 @@ class Cart extends Component {
     this.props.decreaseQty(id)
   }
 
+  handleCheckout() {
+    this.props.checkoutOrder()
+  }
+
   render() {
     const experiences = this.props.cart.experiences
 
     return !experiences || !experiences.length ? (
       <div className="container">Your cart is empty!</div>
     ) : (
-      <div className="container">
-        {experiences.map(e => {
-          return (
-            <CartItems
-              key={e.id}
-              experience={e}
-              handleRemove={this.handleRemove}
-              increase={this.increase}
-              decrease={this.decrease}
-            />
-          )
-        })}
+      <div>
+        <div className="container">
+          {experiences.map(e => {
+            return (
+              <CartItems
+                key={e.id}
+                experience={e}
+                handleRemove={this.handleRemove}
+                increase={this.increase}
+                decrease={this.decrease}
+              />
+            )
+          })}
+        </div>
+
+        <div>
+          <button type="button" onClick={this.handleCheckout}>
+            Checkout
+          </button>
+        </div>
       </div>
     )
   }
@@ -81,6 +96,9 @@ const mapDispatchToProps = dispatch => {
     },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))
+    },
+    checkoutOrder: id => {
+      dispatch(checkoutOrder(id))
     },
     removeGuestOrder: experienceId => {
       dispatch(removeGuestOrder(experienceId))

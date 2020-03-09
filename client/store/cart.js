@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import axios from 'axios'
 
 //Action Constants
@@ -8,6 +9,7 @@ const ADD_ITEM_GUEST = 'ADD_ITEM_GUEST'
 const DELETE_ORDER = 'DELETE_ORDER'
 const DELETE_GUEST_ORDER = 'DELETE_GUEST_ORDER'
 const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
+const CHECKOUT_ORDER = 'CHECKOUT_ORDER'
 
 //Action Creators
 export const getCart = cart => {
@@ -54,6 +56,13 @@ export const deleteGuestOrder = cart => {
 export const updateQuantity = cart => {
   return {
     type: UPDATE_QUANTITY,
+    cart
+  }
+}
+
+export const getCheckout = cart => {
+  return {
+    type: CHECKOUT_ORDER,
     cart
   }
 }
@@ -197,6 +206,19 @@ export const decreaseQty = itemId => async dispatch => {
   dispatch(updateQuantity(data))
 }
 
+//Thunk for checking out
+
+export const checkoutOrder = () => {
+  return async dispatch => {
+    try {
+      await axios.put('/api/cart/checkout')
+      dispatch(getCheckout())
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 //initialState
 const defaultCart = {
   experiences: []
@@ -221,6 +243,8 @@ export default function(state = defaultCart, action) {
       return {...state, experiences: [...action.cart]}
     case UPDATE_QUANTITY:
       return {...action.cart}
+    case CHECKOUT_ORDER:
+      return defaultCart
     default:
       return state
   }
