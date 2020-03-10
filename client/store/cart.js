@@ -9,6 +9,7 @@ const ADD_ITEM_GUEST = 'ADD_ITEM_GUEST'
 const DELETE_ORDER = 'DELETE_ORDER'
 const DELETE_GUEST_ORDER = 'DELETE_GUEST_ORDER'
 const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
+const UPDATE_QUANTITY_GUEST = 'UPDATE_QUANTITY_GUEST'
 const CHECKOUT_ORDER = 'CHECKOUT_ORDER'
 
 //Action Creators
@@ -59,6 +60,12 @@ export const updateQuantity = cart => {
     cart
   }
 }
+export const updateQuantityGuest = cart => {
+  return {
+    type: UPDATE_QUANTITY_GUEST,
+    cart
+  }
+}
 
 export const getCheckout = cart => {
   return {
@@ -87,14 +94,11 @@ export const fetchCart = () => {
 export const fetchGuestCart = () => {
   return async dispatch => {
     try {
-      //look for guest cart in local storage
       let guestCart = JSON.parse(localStorage.getItem('cart'))
       let experiences = []
 
-      //loop through guestCart, the plan is to store experienceId : packageQty pairs so that we can access experienceId to update quantity later
       for (let key in guestCart) {
-        //if key exists in guestCart, we would want to fetch that particular experience with the key (experienceId)
-        if (guestCart.hasOwnProperty(key) && guestCart[key]) {
+        if (guestCart.hasOwnProperty(key)) {
           let {data} = await axios.get(`/api/experiences/${key}`)
           data.orderDetail = {
             packageQty: guestCart[key]
@@ -126,22 +130,20 @@ export const addItemThunk = itemId => {
 export const addItemForGuest = experienceId => {
   return async dispatch => {
     try {
-      // retrieve guest cart
       let guestCart = JSON.parse(localStorage.getItem('cart'))
-      // if guest cart doesn't exist, we'll create one
+
       if (!guestCart) {
         guestCart = window.localStorage.setItem('cart', JSON.stringify({}))
         guestCart[experienceId] = 1
         window.localStorage.setItem('cart', JSON.stringify(guestCart))
       } else {
-        // sets the experienceId as key and set the packageQty as value = 1
         guestCart[experienceId] = 1
-        // overwrites previous cart by setting 'cart' to the new guest cart that has the experienceId and packageQty key-value pair we just assigned
+
         window.localStorage.setItem('cart', JSON.stringify(guestCart))
       }
       let experiences = []
       for (let key in guestCart) {
-        if (guestCart.hasOwnProperty(key) && guestCart[key]) {
+        if (guestCart.hasOwnProperty(key)) {
           let {data} = await axios.get(`/api/experiences/${key}`)
           data.orderDetail = {
             packageQty: guestCart[key]
@@ -166,7 +168,7 @@ export const removeGuestOrder = experienceId => {
       window.localStorage.setItem('cart', JSON.stringify(guestCart))
       let experiences = []
       for (let key in guestCart) {
-        if (guestCart.hasOwnProperty(key) && guestCart[key]) {
+        if (guestCart.hasOwnProperty(key)) {
           let {data} = await axios.get(`/api/experiences/${key}`)
           data.orderDetail = {
             packageQty: guestCart[key]
@@ -191,6 +193,54 @@ export const removeOrder = experienceId => {
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+//thunk -- increase qty for guest cart
+export const increaseQtyGuest = experienceId => async dispatch => {
+  try {
+    const guestCart = JSON.parse(localStorage.getItem('cart'))
+    if (guestCart.hasOwnProperty(experienceId)) {
+      guestCart[experienceId]++
+    }
+    window.localStorage.setItem('cart', JSON.stringify(guestCart))
+    let experiences = []
+    for (let key in guestCart) {
+      if (guestCart.hasOwnProperty(key)) {
+        let {data} = await axios.get(`/api/experiences/${key}`)
+        data.orderDetail = {
+          packageQty: guestCart[key]
+        }
+        experiences.push(data)
+      }
+    }
+    dispatch(updateQuantityGuest(experiences))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+//thunk -- decrease qty for guest cart
+export const decreaseQtyGuest = experienceId => async dispatch => {
+  try {
+    const guestCart = JSON.parse(localStorage.getItem('cart'))
+    if (guestCart.hasOwnProperty(experienceId)) {
+      guestCart[experienceId]--
+    }
+    window.localStorage.setItem('cart', JSON.stringify(guestCart))
+    let experiences = []
+    for (let key in guestCart) {
+      if (guestCart.hasOwnProperty(key)) {
+        let {data} = await axios.get(`/api/experiences/${key}`)
+        data.orderDetail = {
+          packageQty: guestCart[key]
+        }
+        experiences.push(data)
+      }
+    }
+    dispatch(updateQuantityGuest(experiences))
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -251,6 +301,8 @@ export default function(state = defaultCart, action) {
       return {...state, experiences: [...action.cart]}
     case UPDATE_QUANTITY:
       return {...action.cart}
+    case UPDATE_QUANTITY_GUEST:
+      return {...state, experiences: [...action.cart]}
     case CHECKOUT_ORDER:
       return defaultCart
     default:
