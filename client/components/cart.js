@@ -15,7 +15,7 @@ import {
 } from '../store/cart'
 import CartItems from './cartItems'
 
-export default class Cart extends Component {
+class Cart extends Component {
   constructor(props) {
     super(props)
     this.increase = this.increase.bind(this)
