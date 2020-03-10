@@ -57,7 +57,7 @@ export default class Cart extends Component {
       })
     }
 
-    if (!this.props.user.id && experiences.length !== 0) {
+    if (!this.props.user.id && experiences) {
       experiences.forEach(experience => {
         total += experience.price * experience.orderDetail.packageQty
       })
