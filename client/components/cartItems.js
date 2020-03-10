@@ -1,7 +1,7 @@
 import React from 'react'
 
 const CartItems = props => {
-  const {experience, handleRemove, increase, decrease} = props
+  const {experience, handleRemove, increase, decrease, orderId} = props
 
   return experience.name ? (
     <div className="cartItems">
@@ -21,7 +21,7 @@ const CartItems = props => {
           <i
             className="fas fa-minus"
             onClick={() => {
-              decrease(experience.id)
+              decrease(orderId, experience.id)
             }}
           />
         )}
@@ -29,7 +29,7 @@ const CartItems = props => {
         <i
           className="fas fa-plus"
           onClick={() => {
-            increase(experience.id)
+            increase(orderId, experience.id)
           }}
         />
       </div>

@@ -195,9 +195,9 @@ export const removeOrder = experienceId => {
 }
 
 // thunk -- increase qty
-export const increaseQty = itemId => async dispatch => {
+export const increaseQty = (orderId, expId) => async dispatch => {
   try {
-    const {data} = await axios.put(`/api/cart/${itemId}/increase`)
+    const {data} = await axios.put(`/api/cart/${expId}/increase`, {orderId})
     dispatch(updateQuantity(data))
   } catch (error) {
     console.log(error)
@@ -205,9 +205,9 @@ export const increaseQty = itemId => async dispatch => {
 }
 
 // thunk -- decrease qty
-export const decreaseQty = itemId => async dispatch => {
+export const decreaseQty = (orderId, expId) => async dispatch => {
   try {
-    const {data} = await axios.put(`/api/cart/${itemId}/decrease`)
+    const {data} = await axios.put(`/api/cart/${expId}/decrease`, {orderId})
     dispatch(updateQuantity(data))
   } catch (error) {
     console.log(error)

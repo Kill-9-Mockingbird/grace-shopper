@@ -111,11 +111,12 @@ router.delete('/:experienceId', isUser, async (req, res, next) => {
 })
 
 // route -- increase qty
-router.put('/:experienceid/increase', async (req, res, next) => {
+router.put('/:experienceId/increase', async (req, res, next) => {
   try {
     const experienceToUpdate = await OrderDetail.findOne({
       where: {
-        experienceId: req.params.experienceid
+        orderId: req.body.orderId,
+        experienceId: req.params.experienceId
       }
     })
 
@@ -140,11 +141,12 @@ router.put('/:experienceid/increase', async (req, res, next) => {
 })
 
 // route -- decrease qty
-router.put('/:experienceid/decrease', async (req, res, next) => {
+router.put('/:experienceId/decrease', async (req, res, next) => {
   try {
     const experienceToUpdate = await OrderDetail.findOne({
       where: {
-        experienceId: req.params.experienceid
+        orderId: req.body.orderId,
+        experienceId: req.params.experienceId
       }
     })
     if (experienceToUpdate) {
