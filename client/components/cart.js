@@ -9,7 +9,9 @@ import {
   removeOrder,
   checkoutOrder,
   removeGuestOrder,
-  fetchGuestCart
+  fetchGuestCart,
+  increaseQtyGuest,
+  decreaseQtyGuest
 } from '../store/cart'
 import CartItems from './cartItems'
 
@@ -32,12 +34,14 @@ class Cart extends Component {
     !this.props.isLoggedIn && this.props.removeGuestOrder(experienceId)
   }
 
-  increase(orderId, expId) {
-    this.props.increaseQty(orderId, expId)
+  increase(orderId, experienceId) {
+    this.props.isLoggedIn && this.props.increaseQty(orderId, experienceId)
+    !this.props.isLoggedIn && this.props.increaseQtyGuest(experienceId)
   }
 
-  decrease(orderId, expId) {
-    this.props.decreaseQty(orderId, expId)
+  decrease(orderId, experienceId) {
+    this.props.isLoggedIn && this.props.decreaseQty(orderId, experienceId)
+    !this.props.isLoggedIn && this.props.decreaseQtyGuest(experienceId)
   }
 
   handleCheckout() {
@@ -92,11 +96,17 @@ const mapDispatchToProps = dispatch => {
     fetchGuestCart: () => {
       dispatch(fetchGuestCart())
     },
-    increaseQty: (orderId, expId) => {
-      dispatch(increaseQty(orderId, expId))
+    increaseQty: (orderId, experienceId) => {
+      dispatch(increaseQty(orderId, experienceId))
     },
-    decreaseQty: (orderId, expId) => {
-      dispatch(decreaseQty(orderId, expId))
+    decreaseQty: (orderId, experienceId) => {
+      dispatch(decreaseQty(orderId, experienceId))
+    },
+    increaseQtyGuest: experienceId => {
+      dispatch(increaseQtyGuest(experienceId))
+    },
+    decreaseQtyGuest: experienceId => {
+      dispatch(decreaseQtyGuest(experienceId))
     },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))
