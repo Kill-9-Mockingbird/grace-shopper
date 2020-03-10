@@ -15,7 +15,7 @@ import {
 } from '../store/cart'
 import CartItems from './cartItems'
 
-class Cart extends Component {
+export default class Cart extends Component {
   constructor(props) {
     super(props)
     this.increase = this.increase.bind(this)
@@ -52,6 +52,12 @@ class Cart extends Component {
     const experiences = this.props.cart.experiences
     let total = 0
     if (this.props.user.id && experiences.length !== 0) {
+      experiences.forEach(experience => {
+        total += experience.price * experience.orderDetail.packageQty
+      })
+    }
+
+    if (!this.props.user.id && experiences.length !== 0) {
       experiences.forEach(experience => {
         total += experience.price * experience.orderDetail.packageQty
       })
