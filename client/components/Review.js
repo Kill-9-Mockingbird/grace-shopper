@@ -56,7 +56,9 @@ export default function Review(props) {
               primary={experience.name}
               secondary={experience.description}
             />
-            <Typography variant="body2">{experience.price}</Typography>
+            <Typography variant="body2">
+              {experience.price * experience.orderDetail.packageQty}
+            </Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>
