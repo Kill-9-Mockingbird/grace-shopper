@@ -51,7 +51,7 @@ class Cart extends Component {
   render() {
     const experiences = this.props.cart.experiences
     let total = 0
-    if (this.props.user.id && experiences.length !== 0) {
+    if (this.props.user.id && experiences.length) {
       experiences.forEach(experience => {
         total += experience.price * experience.orderDetail.packageQty
       })
