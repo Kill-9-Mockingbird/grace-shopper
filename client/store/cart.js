@@ -88,6 +88,7 @@ export const fetchCart = () => {
             packageQty: guestCart[experienceId]
           })
         })
+        window.localStorage.clear()
         const {data} = await axios.get(`/api/cart`)
         if (data) {
           dispatch(getCart(data))
