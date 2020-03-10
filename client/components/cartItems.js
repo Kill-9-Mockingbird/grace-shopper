@@ -34,6 +34,11 @@ const CartItems = props => {
         />
       </div>
       <br />
+      <p>
+        Total Price: ${experience.price * experience.orderDetail.packageQty}
+      </p>
+      <br />
+      <br />
       <button
         type="button"
         onClick={event => {
