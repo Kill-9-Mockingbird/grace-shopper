@@ -56,6 +56,16 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
       })
       if (cart) {
         await cart.addExperience(experience)
+        if (req.body.packageQty) {
+          const updateQty = await OrderDetail.findOne({
+            where: {
+              experienceId: experienceId,
+              orderId: cart.id
+            }
+          })
+          await updateQty.update({packageQty: req.body.packageQty})
+        }
+
         const updatedCart = await Order.findOne({
           where: {
             userId: req.user.id,
@@ -63,6 +73,7 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
           },
           include: [{model: Experience, include: [{model: Celebrity}]}]
         })
+
         return res.status(200).json(updatedCart)
       }
     } else {
@@ -70,43 +81,6 @@ router.put('/:experienceId', isUser, async (req, res, next) => {
     }
   } catch (err) {
     next(err)
-  }
-})
-
-//delete an item from the cart
-router.delete('/:experienceId', isUser, async (req, res, next) => {
-  try {
-    const experienceId = req.params.experienceId
-    const cart = await Order.findOne({
-      where: {
-        userId: req.user.id,
-        purchased: false
-      },
-      include: [{model: Experience, include: [{model: Celebrity}]}]
-    })
-
-    if (cart) {
-      const experienceToRemove = await Experience.findByPk(experienceId)
-
-      if (experienceToRemove) {
-        await cart.removeExperience(experienceToRemove)
-        const updatedCart = await Order.findOne({
-          where: {
-            userId: req.user.id,
-            purchased: false
-          },
-          include: [{model: Experience, include: [{model: Celebrity}]}]
-        })
-        if (updatedCart.experiences.length === 0) {
-          await updatedCart.destroy()
-          return res.sendStatus(204)
-        } else {
-          return res.json(updatedCart)
-        }
-      }
-    }
-  } catch (error) {
-    next(error)
   }
 })
 
@@ -162,6 +136,43 @@ router.put('/:experienceId/decrease', async (req, res, next) => {
     })
 
     return res.status(200).json(updatedCart)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//delete an item from the cart
+router.delete('/:experienceId', isUser, async (req, res, next) => {
+  try {
+    const experienceId = req.params.experienceId
+    const cart = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        purchased: false
+      },
+      include: [{model: Experience, include: [{model: Celebrity}]}]
+    })
+
+    if (cart) {
+      const experienceToRemove = await Experience.findByPk(experienceId)
+
+      if (experienceToRemove) {
+        await cart.removeExperience(experienceToRemove)
+        const updatedCart = await Order.findOne({
+          where: {
+            userId: req.user.id,
+            purchased: false
+          },
+          include: [{model: Experience, include: [{model: Celebrity}]}]
+        })
+        if (updatedCart.experiences.length === 0) {
+          await updatedCart.destroy()
+          return res.sendStatus(204)
+        } else {
+          return res.json(updatedCart)
+        }
+      }
+    }
   } catch (error) {
     next(error)
   }

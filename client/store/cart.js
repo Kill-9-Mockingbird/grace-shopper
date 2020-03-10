@@ -80,9 +80,23 @@ export const getCheckout = cart => {
 export const fetchCart = () => {
   return async dispatch => {
     try {
-      const {data} = await axios.get(`/api/cart`)
-      if (data) {
-        dispatch(getCart(data))
+      const guestCart = JSON.parse(localStorage.getItem('cart'))
+      if (guestCart) {
+        const experienceIdArr = Object.keys(guestCart)
+        experienceIdArr.map(async experienceId => {
+          await axios.put(`/api/cart/${experienceId}`, {
+            packageQty: guestCart[experienceId]
+          })
+        })
+        const {data} = await axios.get(`/api/cart`)
+        if (data) {
+          dispatch(getCart(data))
+        }
+      } else {
+        const {data} = await axios.get(`/api/cart`)
+        if (data) {
+          dispatch(getCart(data))
+        }
       }
     } catch (error) {
       console.log(error)
