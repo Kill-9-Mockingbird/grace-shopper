@@ -49,15 +49,15 @@ nav a {
 }
 
 .logo {
-  /* flex-grow: 2; */
+  flex-grow: 2;
   color: white;
   padding-left: 10px;
 }
-
+/*
 form div {
   margin: 1em;
   display: inline-block;
-}
+} */
 
 /*ALL EXPERIENCES PAGE*/
 
@@ -106,7 +106,7 @@ img {
   object-fit: cover;
 }
 
-.container > img {
+.customcontainer > img {
   max-width: 500px;
 }
 
@@ -213,7 +213,7 @@ img {
   margin: auto;
 }
 
-.container {
+.custom-container {
   align-content: center;
   width: 800px;
   text-align: center;
@@ -224,7 +224,7 @@ img {
   border-radius: 8px;
 }
 
-.container ul {
+.custom-container ul {
   list-style-type: none;
   width: 600px;
   padding: 0;
@@ -262,7 +262,7 @@ img {
   color: green;
 }
 
-input[type='text'] {
+/* input[type='text'] {
   width: 100%;
   padding: 12px 40px;
   margin: 8px 0;
@@ -282,7 +282,7 @@ input[type='password'] {
 
 .inputField {
   margin: auto;
-}
+} */
 
 button {
   background-color: #db3139;
@@ -293,7 +293,7 @@ button {
   padding: 10px 30px;
   border-radius: 4px;
   transition-duration: 0.3s;
-  width: 132px;
+  width: 150px;
   text-align: center;
   border: none;
   margin: auto;
@@ -413,4 +413,8 @@ h2 {
   margin: auto;
   border-radius: 20px;
   background: white;
+}
+
+.cartItems {
+  padding: 20px;
 }

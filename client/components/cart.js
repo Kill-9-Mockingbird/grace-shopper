@@ -47,10 +47,10 @@ class Cart extends Component {
     const experiences = this.props.cart.experiences
 
     return !experiences || !experiences.length ? (
-      <div className="container">Your cart is empty!</div>
+      <div className="custom-container">Your cart is empty!</div>
     ) : (
       <div>
-        <div className="container">
+        <div className="custom-container">
           {experiences.map(e => {
             return (
               <CartItems
@@ -62,13 +62,18 @@ class Cart extends Component {
               />
             )
           })}
-        </div>
-
-        <div>
+          <br />
+          <br />
           <button type="button" onClick={this.handleCheckout}>
             Checkout
           </button>
         </div>
+
+        {/* <div>
+          <button type="button" onClick={this.handleCheckout}>
+            Checkout
+          </button>
+        </div> */}
       </div>
     )
   }

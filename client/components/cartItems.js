@@ -4,7 +4,7 @@ const CartItems = props => {
   const {experience, handleRemove, increase, decrease} = props
 
   return experience.name ? (
-    <div>
+    <div className="cartItems">
       <img className="thumbnail" src={experience.imageUrl} />
       <p>Name: {experience.name}</p>
       <p>Hosted By: {experience.celebrity.name}</p>
@@ -33,7 +33,7 @@ const CartItems = props => {
           }}
         />
       </div>
-
+      <br />
       <button
         type="button"
         onClick={event => {

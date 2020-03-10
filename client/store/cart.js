@@ -77,8 +77,8 @@ export const fetchCart = () => {
       if (data) {
         dispatch(getCart(data))
       }
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      console.log(error)
     }
   }
 }
@@ -116,27 +116,27 @@ export const addItemThunk = itemId => {
       await axios.get('/api/cart')
       const {data} = await axios.put(`/api/cart/${itemId}`)
       dispatch(addItem(data))
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      console.log(error)
     }
   }
 }
 
-//Thunk for adding an item in guest cart
+// thunk -- adding an item in guest cart
 export const addItemForGuest = experienceId => {
   return async dispatch => {
     try {
-      //retrieve guest cart
+      // retrieve guest cart
       let guestCart = JSON.parse(localStorage.getItem('cart'))
-      //if guest cart doesn't exist, we'll create one
+      // if guest cart doesn't exist, we'll create one
       if (!guestCart) {
         guestCart = window.localStorage.setItem('cart', JSON.stringify({}))
         guestCart[experienceId] = 1
         window.localStorage.setItem('cart', JSON.stringify(guestCart))
       } else {
-        //set the experienceId as key and set the packageQty as value = 1
+        // sets the experienceId as key and set the packageQty as value = 1
         guestCart[experienceId] = 1
-        //overwrite previous cart by setting 'cart' to the new guest cart that has the experienceId and packageQty key-value pair we just assigned
+        // overwrites previous cart by setting 'cart' to the new guest cart that has the experienceId and packageQty key-value pair we just assigned
         window.localStorage.setItem('cart', JSON.stringify(guestCart))
       }
       let experiences = []
@@ -157,7 +157,7 @@ export const addItemForGuest = experienceId => {
   }
 }
 
-//Thunk for removing a guest order from guest cart
+// thunk -- removing a guest order from guest cart
 export const removeGuestOrder = experienceId => {
   return async dispatch => {
     try {
@@ -182,7 +182,7 @@ export const removeGuestOrder = experienceId => {
   }
 }
 
-//Thunk for removing an order in cart
+// thunk -- removing an order in cart
 export const removeOrder = experienceId => {
   return async dispatch => {
     try {
@@ -196,17 +196,25 @@ export const removeOrder = experienceId => {
 
 // thunk -- increase qty
 export const increaseQty = itemId => async dispatch => {
-  const {data} = await axios.put(`/api/cart/${itemId}/increase`)
-  dispatch(updateQuantity(data))
+  try {
+    const {data} = await axios.put(`/api/cart/${itemId}/increase`)
+    dispatch(updateQuantity(data))
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 // thunk -- decrease qty
 export const decreaseQty = itemId => async dispatch => {
-  const {data} = await axios.put(`/api/cart/${itemId}/decrease`)
-  dispatch(updateQuantity(data))
+  try {
+    const {data} = await axios.put(`/api/cart/${itemId}/decrease`)
+    dispatch(updateQuantity(data))
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-//Thunk for checking out
+// thunk -- checking out
 
 export const checkoutOrder = () => {
   return async dispatch => {
