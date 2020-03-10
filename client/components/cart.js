@@ -25,17 +25,6 @@ class Cart extends Component {
     this.handleCheckout = this.handleCheckout.bind(this)
   }
 
-  componentWillUnmount() {
-    if (this.props.user.orders) {
-      for (let i = 0; i < this.props.user.orders.length; i++) {
-        if (this.props.user.orders[i].purchased === false) {
-          this.cartInfo = this.props.user.orders[i]
-          break
-        }
-      }
-    }
-  }
-
   componentDidMount() {
     this.props.isLoggedIn && this.props.fetchCart()
     !this.props.isLoggedIn && this.props.fetchGuestCart()
@@ -70,12 +59,9 @@ class Cart extends Component {
   }
 
   render() {
-    // console.log('this is props from cart', this.props)
-    console.log('this is cartInfo', this.cartInfo)
-
     const experiences = this.props.cart.experiences
     let total = 0
-    if (this.props.user.id && experiences !== 0) {
+    if (this.props.user.id && experiences) {
       experiences.forEach(experience => {
         total += experience.price * experience.orderDetail.packageQty
       })
