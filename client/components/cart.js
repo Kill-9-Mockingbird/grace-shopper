@@ -49,9 +49,11 @@ class Cart extends Component {
   }
 
   render() {
+    console.log('this is props from cart', this.props)
+
     const experiences = this.props.cart.experiences
     let total = 0
-    if (this.props.user.id && experiences.length !== 0) {
+    if (this.props.user.id && experiences !== 0) {
       experiences.forEach(experience => {
         total += experience.price * experience.orderDetail.packageQty
       })
@@ -78,10 +80,11 @@ class Cart extends Component {
           })}
           <br />
           <br />
-          <p>Order Total: {total}</p>
+
+          <p>Order Total: ${total}</p>
           <Link to="/checkout">
             <button type="button" value={total} onClick={this.handleCheckout}>
-              Checkout
+              Proceed To Checkout
             </button>
           </Link>
         </div>
