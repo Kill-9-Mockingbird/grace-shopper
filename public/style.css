@@ -5,8 +5,8 @@
 }
 body {
   margin: auto;
-  margin-top: 50px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* margin-top: 50px; */
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -17,14 +17,14 @@ label {
   display: block;
 }
 
-nav {
+/* nav {
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
-}
+} */
 
 /*NAVBAR*/
-.navbar {
+/* .navbar {
   align-items: center;
   background-color: #3a445d;
   color: white;
@@ -42,7 +42,7 @@ nav a {
   display: inline-block;
   margin: 1em;
   color: white;
-}
+} */
 
 .logo a {
   color: white;

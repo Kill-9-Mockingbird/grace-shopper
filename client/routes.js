@@ -6,11 +6,10 @@ import {
   Login,
   Signup,
   UserHome,
-  // ConnectedAllExperiences,
   ConnectedSingleExperience,
   ConnectedCart
 } from './components'
-import {ConnectedExpList} from './components/exp-list'
+import {ConnectedExpList} from './components/ExpList'
 import {ConnectedAdminAllUsers} from './components/admin-all-users.js'
 import {ConnectedEditUser} from './components/admin-edit-user.js'
 import {adminHome} from './components/admin-home'
@@ -38,6 +37,7 @@ class Routes extends Component {
         <Route exact path="/experiences" component={ConnectedExpList} />
 
         <Route path="/checkout" component={Checkout} />
+        <Route path="/test" component={ConnectedExpList} />
 
         <Route
           path="/experiences/:experienceId"
