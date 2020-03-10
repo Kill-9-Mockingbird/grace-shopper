@@ -39,7 +39,8 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Review() {
+export default function Review(props) {
+  const cartInfo = props.props.cartInfo.experiences
   const classes = useStyles()
 
   return (
@@ -48,16 +49,19 @@ export default function Review() {
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map(product => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+        {cartInfo.map(experience => (
+          <ListItem className={classes.listItem} key={experience.name}>
+            <ListItemText
+              primary={experience.name}
+              secondary={experience.description}
+            />
+            <Typography variant="body2">{experience.price}</Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-            $34.06
+            ${props.props.value}.00
           </Typography>
         </ListItem>
       </List>
