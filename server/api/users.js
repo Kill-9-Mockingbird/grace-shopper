@@ -1,6 +1,6 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
-const {isUser} = require('../../utils')
+const {User, Order, Experience} = require('../db/models')
+const {isUser, isAdmin} = require('../../utils')
 module.exports = router
 
 // USER ROUTES
@@ -11,6 +11,38 @@ router.get('/', isUser, async (req, res, next) => {
       attributes: ['firstName', 'profilePictureUrl', 'county', 'state']
     })
     res.json(users)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/orders', isAdmin, async (req, res, next) => {
+  try {
+    const user = await User.findAll({
+      include: {
+        model: Order,
+        include: {
+          model: Experience
+        }
+      }
+    })
+    res.status(201).send(user)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/orders/:userId', isAdmin, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.userId, {
+      include: {
+        model: Order,
+        include: {
+          model: Experience
+        }
+      }
+    })
+    res.status(201).send(user)
   } catch (err) {
     next(err)
   }

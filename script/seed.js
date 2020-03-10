@@ -26,7 +26,19 @@ async function seed() {
   const celebrities = await Celebrity.bulkCreate(celebritiesSeed)
   const experiences = await Experience.bulkCreate(experienceSeed)
   const orders = await Order.bulkCreate(orderSeed)
-  const orderDetails = await OrderDetail.bulkCreate(orderDetailSeed)
+
+  let details = orderDetailSeed.map(order => {
+    for (let i = 0; i < experiences.length; i++) {
+      let currentExp = experiences[i]
+      if (currentExp.dataValues.id === order.experienceId) {
+        order.totalCost = currentExp.price * order.packageQty
+        break
+      }
+    }
+    return order
+  })
+
+  const orderDetails = await OrderDetail.bulkCreate(details)
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${celebrities.length} celebrities`)
