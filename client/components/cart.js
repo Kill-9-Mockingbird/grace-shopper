@@ -32,12 +32,12 @@ class Cart extends Component {
     !this.props.isLoggedIn && this.props.removeGuestOrder(experienceId)
   }
 
-  increase(id) {
-    this.props.increaseQty(id)
+  increase(orderId, expId) {
+    this.props.increaseQty(orderId, expId)
   }
 
-  decrease(id) {
-    this.props.decreaseQty(id)
+  decrease(orderId, expId) {
+    this.props.decreaseQty(orderId, expId)
   }
 
   handleCheckout() {
@@ -46,6 +46,7 @@ class Cart extends Component {
 
   render() {
     const experiences = this.props.cart.experiences
+    const orderId = this.props.cart.id
 
     return !experiences || !experiences.length ? (
       <div className="custom-container">Your cart is empty!</div>
@@ -57,6 +58,7 @@ class Cart extends Component {
               <CartItems
                 key={e.id}
                 experience={e}
+                orderId={orderId}
                 handleRemove={this.handleRemove}
                 increase={this.increase}
                 decrease={this.decrease}
@@ -90,11 +92,11 @@ const mapDispatchToProps = dispatch => {
     fetchGuestCart: () => {
       dispatch(fetchGuestCart())
     },
-    increaseQty: id => {
-      dispatch(increaseQty(id))
+    increaseQty: (orderId, expId) => {
+      dispatch(increaseQty(orderId, expId))
     },
-    decreaseQty: id => {
-      dispatch(decreaseQty(id))
+    decreaseQty: (orderId, expId) => {
+      dispatch(decreaseQty(orderId, expId))
     },
     removeOrder: experienceId => {
       dispatch(removeOrder(experienceId))
