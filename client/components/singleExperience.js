@@ -13,7 +13,6 @@ export default class SingleExperience extends React.Component {
 
   componentDidMount() {
     const experienceId = this.props.match.params.experienceId
-
     this.props.fetchSingleExperience(experienceId)
   }
 
