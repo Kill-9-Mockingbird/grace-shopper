@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-// import PropTypes from 'prop-types'
 import {fetchSingleExperience} from '../store/experience'
 import {addItemThunk, addItemForGuest} from '../store/cart'
+import {SingleExp} from './SingleExp'
 
 export default class SingleExperience extends React.Component {
   constructor(props) {
@@ -16,8 +15,7 @@ export default class SingleExperience extends React.Component {
     this.props.fetchSingleExperience(experienceId)
   }
 
-  handleAdd(e) {
-    const id = e.target.id
+  handleAdd(id) {
     this.props.isLoggedIn && this.props.addItemThunk(id)
     !this.props.isLoggedIn && this.props.addItemForGuest(id)
   }
@@ -27,28 +25,13 @@ export default class SingleExperience extends React.Component {
     const celebrity = experience.celebrity
 
     return (
-      <div key={experience.id} className="custom-container">
-        <img src={experience.imageUrl} />
-        <ul>
-          <li>{experience.name}</li>
-          <li>
-            Host:
-            <Link to={`/celebrity/${celebrity.id}`}> {celebrity.name}</Link>
-          </li>
-          <li>Details: {experience.description}</li>
-          <li>
-            Location: {experience.city}, {experience.state}
-          </li>
-          <li>Duration: {experience.duration}</li>
-          <li>Group Size: {experience.groupSize}</li>
-          <li>${experience.price}</li>
-
-          {/*future implementation? if cart has experience already, then change onClick handler to increment item in cart*/}
-
-          <button type="button" id={experience.id} onClick={this.handleAdd}>
-            Add To Cart
-          </button>
-        </ul>
+      <div>
+        <SingleExp
+          key={experience.id}
+          experience={experience}
+          celebrity={celebrity}
+          handleAdd={this.handleAdd}
+        />
       </div>
     )
   }
