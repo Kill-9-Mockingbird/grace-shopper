@@ -106,7 +106,7 @@ img {
   object-fit: cover;
 }
 
-.customcontainer > img {
+.custom-container > img {
   max-width: 500px;
 }
 

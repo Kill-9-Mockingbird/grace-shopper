@@ -8,19 +8,20 @@ import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Button from '@material-ui/core/Button'
-import Link from '@material-ui/core/Link'
+import LinkMUI from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 import AddressForm from './AddressForm'
 import PaymentForm from './PaymentForm'
 import Review from './Review'
+import {Link} from 'react-router-dom'
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
+      <LinkMUI color="inherit" href="http://famex.herokuapp.com/">
+        FameX
+      </LinkMUI>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -97,7 +98,7 @@ export default function Checkout() {
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Company name
+            FameX
           </Typography>
         </Toolbar>
       </AppBar>
@@ -124,6 +125,19 @@ export default function Checkout() {
                   confirmation, and will send you an update when your order has
                   shipped.
                 </Typography>
+                <br />
+                <br />
+                <div className={classes.buttons}>
+                  <Link to="/">
+                    <Button type="button">Home</Button>
+                  </Link>
+
+                  <Link to="/experiences">
+                    <Button variant="contained" type="button" color="primary">
+                      Keep Shopping
+                    </Button>
+                  </Link>
+                </div>
               </React.Fragment>
             ) : (
               <React.Fragment>
