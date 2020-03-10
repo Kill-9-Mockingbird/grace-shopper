@@ -31,7 +31,7 @@ async function seed() {
     for (let i = 0; i < experiences.length; i++) {
       let currentExp = experiences[i]
       if (currentExp.dataValues.id === order.experienceId) {
-        order.totalCost = currentExp.price * order.packageQty
+        order.itemCost = currentExp.price
         break
       }
     }
@@ -39,6 +39,21 @@ async function seed() {
   })
 
   const orderDetails = await OrderDetail.bulkCreate(details)
+
+  for (let i = 0; i < orders.length; i++) {
+    let currentOrder = orders[i]
+    if (currentOrder.dataValues.purchased) {
+      let total = 0
+      for (let j = 0; j < orderDetails.length; j++) {
+        let currentItem = orderDetails[j]
+        if (currentItem.dataValues.orderId === currentOrder.dataValues.id) {
+          total +=
+            currentItem.dataValues.itemCost * currentItem.dataValues.packageQty
+        }
+      }
+      await currentOrder.update({orderTotal: total})
+    }
+  }
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${celebrities.length} celebrities`)
