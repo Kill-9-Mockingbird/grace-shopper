@@ -18,14 +18,35 @@ import CartItems from './cartItems'
 class Cart extends Component {
   constructor(props) {
     super(props)
+    this.cartInfo = null
     this.increase = this.increase.bind(this)
     this.decrease = this.decrease.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
     this.handleCheckout = this.handleCheckout.bind(this)
   }
+
+  componentWillUnmount() {
+    if (this.props.user.orders) {
+      for (let i = 0; i < this.props.user.orders.length; i++) {
+        if (this.props.user.orders[i].purchased === false) {
+          this.cartInfo = this.props.user.orders[i]
+          break
+        }
+      }
+    }
+  }
+
   componentDidMount() {
     this.props.isLoggedIn && this.props.fetchCart()
     !this.props.isLoggedIn && this.props.fetchGuestCart()
+    if (this.props.user.orders) {
+      for (let i = 0; i < this.props.user.orders.length; i++) {
+        if (this.props.user.orders[i].purchased === false) {
+          this.cartInfo = this.props.user.orders[i]
+          break
+        }
+      }
+    }
   }
 
   handleRemove(experienceId, event) {
@@ -49,7 +70,8 @@ class Cart extends Component {
   }
 
   render() {
-    console.log('this is props from cart', this.props)
+    // console.log('this is props from cart', this.props)
+    console.log('this is cartInfo', this.cartInfo)
 
     const experiences = this.props.cart.experiences
     let total = 0
@@ -82,10 +104,13 @@ class Cart extends Component {
           <br />
 
           <p>Order Total: ${total}</p>
-          <Link to="/checkout">
-            <button type="button" value={total} onClick={this.handleCheckout}>
-              Proceed To Checkout
-            </button>
+          <Link
+            to={{
+              pathname: '/checkout',
+              state: {value: total, cartInfo: this.cartInfo}
+            }}
+          >
+            <button type="button">Proceed To Checkout</button>
           </Link>
         </div>
       </div>
