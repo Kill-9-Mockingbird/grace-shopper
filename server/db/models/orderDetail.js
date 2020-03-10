@@ -18,8 +18,7 @@ const OrderDetail = db.define('orderDetail', {
     }
   },
   itemCost: {
-    type: Sequelize.INTEGER,
-    allowNull: false
+    type: Sequelize.INTEGER
   }
 })
 
