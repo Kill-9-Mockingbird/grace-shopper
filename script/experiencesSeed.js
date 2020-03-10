@@ -368,7 +368,7 @@ const experienceSeed = [
     description:
       "The Royal Canadian Mounted Police force are synonymous with Canada and their iconic red uniform is famous the world over. During your holiday to Canada you can see Mounties on patrol or even performing in their famous Musical Ride, so it might be worth brushing up on your knowledge of the force. The Mounties provide an array of services from municipal policing to national security intelligence gathering. But despite their prestigious history dating back to 1867, there are many things people don't know about this famous police force. Did you know, for example, that the last dog sled patrol took place in 1969? Or that a Mounties’ boots need 25 hours of polishing before they are shiny enough? To learn more about the Canadian Mounties before your holiday, take a look at the infographic below. It’s full of facts about the Mounties’ extensive history and tells you everything you need to do to become a fully-qualified Canadian Mountie. So, do you think you have what it takes?",
     imageUrl:
-      'https://gagadaily.com/uploads/stories/monthly_2017_11/lady-gaga-jwt-montreal.jpg.7b1debebc10a9328921c42f61cf5b01d.jpgsa',
+      'https://www.thesun.co.uk/wp-content/uploads/2016/11/nintchdbpict000280793859.jpg?w=960',
     city: 'Ottowa',
     state: 'Canada',
     duration: faker.random.number(10),

@@ -39,7 +39,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Review() {
+export default function Review(props) {
+  console.log('this is props from REVIEW', props)
+
   const classes = useStyles()
 
   return (
