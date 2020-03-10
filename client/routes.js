@@ -6,7 +6,7 @@ import {
   Login,
   Signup,
   UserHome,
-  ConnectedAllExperiences,
+  // ConnectedAllExperiences,
   ConnectedSingleExperience,
   ConnectedCart
 } from './components'
@@ -16,6 +16,7 @@ import {ConnectedEditUser} from './components/admin-edit-user.js'
 import {adminHome} from './components/admin-home'
 import {Carousel} from './components/carousel'
 import {me} from './store'
+import Checkout from './components/Checkout'
 
 /**
  * COMPONENT
@@ -35,6 +36,8 @@ class Routes extends Component {
         <Route exact path="/" component={Carousel} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/experiences" component={ConnectedExpList} />
+
+        <Route path="/checkout" component={Checkout} />
 
         <Route
           path="/experiences/:experienceId"

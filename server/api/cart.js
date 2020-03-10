@@ -134,8 +134,8 @@ router.put('/:experienceid/increase', async (req, res, next) => {
     } else {
       return res.sendStatus(404)
     }
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    next(error)
   }
 })
 
@@ -159,9 +159,8 @@ router.put('/:experienceid/decrease', async (req, res, next) => {
       include: [{model: Experience, include: [{model: Celebrity}]}]
     })
 
-    console.log(updatedCart)
     return res.status(200).json(updatedCart)
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    next(error)
   }
 })

@@ -51,8 +51,8 @@ export function fetchOrders(userId) {
       if (user) {
         dispatch(getOrders(user.data.orders))
       }
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      console.log(error)
     }
   }
 }

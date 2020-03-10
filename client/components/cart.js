@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import {
   fetchCart,
@@ -47,10 +48,10 @@ class Cart extends Component {
     const experiences = this.props.cart.experiences
 
     return !experiences || !experiences.length ? (
-      <div className="container">Your cart is empty!</div>
+      <div className="custom-container">Your cart is empty!</div>
     ) : (
       <div>
-        <div className="container">
+        <div className="custom-container">
           {experiences.map(e => {
             return (
               <CartItems
@@ -62,12 +63,13 @@ class Cart extends Component {
               />
             )
           })}
-        </div>
-
-        <div>
-          <button type="button" onClick={this.handleCheckout}>
-            Checkout
-          </button>
+          <br />
+          <br />
+          <Link to="/checkout">
+            <button type="button" onClick={this.handleCheckout}>
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
     )
