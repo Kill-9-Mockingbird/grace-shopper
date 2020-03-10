@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Review(props) {
   const cartInfo = props.props.cartInfo.experiences
+
   const classes = useStyles()
 
   return (

@@ -88,6 +88,7 @@ export const fetchCart = () => {
             packageQty: guestCart[experienceId]
           })
         })
+        window.localStorage.clear()
         const {data} = await axios.get(`/api/cart`)
         if (data) {
           dispatch(getCart(data))
@@ -147,7 +148,8 @@ export const addItemForGuest = experienceId => {
       let guestCart = JSON.parse(localStorage.getItem('cart'))
 
       if (!guestCart) {
-        guestCart = window.localStorage.setItem('cart', JSON.stringify({}))
+        window.localStorage.setItem('cart', JSON.stringify({}))
+        guestCart = JSON.parse(localStorage.getItem('cart'))
         guestCart[experienceId] = 1
         window.localStorage.setItem('cart', JSON.stringify(guestCart))
       } else {

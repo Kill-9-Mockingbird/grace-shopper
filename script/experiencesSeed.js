@@ -230,7 +230,7 @@ const experienceSeed = [
     description:
       'The fate of Middle Earth depends on you! Starting in the Hobbiton home of the Shire, take the harrowing journey through beautiful but treacherous terrain on the way to Mordor. Band together with Aragorn, Legolas, Gimli, Gandalf and of course your Hobbit comrades as you fight for the future of the world.',
     imageUrl:
-      'https://lh3.googleusercontent.com/proxy/ZstUPY8dZUJlMHbZAJMUy46W8Fyg9mqGHw80EbzZUHdnuQir1J8NUmG-1eQCKA2kYIHEZbJQEMYhNnozSFMCUlqLnSh-jmUugGH5ZHSz9wiTf_7pQcUTqumv1DVu1EK-zi0jsTITnjDHpaOTPzg6n34Z8uaCRA-rtbA',
+      'https://i.pinimg.com/originals/3c/1b/7d/3c1b7d87d2dd79857f6289740b250f0b.jpg',
     city: 'The Shire',
     state: 'Middle Earth',
     duration: faker.random.number(10),
@@ -368,7 +368,7 @@ const experienceSeed = [
     description:
       "The Royal Canadian Mounted Police force are synonymous with Canada and their iconic red uniform is famous the world over. During your holiday to Canada you can see Mounties on patrol or even performing in their famous Musical Ride, so it might be worth brushing up on your knowledge of the force. The Mounties provide an array of services from municipal policing to national security intelligence gathering. But despite their prestigious history dating back to 1867, there are many things people don't know about this famous police force. Did you know, for example, that the last dog sled patrol took place in 1969? Or that a Mounties’ boots need 25 hours of polishing before they are shiny enough? To learn more about the Canadian Mounties before your holiday, take a look at the infographic below. It’s full of facts about the Mounties’ extensive history and tells you everything you need to do to become a fully-qualified Canadian Mountie. So, do you think you have what it takes?",
     imageUrl:
-      'https://gagadaily.com/uploads/stories/monthly_2017_11/lady-gaga-jwt-montreal.jpg.7b1debebc10a9328921c42f61cf5b01d.jpgsa',
+      'https://www.thesun.co.uk/wp-content/uploads/2016/11/nintchdbpict000280793859.jpg?w=960',
     city: 'Ottowa',
     state: 'Canada',
     duration: faker.random.number(10),
