@@ -8,6 +8,10 @@ const Order = db.define('order', {
   purchased: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  orderTotal: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   }
 })
 
