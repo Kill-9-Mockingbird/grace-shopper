@@ -16,6 +16,9 @@ const OrderDetail = db.define('orderDetail', {
     validate: {
       min: 1
     }
+  },
+  totalCost: {
+    type: Sequelize.INTEGER
   }
 })
 
