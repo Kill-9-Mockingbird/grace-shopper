@@ -81,6 +81,12 @@ class Cart extends Component {
       })
     }
 
+    if (!this.props.user.id && experiences) {
+      experiences.forEach(experience => {
+        total += experience.price * experience.orderDetail.packageQty
+      })
+    }
+
     const orderId = this.props.cart.id
 
     return !experiences || !experiences.length ? (
