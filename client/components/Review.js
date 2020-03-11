@@ -6,14 +6,8 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Grid from '@material-ui/core/Grid'
 
-const products = [
-  {name: 'Product 1', desc: 'A nice thing', price: '$9.99'},
-  {name: 'Product 2', desc: 'Another thing', price: '$3.45'},
-  {name: 'Product 3', desc: 'Something else', price: '$6.51'},
-  {name: 'Product 4', desc: 'Best thing of all', price: '$14.11'},
-  {name: 'Shipping', desc: '', price: 'Free'}
-]
 const addresses = ['5 Hanover Square', 'New York', 'NY', '10004', 'USA']
+
 const payments = [
   {name: 'Card type', detail: 'Visa'},
   {name: 'Card holder', detail: 'Ben Rodriguez'},
@@ -34,7 +28,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Review(props) {
-  const cartInfo = props.props.cartInfo[0].experiences
+  console.log(props)
+  const cartInfo = props.cartInfo.experiences
+  console.log(cartInfo)
 
   const classes = useStyles()
 
@@ -58,7 +54,7 @@ export default function Review(props) {
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-            ${props.props.value}.00
+            ${props.total}.00
           </Typography>
         </ListItem>
       </List>
