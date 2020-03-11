@@ -68,14 +68,14 @@ const useStyles = makeStyles(theme => ({
 
 const steps = ['Shipping address', 'Payment details', 'Review your order']
 
-function getStepContent(step, props) {
+function getStepContent(step, props, value) {
   switch (step) {
     case 0:
       return <AddressForm />
     case 1:
       return <PaymentForm />
     case 2:
-      return <Review props={props} />
+      return <Review cartInfo={props} total={value} />
     default:
       throw new Error('Unknown step')
   }
@@ -135,7 +135,11 @@ export default function Checkout(props) {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, props.location.state)}
+                {getStepContent(
+                  activeStep,
+                  props.location.state.cartInfo['1'],
+                  props.location.state.value
+                )}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>

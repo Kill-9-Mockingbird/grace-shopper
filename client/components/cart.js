@@ -33,6 +33,19 @@ class Cart extends Component {
       for (let i = 0; i < this.props.user.orders.length; i++) {
         if (this.props.user.orders[i].purchased === false) {
           this.cartInfo[`${i}`] = this.props.user.orders[i]
+          console.log(this.cartInfo)
+
+          break
+        }
+      }
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.user.orders) {
+      for (let i = 0; i < this.props.user.orders.length; i++) {
+        if (this.props.user.orders[i].purchased === false) {
+          this.cartInfo[`${i}`] = this.props.user.orders[i]
           break
         }
       }
@@ -62,6 +75,7 @@ class Cart extends Component {
   }
 
   render() {
+    console.log(this.cartInfo)
     const experiences = this.props.cart.experiences
     let total = 0
 
@@ -153,7 +167,6 @@ class Cart extends Component {
               </Grid>
             </Grid>
           </Container>
-
         </div>
       </React.Fragment>
     )
