@@ -75,7 +75,7 @@ function getStepContent(step, props, value) {
     case 1:
       return <PaymentForm />
     case 2:
-      return <Review cartInfo={props} total={value} />
+      return <Review cartInfo={props} value={value} />
     default:
       throw new Error('Unknown step')
   }
@@ -137,7 +137,7 @@ export default function Checkout(props) {
               <React.Fragment>
                 {getStepContent(
                   activeStep,
-                  props.location.state.cartInfo['1'],
+                  props.location.state.cartInfo,
                   props.location.state.value
                 )}
                 <div className={classes.buttons}>
