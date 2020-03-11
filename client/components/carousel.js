@@ -88,9 +88,11 @@ export function Carousel() {
               </Typography>
               <br />
               <br />
-              <Button variant="contained" color="secondary">
-                Shop Now
-              </Button>
+              <LinkRouter to="/experiences">
+                <Button variant="contained" color="secondary">
+                  Shop Now
+                </Button>
+              </LinkRouter>
             </div>
           </Grid>
         </Grid>
