@@ -18,6 +18,7 @@ export default class SingleExperience extends React.Component {
   handleAdd(id) {
     this.props.isLoggedIn && this.props.addItemThunk(id)
     !this.props.isLoggedIn && this.props.addItemForGuest(id)
+    alert('Added to cart')
   }
 
   render() {

@@ -355,6 +355,14 @@ button:focus {
   margin: 10px;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 250px;
+}
+
 h2 {
   padding: 15px;
 }
@@ -383,4 +391,43 @@ h2 {
 
 .cartItems {
   padding: 20px;
+}
+
+.custom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cartItem {
+  width: 200px;
+  padding-bottom: 20px;
+}
+
+.custom-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.cartItems {
+  height: 250px;
+}
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding-top: 25px;
+}
+
+.checkoutTotals {
+  margin: auto;
+  padding-top: 20px;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.adminUserEdit {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

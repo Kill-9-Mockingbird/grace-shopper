@@ -19,7 +19,7 @@ import CartItems from './cartItems'
 class Cart extends Component {
   constructor(props) {
     super(props)
-    this.cartInfo = null
+    this.cartInfo = {}
     this.increase = this.increase.bind(this)
     this.decrease = this.decrease.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
@@ -32,7 +32,7 @@ class Cart extends Component {
     if (this.props.user.orders) {
       for (let i = 0; i < this.props.user.orders.length; i++) {
         if (this.props.user.orders[i].purchased === false) {
-          this.cartInfo = this.props.user.orders[i]
+          this.cartInfo[`${i}`] = this.props.user.orders[i]
           break
         }
       }
@@ -153,6 +153,7 @@ class Cart extends Component {
               </Grid>
             </Grid>
           </Container>
+
         </div>
       </React.Fragment>
     )

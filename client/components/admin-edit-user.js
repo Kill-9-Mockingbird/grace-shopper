@@ -44,7 +44,7 @@ export class EditUser extends Component {
     return user ? (
       <div>
         <h2>Edit User:</h2>
-        <form>
+        <form className="adminUserEdit">
           <div className="form-group">
             <label htmlFor="firstName">First Name:</label>
             <input

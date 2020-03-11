@@ -101,6 +101,7 @@ const CartItems = props => {
         </CardContent>
       </div>
     </Card>
+
   ) : (
     <Typography variant="subtitle2">Loading...</Typography>
   )
