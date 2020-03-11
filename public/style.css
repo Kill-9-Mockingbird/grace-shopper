@@ -389,6 +389,14 @@ button:focus {
   margin: 10px;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 250px;
+}
+
 h2 {
   padding: 15px;
 }
@@ -450,4 +458,10 @@ h2 {
   padding-top: 20px;
   text-align: center;
   padding-bottom: 30px;
+}
+
+.adminUserEdit {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
