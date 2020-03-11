@@ -230,7 +230,7 @@ const experienceSeed = [
     description:
       'The fate of Middle Earth depends on you! Starting in the Hobbiton home of the Shire, take the harrowing journey through beautiful but treacherous terrain on the way to Mordor. Band together with Aragorn, Legolas, Gimli, Gandalf and of course your Hobbit comrades as you fight for the future of the world.',
     imageUrl:
-      'https://i.pinimg.com/originals/3c/1b/7d/3c1b7d87d2dd79857f6289740b250f0b.jpg',
+      'https://s01.sgp1.digitaloceanspaces.com/large/893226-hnrwdjbdte-1536132327.jpeg',
     city: 'The Shire',
     state: 'Middle Earth',
     duration: faker.random.number(10),

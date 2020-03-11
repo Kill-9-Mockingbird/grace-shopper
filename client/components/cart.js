@@ -159,7 +159,7 @@ class Cart extends Component {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={this.handleCheckou}
+                    onClick={this.handleCheckout}
                   >
                     Checkout
                   </Button>
