@@ -13,16 +13,10 @@ const products = [
   {name: 'Product 4', desc: 'Best thing of all', price: '$14.11'},
   {name: 'Shipping', desc: '', price: 'Free'}
 ]
-const addresses = [
-  '1 Material-UI Drive',
-  'Reactville',
-  'Anytown',
-  '99999',
-  'USA'
-]
+const addresses = ['5 Hanover Square', 'New York', 'NY', '10004', 'USA']
 const payments = [
   {name: 'Card type', detail: 'Visa'},
-  {name: 'Card holder', detail: 'Mr John Smith'},
+  {name: 'Card holder', detail: 'Ben Rodriguez'},
   {name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234'},
   {name: 'Expiry date', detail: '04/2024'}
 ]
