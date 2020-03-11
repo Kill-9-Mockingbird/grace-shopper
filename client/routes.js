@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import {
   Login,
   Signup,
-  UserHome,
   ConnectedSingleExperience,
   ConnectedCart
 } from './components'
@@ -35,9 +34,7 @@ class Routes extends Component {
         <Route exact path="/" component={Carousel} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/experiences" component={ConnectedExpList} />
-
         <Route path="/checkout" component={Checkout} />
-        <Route path="/test" component={ConnectedExpList} />
 
         <Route
           path="/experiences/:experienceId"
@@ -53,7 +50,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+            <Route path="/home" component={Carousel} />
             {isAdmin && (
               <Switch>
                 {/* Routes placed here are only available if the user is an admin */}

@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchExperience} from '../store/experience'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import {Grid, Typography, Container} from '@material-ui/core'
 import {ExpCard} from './ExpCard'
 
 class ExpList extends React.Component {
@@ -22,7 +21,13 @@ class ExpList extends React.Component {
 
   render() {
     return (
-      <Container maxWidth="md">
+      <Container maxWidth="md" align="center">
+        <Typography variant="h4">
+          <br />
+          Current Experiences
+        </Typography>
+        <br />
+        <br />
         <Grid container spacing={3}>
           {this.props.allExperiences.map(e => {
             return <ExpCard key={e.id} experience={e} />

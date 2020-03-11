@@ -17,33 +17,6 @@ label {
   display: block;
 }
 
-/* nav {
-  display: flex;
-  justify-content: flex-end;
-  flex-grow: 1;
-} */
-
-/*NAVBAR*/
-/* .navbar {
-  align-items: center;
-  background-color: #3a445d;
-  color: white;
-  display: flex;
-  height: 20px;
-  padding: 10px 0px;
-  justify-content: space-between;
-  box-shadow: 0px 2px 8px #c7c7c7;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  overflow: hidden;
-}
-nav a {
-  display: inline-block;
-  margin: 1em;
-  color: white;
-} */
-
 .logo a {
   color: white;
 }
@@ -53,13 +26,6 @@ nav a {
   color: white;
   padding-left: 10px;
 }
-/*
-form div {
-  margin: 1em;
-  display: inline-block;
-} */
-
-/*ALL EXPERIENCES PAGE*/
 
 .indExp {
   display: flex;
@@ -210,7 +176,6 @@ img {
   display: flex;
   justify-content: space-between;
   width: 150px;
-  margin: auto;
 }
 
 .custom-container {
@@ -361,6 +326,7 @@ button:focus {
   margin: 10px;
 }
 /*ADMIN HOME*/
+
 .editAdmin img {
   height: 150px;
   max-width: 150px;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {Button, Container, Typography, Grid} from '@material-ui/core'
 
 import {
   fetchCart,
@@ -54,8 +55,10 @@ class Cart extends Component {
     !this.props.isLoggedIn && this.props.decreaseQtyGuest(experienceId)
   }
 
-  handleCheckout() {
-    this.props.checkoutOrder()
+  handleCheckout(id) {
+    this.props.isLoggedIn
+      ? this.props.checkoutOrder(id)
+      : alert('Thank you for your interest! Login or Signup to checkout!')
   }
 
   render() {
@@ -77,44 +80,86 @@ class Cart extends Component {
     const orderId = this.props.cart.id
 
     return !experiences || !experiences.length ? (
-      <div className="custom-container">Your cart is empty!</div>
+      <React.Fragment>
+        <Container maxWidth="sm" align="center">
+          <Typography variant="h4">
+            <br />
+            Your Cart
+          </Typography>
+          <br />
+          <br />
+          Your cart is empty!
+        </Container>
+      </React.Fragment>
     ) : (
-      <div>
-        <div className="main-container">
-          <div className="custom-container">
-            {experiences.map(e => {
-              return (
-                <div key={e.id} className="cartItem">
-                  <CartItems
-                    key={e.id}
-                    experience={e}
-                    orderId={orderId}
-                    handleRemove={this.handleRemove}
-                    increase={this.increase}
-                    decrease={this.decrease}
-                  />
-                </div>
-              )
-            })}
+      <React.Fragment>
+        <div>
+          <Container maxWidth="sm" align="center">
+            <Typography variant="h4">
+              <br />
+              Your Cart
+            </Typography>
             <br />
             <br />
-          </div>
-          <div className="checkoutTotals">
-            <p>Order Total: ${total}</p>
-            <Link
-              to={{
-                pathname: '/checkout',
-                state: {value: total, cartInfo: this.cartInfo}
-              }}
-            >
-              <button type="button">Proceed To Checkout</button>
-            </Link>
-          </div>
+            <Grid container spacing={1} justify="center" alignItems="center">
+              {experiences.map(e => {
+                return (
+                  <Grid item key={e.id} xs={12}>
+                    <CartItems
+                      experience={e}
+                      orderId={orderId}
+                      handleRemove={this.handleRemove}
+                      increase={this.increase}
+                      decrease={this.decrease}
+                    />
+                  </Grid>
+                )
+              })}
+            </Grid>
+            <br />
+            <Grid container spacing={3} justify="flex-end" alignItems="center">
+              <Grid item xs={4}>
+                <Typography variant="subtitle1">
+                  <strong>Order Total:</strong>
+                </Typography>{' '}
+                <Typography variant="subtitle1" color="secondary">
+                  ${total}
+                </Typography>
+                <br />
+                {this.props.isLoggedIn ? (
+                  <Link
+                    to={{
+                      pathname: '/checkout',
+                      state: {
+                        checkoutOrder: this.checkoutOrder,
+                        value: total,
+                        cartInfo: this.cartInfo
+                      }
+                    }}
+                  >
+                    <Button variant="contained" color="primary">
+                      Checkout
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleCheckou}
+                  >
+                    Checkout
+                  </Button>
+                )}
+              </Grid>
+            </Grid>
+          </Container>
+
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }
+
 const mapStateToProps = state => {
   return {
     ...state,
