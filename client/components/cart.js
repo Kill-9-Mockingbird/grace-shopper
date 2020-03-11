@@ -145,7 +145,7 @@ class Cart extends Component {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={this.handleCheckou}
+                    onClick={this.handleCheckout}
                   >
                     Checkout
                   </Button>
@@ -153,7 +153,6 @@ class Cart extends Component {
               </Grid>
             </Grid>
           </Container>
-
         </div>
       </React.Fragment>
     )
