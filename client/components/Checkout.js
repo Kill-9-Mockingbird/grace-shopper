@@ -81,7 +81,6 @@ function getStepContent(step, props) {
 }
 
 export default function Checkout(props) {
-  console.log('this is props from Checkout', props)
   const classes = useStyles()
   const [activeStep, setActiveStep] = React.useState(0)
 

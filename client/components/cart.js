@@ -59,7 +59,6 @@ class Cart extends Component {
   }
 
   render() {
-    console.log(this.cartInfo)
     const experiences = this.props.cart.experiences
     let total = 0
 
@@ -81,31 +80,36 @@ class Cart extends Component {
       <div className="custom-container">Your cart is empty!</div>
     ) : (
       <div>
-        <div className="custom-container">
-          {experiences.map(e => {
-            return (
-              <CartItems
-                key={e.id}
-                experience={e}
-                orderId={orderId}
-                handleRemove={this.handleRemove}
-                increase={this.increase}
-                decrease={this.decrease}
-              />
-            )
-          })}
-          <br />
-          <br />
-
-          <p>Order Total: ${total}</p>
-          <Link
-            to={{
-              pathname: '/checkout',
-              state: {value: total, cartInfo: this.cartInfo}
-            }}
-          >
-            <button type="button">Proceed To Checkout</button>
-          </Link>
+        <div className="main-container">
+          <div className="custom-container">
+            {experiences.map(e => {
+              return (
+                <div key={e.id} className="cartItem">
+                  <CartItems
+                    key={e.id}
+                    experience={e}
+                    orderId={orderId}
+                    handleRemove={this.handleRemove}
+                    increase={this.increase}
+                    decrease={this.decrease}
+                  />
+                </div>
+              )
+            })}
+            <br />
+            <br />
+          </div>
+          <div className="checkoutTotals">
+            <p>Order Total: ${total}</p>
+            <Link
+              to={{
+                pathname: '/checkout',
+                state: {value: total, cartInfo: this.cartInfo}
+              }}
+            >
+              <button type="button">Proceed To Checkout</button>
+            </Link>
+          </div>
         </div>
       </div>
     )
