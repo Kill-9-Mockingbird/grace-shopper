@@ -75,7 +75,6 @@ class Cart extends Component {
   }
 
   render() {
-    console.log(this.cartInfo)
     const experiences = this.props.cart.experiences
     let total = 0
 

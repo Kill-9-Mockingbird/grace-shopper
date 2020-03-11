@@ -28,9 +28,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Review(props) {
-  console.log(props)
-  const cartInfo = props.cartInfo.experiences
+  const cartInfo = props.cartInfo['0'].experiences
   console.log(cartInfo)
+  console.log(Array.isArray(cartInfo))
 
   const classes = useStyles()
 
