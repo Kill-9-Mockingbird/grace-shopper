@@ -18,7 +18,7 @@ import CartItems from './cartItems'
 class Cart extends Component {
   constructor(props) {
     super(props)
-    this.cartInfo = null
+    this.cartInfo = {}
     this.increase = this.increase.bind(this)
     this.decrease = this.decrease.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
@@ -31,7 +31,7 @@ class Cart extends Component {
     if (this.props.user.orders) {
       for (let i = 0; i < this.props.user.orders.length; i++) {
         if (this.props.user.orders[i].purchased === false) {
-          this.cartInfo = this.props.user.orders[i]
+          this.cartInfo[`${i}`] = this.props.user.orders[i]
           break
         }
       }
@@ -61,7 +61,7 @@ class Cart extends Component {
   render() {
     const experiences = this.props.cart.experiences
     let total = 0
-    
+
     if (this.props.user.id && experiences) {
       experiences.forEach(experience => {
         total += experience.price * experience.orderDetail.packageQty
@@ -69,7 +69,6 @@ class Cart extends Component {
     }
 
     if (!this.props.user.id && experiences) {
-
       experiences.forEach(experience => {
         total += experience.price * experience.orderDetail.packageQty
       })
@@ -81,31 +80,36 @@ class Cart extends Component {
       <div className="custom-container">Your cart is empty!</div>
     ) : (
       <div>
-        <div className="custom-container">
-          {experiences.map(e => {
-            return (
-              <CartItems
-                key={e.id}
-                experience={e}
-                orderId={orderId}
-                handleRemove={this.handleRemove}
-                increase={this.increase}
-                decrease={this.decrease}
-              />
-            )
-          })}
-          <br />
-          <br />
-
-          <p>Order Total: ${total}</p>
-          <Link
-            to={{
-              pathname: '/checkout',
-              state: {value: total, cartInfo: this.cartInfo}
-            }}
-          >
-            <button type="button">Proceed To Checkout</button>
-          </Link>
+        <div className="main-container">
+          <div className="custom-container">
+            {experiences.map(e => {
+              return (
+                <div key={e.id} className="cartItem">
+                  <CartItems
+                    key={e.id}
+                    experience={e}
+                    orderId={orderId}
+                    handleRemove={this.handleRemove}
+                    increase={this.increase}
+                    decrease={this.decrease}
+                  />
+                </div>
+              )
+            })}
+            <br />
+            <br />
+          </div>
+          <div className="checkoutTotals">
+            <p>Order Total: ${total}</p>
+            <Link
+              to={{
+                pathname: '/checkout',
+                state: {value: total, cartInfo: this.cartInfo}
+              }}
+            >
+              <button type="button">Proceed To Checkout</button>
+            </Link>
+          </div>
         </div>
       </div>
     )
