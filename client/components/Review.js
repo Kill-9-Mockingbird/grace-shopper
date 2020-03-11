@@ -40,7 +40,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Review(props) {
-  const cartInfo = props.props.cartInfo.experiences
+  console.log(props)
+  const cartInfo = props.props.cartInfo[0].experiences
 
   const classes = useStyles()
 
@@ -57,7 +58,7 @@ export default function Review(props) {
               secondary={experience.description}
             />
             <Typography variant="body2">
-              {experience.price * experience.orderDetail.packageQty}
+              ${experience.price * experience.orderDetail.packageQty}
             </Typography>
           </ListItem>
         ))}
