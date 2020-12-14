@@ -12,7 +12,7 @@ describe('Experience Model', () => {
       groupSize: 6,
       description: 'Kayaking everywhere in Florida!',
       imageUrl:
-        'https://kokatat.com/images/550marquees/B_florida_keys-1-19.jpg',
+        'https://wegotthiscovered.com/wp-content/uploads/beyonce-and-jay-z-visit-st-barts.jpg',
       city: 'Key West',
       state: 'Florida',
       duration: 1,
@@ -31,7 +31,7 @@ describe('Experience Model', () => {
       'Kayaking everywhere in Florida!'
     )
     expect(savedExperience.imageUrl).to.equal(
-      'https://kokatat.com/images/550marquees/B_florida_keys-1-19.jpg'
+      'https://wegotthiscovered.com/wp-content/uploads/beyonce-and-jay-z-visit-st-barts.jpg'
     )
     expect(savedExperience.city).to.equal('Key West')
     expect(savedExperience.state).to.equal('Florida')

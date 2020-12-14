@@ -5,7 +5,7 @@ module.exports = router
 
 // USER ROUTES
 // route to return users basic info for an app user page
-router.get('/', isUser, async (req, res, next) => {
+router.get('/', isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       attributes: ['firstName', 'profilePictureUrl', 'county', 'state']

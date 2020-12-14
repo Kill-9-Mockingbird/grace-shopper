@@ -7,7 +7,8 @@ const experienceSeed = [
     groupSize: faker.random.number({min: 1, max: 6}),
     description:
       "In the Florida Keys, you can kayak everywhere! You're in the Caribbean around a bunch of cool islands, what more could you want?!",
-    imageUrl: 'https://kokatat.com/images/550marquees/B_florida_keys-1-19.jpg',
+    imageUrl:
+      'https://wegotthiscovered.com/wp-content/uploads/beyonce-and-jay-z-visit-st-barts.jpg',
     city: 'Key West',
     state: 'Florida',
     duration: faker.random.number(10),
