@@ -19,7 +19,7 @@ describe('Experience routes', () => {
         groupSize: '2',
         description: 'In the Florida Keys, you can kayak everywhere!',
         imageUrl:
-          'https://kokatat.com/images/550marquees/B_florida_keys-1-19.jpg',
+          'https://wegotthiscovered.com/wp-content/uploads/beyonce-and-jay-z-visit-st-barts.jpg',
         city: 'Key West',
         state: 'Florida',
         duration: '4',
@@ -47,7 +47,7 @@ describe('Experience routes', () => {
         groupSize: '2',
         description: 'In the Florida Keys, you can kayak everywhere!',
         imageUrl:
-          'https://kokatat.com/images/550marquees/B_florida_keys-1-19.jpg',
+          'https://wegotthiscovered.com/wp-content/uploads/beyonce-and-jay-z-visit-st-barts.jpg',
         city: 'Key West',
         state: 'Florida',
         duration: '4',
